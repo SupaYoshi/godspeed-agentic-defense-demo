@@ -1,0 +1,9 @@
+[
+  "remote access authentication events",
+  "failed login bursts",
+  "new privileged sessions",
+  "unexpected process execution",
+  "new outbound connections",
+  "configuration changes",
+  "endpoint detection telemetry"
+]

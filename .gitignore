@@ -1,0 +1,9 @@
+node_modules/
+artifacts/last-run/
+.env
+.env.*
+*.log
+dist/
+coverage/
+.DS_Store
+

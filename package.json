@@ -1,0 +1,16 @@
+{
+  "name": "godspeed-agentic-defense-demo",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Hackathon demo: governed agentic defense mission orchestrator.",
+  "scripts": {
+    "check": "node --check src/*.mjs",
+    "demo": "node src/cli.mjs",
+    "health": "node -e \"fetch('http://127.0.0.1:8088/api/health').then(r=>r.text()).then(console.log)\"",
+    "start": "node src/server.mjs",
+    "mission": "node src/cli.mjs"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

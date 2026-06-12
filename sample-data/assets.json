@@ -1,0 +1,23 @@
+[
+  {
+    "asset": "edge-remote-access-01",
+    "exposure": "internet-facing",
+    "businessCriticality": "high",
+    "logging": "partial",
+    "patchState": "unknown"
+  },
+  {
+    "asset": "internal-admin-broker-02",
+    "exposure": "internal",
+    "businessCriticality": "high",
+    "logging": "available",
+    "patchState": "pending validation"
+  },
+  {
+    "asset": "lab-clone-remote-access",
+    "exposure": "lab only",
+    "businessCriticality": "demo",
+    "logging": "available",
+    "patchState": "safe to test"
+  }
+]

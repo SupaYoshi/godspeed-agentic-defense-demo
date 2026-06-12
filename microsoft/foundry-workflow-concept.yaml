@@ -1,0 +1,48 @@
+name: godspeed-agentic-defense
+description: Concept workflow for deploying Godspeed through Microsoft Foundry Agent Service and Agent Framework.
+profile: microsoft-native-target
+entrypoint: copilot-front-door
+nodes:
+  - id: copilot-front-door
+    type: user-intake
+    purpose: Collect scenario, urgency, boundaries and approval owner.
+    next: godspeed-orchestrator
+  - id: godspeed-orchestrator
+    type: orchestrator-agent
+    purpose: Convert scenario into mission plan, agent waves, approval gates and evidence requirements.
+    next:
+      - threat-intel-agent
+      - exposure-agent
+      - vulnerability-agent
+      - log-coverage-agent
+      - evidence-agent
+  - id: threat-intel-agent
+    type: specialist-agent
+    approval_required: false
+  - id: exposure-agent
+    type: specialist-agent
+    approval_required: false
+  - id: vulnerability-agent
+    type: specialist-agent
+    approval_required: false
+  - id: log-coverage-agent
+    type: specialist-agent
+    approval_required: false
+  - id: evidence-agent
+    type: specialist-agent
+    approval_required: false
+  - id: human-approval-gate
+    type: approval
+    blocks:
+      - production-scan
+      - patch-execution
+      - host-isolation
+      - external-communication
+  - id: defense-package
+    type: output
+    artifacts:
+      - mission-plan.md
+      - approval-gates.md
+      - executive-summary.md
+      - microsoft-fit.md
+

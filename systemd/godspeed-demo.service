@@ -1,0 +1,19 @@
+[Unit]
+Description=Godspeed hackathon demo service
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=godspeed
+Group=godspeed
+WorkingDirectory=/opt/godspeed-agentic-defense-demo
+Environment=NODE_ENV=production
+Environment=PORT=8088
+ExecStart=/usr/bin/node /opt/godspeed-agentic-defense-demo/src/server.mjs
+Restart=always
+RestartSec=2
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target

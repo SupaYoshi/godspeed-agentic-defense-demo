@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Godspeed Demo</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Reasoning Agents track</p>
+        <h1>Godspeed Agentic Defense</h1>
+      </div>
+      <div class="status-strip" aria-label="Safety status">
+        <span>Copilot front door</span>
+        <span>Foundry path</span>
+        <span>Read-only first</span>
+        <span>Lab-first validation</span>
+        <span>Approval gates on</span>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="mission-panel" aria-labelledby="scenario-title">
+        <div class="section-title">
+          <h2 id="scenario-title">Mission Intake</h2>
+          <button id="runMission" type="button">Run Mission</button>
+        </div>
+        <label for="scenario">Security scenario</label>
+        <textarea id="scenario" rows="9">A new critical vulnerability has been disclosed in a widely used remote access component. The organisation needs to know whether it is exposed, whether existing logs can detect exploitation, what should be tested in a lab first, and what actions require approval.</textarea>
+
+        <div class="diagram" aria-label="Godspeed architecture">
+          <div>Microsoft 365 Copilot</div>
+          <div>Godspeed Orchestrator</div>
+          <div>Foundry / Agent Framework</div>
+          <div>Specialist Defense Agents</div>
+          <div>Evidence + Approval Gates</div>
+        </div>
+
+        <div class="output-links">
+          <p>Artifacts are written to:</p>
+          <code>artifacts/last-run/</code>
+        </div>
+      </section>
+
+      <section class="workspace" aria-live="polite">
+        <div class="metrics">
+          <div>
+            <span class="metric" id="agentCount">0</span>
+            <span class="metric-label">agents</span>
+          </div>
+          <div>
+            <span class="metric" id="gateCount">0</span>
+            <span class="metric-label">approval gates</span>
+          </div>
+          <div>
+            <span class="metric" id="actionCount">0</span>
+            <span class="metric-label">actions</span>
+          </div>
+        </div>
+
+        <div class="phase-bar">
+          <span class="active">Intake</span>
+          <span>Specialists</span>
+          <span>Premortem</span>
+          <span>Simulation</span>
+          <span>Approvals</span>
+          <span>Evidence</span>
+        </div>
+
+        <section class="panel">
+          <h2>Selected Specialist Agents</h2>
+          <div id="agents" class="agent-grid"></div>
+        </section>
+
+        <section class="panel">
+          <h2>Microsoft Integration Path</h2>
+          <div id="microsoftFit" class="fit-grid"></div>
+        </section>
+
+        <section class="panel split">
+          <div>
+            <h2>Premortem</h2>
+            <ul id="premortem"></ul>
+          </div>
+          <div>
+            <h2>Approval Gates</h2>
+            <ul id="approvals" class="gates"></ul>
+          </div>
+        </section>
+
+        <section class="panel">
+          <h2>Defense Package</h2>
+          <pre id="summary">Run the mission to generate the evidence-based defense package.</pre>
+        </section>
+      </section>
+    </main>
+
+    <script src="/app.js" type="module"></script>
+  </body>
+</html>
