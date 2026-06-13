@@ -1,9 +1,14 @@
 node_modules/
 artifacts/last-run/
+artifacts/voice/*
+!artifacts/voice/
+!artifacts/voice/README.md
+!artifacts/voice/godspeed-voiceover-brian-slow-documentary-final.mp3
+!artifacts/voice/godspeed-acronym-brian-slow-documentary-final.mp3
 .env
 .env.*
+secrets/
 *.log
 dist/
 coverage/
 .DS_Store
-

@@ -76,6 +76,12 @@ Artifacts are written to:
 artifacts/last-run/
 ```
 
+Final demo narration assets are kept in:
+
+```text
+artifacts/voice/
+```
+
 ## Suggested Demo Prompt
 
 ```text
@@ -100,6 +106,7 @@ This is demo mode:
 - `sample-data/` - safe sample assets and signals.
 - `docs/` - architecture, submission draft, video script and security boundaries.
 - `architecture/` - standalone architecture diagram.
+- `artifacts/voice/` - final demo voice-over assets.
 - `microsoft/` - Microsoft Foundry / Copilot bridge templates.
 - `systemd/` and `nginx/` - optional deployment examples.
 
