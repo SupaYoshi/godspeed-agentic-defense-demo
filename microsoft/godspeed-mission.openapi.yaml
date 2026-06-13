@@ -1,0 +1,142 @@
+openapi: 3.0.3
+info:
+  title: Godspeed Mission API
+  version: 0.1.0
+  description: >
+    REST contract for connecting Microsoft Copilot Studio or Microsoft 365 Copilot
+    to the Godspeed governed defense mission orchestrator.
+servers:
+  - url: https://godspeed.example.com
+    description: Production placeholder
+  - url: http://127.0.0.1:8088
+    description: Local sandbox demo
+paths:
+  /api/mission:
+    post:
+      operationId: createGodspeedMission
+      summary: Create a governed defense mission
+      description: >
+        Converts a security scenario into a mission plan with selected specialist
+        agents, approval gates, action owners and an evidence package.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/MissionRequest"
+            examples:
+              zeroDay:
+                summary: Critical zero-day scenario
+                value:
+                  title: Critical remote access vulnerability
+                  description: A critical zero-day affects an internet-facing remote access service.
+                  urgency: Critical
+                  boundary: Read-only first. No production changes without approval.
+                  approvalOwner: Security incident commander
+      responses:
+        "200":
+          description: Mission package created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MissionResponse"
+        "400":
+          description: Invalid request
+        "500":
+          description: Mission engine error
+  /api/mission/default:
+    get:
+      operationId: getDefaultGodspeedMission
+      summary: Get the default sandbox mission
+      responses:
+        "200":
+          description: Default mission package
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MissionResponse"
+components:
+  schemas:
+    MissionRequest:
+      type: object
+      additionalProperties: false
+      required:
+        - description
+      properties:
+        title:
+          type: string
+          description: Short scenario title.
+        description:
+          type: string
+          description: Natural-language security scenario.
+        urgency:
+          type: string
+          enum:
+            - Low
+            - Medium
+            - High
+            - Critical
+        boundary:
+          type: string
+          description: Safety boundary, non-goals and approval constraints.
+        approvalOwner:
+          type: string
+          description: Human owner for approval-gated actions.
+    MissionResponse:
+      type: object
+      properties:
+        missionId:
+          type: string
+        scenarioProfile:
+          type: string
+        selectedAgents:
+          type: array
+          items:
+            $ref: "#/components/schemas/SpecialistAgent"
+        approvalGates:
+          type: array
+          items:
+            $ref: "#/components/schemas/ApprovalGate"
+        actionPlan:
+          type: array
+          items:
+            $ref: "#/components/schemas/ActionItem"
+        defensePackage:
+          type: object
+        artifactDir:
+          type: string
+    SpecialistAgent:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        action:
+          type: string
+        finding:
+          type: string
+        wave:
+          type: integer
+    ApprovalGate:
+      type: object
+      properties:
+        action:
+          type: string
+        reason:
+          type: string
+        defaultState:
+          type: string
+    ActionItem:
+      type: object
+      properties:
+        task:
+          type: string
+        ownerAgent:
+          type: string
+        supportAgents:
+          type: array
+          items:
+            type: string
+        reason:
+          type: string

@@ -23,9 +23,17 @@ Godspeed acts as an agentic command layer. A user describes a security scenario 
 ## Microsoft Technology Use
 
 - Microsoft 365 Copilot or Copilot Studio as the enterprise front door.
-- Microsoft Foundry Agent Service as the managed runtime path.
-- Microsoft Agent Framework as the multi-agent orchestration path.
+- Microsoft Copilot Studio REST API tools as the bridge into the Godspeed Mission API.
+- Microsoft Foundry Agent Service as the managed runtime path for hosting the orchestrator and tool-backed agents.
+- Microsoft Agent Framework as the multi-agent workflow path for routing, state, telemetry and human approval gates.
 - GitHub Copilot as the development acceleration story.
+
+The current repository runs in `local-sandbox` mode for safe review. It contains the production bridge artifacts for the `microsoft-native-target` profile:
+
+- `microsoft/godspeed-mission.openapi.yaml`
+- `microsoft/copilot-studio-rest-api-tool.md`
+- `microsoft/foundry-agent-framework-bridge.md`
+- `microsoft/foundry-workflow-concept.yaml`
 
 ## Features
 
@@ -42,6 +50,10 @@ Godspeed acts as an agentic command layer. A user describes a security scenario 
 
 The demo uses sample data only. It does not use production access, tenant secrets, customer data, real remediation, external messaging or automatic patching. Risky actions are blocked by default.
 
+Suggested framing:
+
+> Godspeed is a working sandbox prototype of a governed agentic defense orchestrator. It demonstrates mission intake, specialist-agent selection, approval gates, action ownership and evidence packaging. The production path is Microsoft Copilot as front door, with Foundry Agent Service and Microsoft Agent Framework as the managed agent runtime and workflow layer.
+
 ## Demo Video URL
 
 To be added after recording.
@@ -49,4 +61,3 @@ To be added after recording.
 ## Public Repository URL
 
 To be added after final review and publication.
-

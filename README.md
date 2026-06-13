@@ -33,6 +33,8 @@ The demo is designed as a Microsoft-native architecture:
 
 The live demo in this repository runs in a local sandbox profile so it can be shown without tenant secrets, production access, or customer data. The `microsoft/` folder contains the Foundry and Copilot implementation bridge for the hackathon story.
 
+This repository is explicit about the boundary: the demo is a working sandbox prototype of the Godspeed orchestrator. The production path is Microsoft 365 Copilot or Copilot Studio as the front door, with Microsoft Foundry Agent Service and Microsoft Agent Framework as the managed agent runtime and workflow layer.
+
 ## What The Demo Shows
 
 The app turns one security scenario into:
@@ -107,7 +109,7 @@ This is demo mode:
 - `docs/` - architecture, submission draft, video script and security boundaries.
 - `architecture/` - standalone architecture diagram.
 - `artifacts/voice/` - final demo voice-over assets.
-- `microsoft/` - Microsoft Foundry / Copilot bridge templates.
+- `microsoft/` - Copilot REST API tool contract, Foundry / Agent Framework bridge and workflow concept.
 - `systemd/` and `nginx/` - optional deployment examples.
 
 ## Architecture
@@ -116,7 +118,11 @@ See:
 
 - `architecture/godspeed-architecture.svg`
 - `docs/architecture.md`
+- `docs/technical-background.md`
 - `docs/microsoft-implementation-path.md`
+- `microsoft/godspeed-mission.openapi.yaml`
+- `microsoft/copilot-studio-rest-api-tool.md`
+- `microsoft/foundry-agent-framework-bridge.md`
 
 ## Submission Positioning
 

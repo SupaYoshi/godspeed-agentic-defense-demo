@@ -14,6 +14,11 @@ A critical vulnerability affects a remote access component. Build a safe defense
 
 Copilot collects missing context and passes the mission request to Godspeed.
 
+The concrete bridge is documented in:
+
+- `microsoft/copilot-studio-rest-api-tool.md`
+- `microsoft/godspeed-mission.openapi.yaml`
+
 ## Orchestration
 
 Microsoft Agent Framework is the code-first implementation path for:
@@ -25,6 +30,11 @@ Microsoft Agent Framework is the code-first implementation path for:
 - tool execution boundaries.
 
 Godspeed becomes the orchestrator agent. The specialist defense agents become sub-agents or workflow nodes.
+
+The concrete production workflow mapping is documented in:
+
+- `microsoft/foundry-agent-framework-bridge.md`
+- `microsoft/foundry-workflow-concept.yaml`
 
 ## Runtime
 
@@ -45,6 +55,7 @@ The current demo runs without Microsoft tenant credentials so it can be reviewed
 - Copilot front door contract;
 - Foundry workflow concept;
 - Agent Framework implementation notes;
+- OpenAPI contract for a Copilot REST API tool;
 - UI proof points.
 
 ## Next Build Step
@@ -56,4 +67,3 @@ After registration and platform access are confirmed, the practical next build s
 3. Add specialist agents as workflow nodes.
 4. Add human approval nodes before production actions.
 5. Connect the existing `/api/mission` contract as either a tool or backend service.
-
