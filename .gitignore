@@ -4,7 +4,7 @@ artifacts/voice/*
 !artifacts/voice/
 !artifacts/voice/README.md
 !artifacts/voice/godspeed-voiceover-brian-slow-documentary-final.mp3
-!artifacts/voice/godspeed-voiceover-brian-slower-pauses-145s-final.mp3
+!artifacts/voice/godspeed-voiceover-brian-actual-slower-pauses-final.mp3
 !artifacts/voice/godspeed-acronym-brian-slow-documentary-final.mp3
 .env
 .env.*
