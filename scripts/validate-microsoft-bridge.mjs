@@ -13,6 +13,12 @@ const foundryIqEvidenceChecklist = await readFile(
   new URL("../microsoft/foundry-iq-tenant-evidence-checklist.md", import.meta.url),
   "utf8",
 );
+const foundryUiQuickstart = await readFile(new URL("../microsoft/foundry-ui-quickstart.md", import.meta.url), "utf8");
+const foundryAgentInstructions = await readFile(
+  new URL("../microsoft/foundry-agent-instructions.md", import.meta.url),
+  "utf8",
+);
+const knowledgeReadme = await readFile(new URL("../microsoft/knowledge/README.md", import.meta.url), "utf8");
 const foundryOpenApi = await readFile(new URL("../microsoft/godspeed-mission.openapi.yaml", import.meta.url), "utf8");
 
 const requiredPaths = [
@@ -255,6 +261,33 @@ const requiredEvidenceChecklistPhrases = [
 for (const phrase of requiredEvidenceChecklistPhrases) {
   if (!foundryIqEvidenceChecklist.includes(phrase)) {
     throw new Error(`Foundry IQ evidence checklist is missing ${phrase}`);
+  }
+}
+
+const requiredFoundryQuickstartPhrases = [
+  "GPT-4.1",
+  "Sweden Central",
+  "Godspeed-Agentic-Defense",
+  "godspeed-defense-mission-knowledge",
+  "microsoft/foundry-agent-instructions.md",
+  "createGodspeedCopilotMission",
+];
+
+for (const phrase of requiredFoundryQuickstartPhrases) {
+  if (!foundryUiQuickstart.includes(phrase)) {
+    throw new Error(`Foundry UI quickstart is missing ${phrase}`);
+  }
+}
+
+for (const phrase of ["Mission summary", "Approval gates", "Microsoft IQ status", "tenant-proof pending"]) {
+  if (!foundryAgentInstructions.includes(phrase)) {
+    throw new Error(`Foundry agent instructions are missing ${phrase}`);
+  }
+}
+
+for (const source of foundryIqLayer.knowledgeSources) {
+  if (!knowledgeReadme.includes(source.path.split("/").at(-1))) {
+    throw new Error(`Knowledge README is missing ${source.path}`);
   }
 }
 

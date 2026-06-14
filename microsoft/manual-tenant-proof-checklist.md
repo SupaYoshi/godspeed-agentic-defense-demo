@@ -29,12 +29,14 @@ Capture:
 ## Foundry IQ Proof
 
 1. Create or select Walter's approved Microsoft Foundry dev/test project.
-2. Create a Foundry IQ knowledge base named `godspeed-defense-mission-knowledge`.
-3. Upload or link the safe files listed in `microsoft/foundry-iq-knowledge-layer.json`.
-4. Attach the Foundry IQ knowledge base to the Godspeed Foundry Agent Service agent.
-5. Confirm the live response can use the knowledge layer for Godspeed doctrine, safety boundaries and evidence expectations.
-6. Capture screenshots of the Foundry project, Foundry IQ knowledge base, knowledge source list, agent attachment and grounded response.
-7. Confirm the full required screenshot set and wording in `microsoft/foundry-iq-tenant-evidence-checklist.md`.
+2. Use `microsoft/foundry-ui-quickstart.md` for the shortest UI path.
+3. Paste `microsoft/foundry-agent-instructions.md` into the agent instructions.
+4. Create a Foundry IQ knowledge base named `godspeed-defense-mission-knowledge`.
+5. Upload or link the safe files listed in `microsoft/foundry-iq-knowledge-layer.json`.
+6. Attach the Foundry IQ knowledge base to the Godspeed Foundry Agent Service agent.
+7. Confirm the live response can use the knowledge layer for Godspeed doctrine, safety boundaries and evidence expectations.
+8. Capture screenshots of the Foundry project, Foundry IQ knowledge base, knowledge source list, agent attachment and grounded response.
+9. Confirm the full required screenshot set and wording in `microsoft/foundry-iq-tenant-evidence-checklist.md`.
 
 ## Copilot Studio Proof
 

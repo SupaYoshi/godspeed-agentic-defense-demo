@@ -3,6 +3,13 @@
   "profile": "microsoft-native-target",
   "runtimeTarget": "Microsoft Foundry Agent Service",
   "agentFrameworkRole": "Orchestrator agent with workflow handoff to specialist nodes",
+  "modelForHackathonProof": {
+    "name": "GPT-4.1",
+    "region": "Sweden Central",
+    "status": "acceptable for hackathon proof",
+    "reason": "The proof demonstrates governed reasoning, Foundry IQ grounding, approval gates and evidence flow rather than model benchmarking."
+  },
+  "copyPasteInstructions": "microsoft/foundry-agent-instructions.md",
   "instructions": [
     "You are Godspeed Agentic Defense, a governed reasoning agent for security missions.",
     "Turn vague or urgent security scenarios into structured defense missions.",

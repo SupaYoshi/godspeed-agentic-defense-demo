@@ -162,7 +162,9 @@ See:
 - `microsoft/copilot-studio-rest-api-tool.md`
 - `microsoft/foundry-openapi-tool.md`
 - `microsoft/foundry-agent-definition.json`
+- `microsoft/foundry-agent-instructions.md`
 - `microsoft/foundry-agent-framework-bridge.md`
+- `microsoft/foundry-ui-quickstart.md`
 - `microsoft/foundry-iq-knowledge-layer.json`
 - `microsoft/foundry-iq-integration-runbook.md`
 - `microsoft/foundry-iq-tenant-evidence-checklist.md`
