@@ -272,11 +272,17 @@ for (const phrase of [
   "Region: `Sweden Central`",
   "Model: `GPT-4.1`",
   "Knowledge base: `godspeed-defense-mission-knowledge`",
-  "Status: `pending-screenshots`",
 ]) {
   if (!foundryLiveProof.includes(phrase)) {
     throw new Error(`Foundry live proof template is missing ${phrase}`);
   }
+}
+
+if (
+  !foundryLiveProof.includes("Status: `pending-screenshots`") &&
+  !foundryLiveProof.includes("Status: `captured`")
+) {
+  throw new Error("Foundry live proof must be pending-screenshots or captured");
 }
 
 const requiredFoundryQuickstartPhrases = [

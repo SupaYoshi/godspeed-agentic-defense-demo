@@ -4,13 +4,13 @@ Use this file only after screenshots have been captured in Walter's approved dev
 
 ## Dev/Test Tenant Proof Status
 
-- Date captured: `TBD`
+- Date captured: `2026-06-14`
 - Foundry project: `Godspeed-Agentic-Defense`
 - Region: `Sweden Central`
 - Model: `GPT-4.1`
 - Agent: `Godspeed-Agentic-Defense`
 - Knowledge base: `godspeed-defense-mission-knowledge`
-- Status: `pending-screenshots`
+- Status: `captured`
 
 ## Uploaded Knowledge Files
 
@@ -25,11 +25,12 @@ Add screenshot filenames after capture:
 - Foundry project overview: `TBD`
 - Agent model/configuration: `TBD`
 - Knowledge base / source list: `TBD`
-- Knowledge attached to agent: `TBD`
-- Test prompt answer: `TBD`
+- Knowledge attached to agent: `artifacts/foundry-iq-live-proof/foundry-iq-03-primary-knowledge-grounding-proof.jpg`
+- Test prompt answer: `artifacts/foundry-iq-live-proof/foundry-iq-03-primary-knowledge-grounding-proof.jpg`
 - Live smoke test result: `foundry-iq-live-smoke-test-result.png` or `TBD`
-- Citation/source trace, if available: `TBD`
-- Approval gates / evidence package: `TBD`
+- Citation/source trace, if available: `artifacts/foundry-iq-live-proof/foundry-iq-02-trace-proof-response.jpg`
+- Approval gates / evidence package: `artifacts/foundry-iq-live-proof/foundry-iq-03-primary-knowledge-grounding-proof.jpg`
+- Published/latest version state: captured locally for submission records.
 
 ## Honest Claim After Evidence Exists
 
