@@ -1,6 +1,6 @@
 # Foundry IQ Integration Runbook
 
-Godspeed currently has a local sandbox plus an approval-gated Foundry IQ integration path. The live Foundry IQ tenant proof is tenant-proof pending.
+Godspeed currently has a local sandbox plus an approval-gated Foundry IQ integration path. The dev/test Foundry IQ knowledge-grounding proof has been captured; Foundry OpenAPI tool-call proof remains pending.
 
 ## Why Foundry IQ
 
@@ -27,14 +27,14 @@ Official references:
 
 - `type`: `Foundry IQ`
 - `integrationStatus`: `approval-gated`
-- `tenantProofStatus`: `tenant-proof pending`
-- Live tenant resources: not created from this repo.
+- `tenantProofStatus`: `knowledge-grounding proof captured; OpenAPI tool proof pending`
+- Live tenant resources: not created from this repo; dev/test proof was captured manually in the approved Foundry tenant.
 - Secrets: not used or stored.
 - Production/customer/security-tool data: not connected.
 
 ## Manual Tenant Proof Steps
 
-Only after Walter explicitly approves the dev/test tenant work:
+After Walter explicitly approves dev/test tenant work:
 
 1. Create or select the approved Microsoft Foundry dev/test project.
 2. Use `microsoft/foundry-ui-quickstart.md` for the shortest UI path.
@@ -57,14 +57,14 @@ Only after Walter explicitly approves the dev/test tenant work:
    - grounded answer or retrieval trace;
    - approval gates in the final response.
 11. Record screenshot filenames in `microsoft/foundry-live-proof.md`.
-12. Use `microsoft/foundry-iq-tenant-evidence-checklist.md` to confirm the complete screenshot set and switch from pending wording to proof-complete wording only when evidence exists.
+12. Use `microsoft/foundry-iq-tenant-evidence-checklist.md` to confirm the complete screenshot set and keep OpenAPI tool claims separate until that tool call succeeds.
 
 ## What Not To Claim Yet
 
-Do not claim that Foundry IQ is live, connected, retrieved citations, or grounded a production response until the dev/test tenant proof screenshots exist.
+Do not claim production grounding, production remediation, Defender/Sentinel/Intune integration, Work IQ, Fabric IQ, Microsoft Graph grounding or Foundry OpenAPI tool execution from the Foundry IQ screenshots alone.
 
-Use this wording until then:
+Use this wording after the captured knowledge-grounding proof and before OpenAPI tool proof:
 
-> Godspeed includes a repo-local, approval-gated Foundry IQ knowledge-layer path. Live Foundry IQ tenant proof is pending Walter's dev/test tenant approval.
+> Godspeed includes dev/test Microsoft Foundry IQ knowledge-grounding proof using `godspeed-defense-mission-knowledge` with the Godspeed Foundry Agent. Foundry OpenAPI tool-call proof remains pending.
 
 Use `microsoft/foundry-iq-tenant-evidence-checklist.md` for exact wording before and after tenant proof.

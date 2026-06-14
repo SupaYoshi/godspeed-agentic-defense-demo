@@ -47,7 +47,7 @@ The bridge includes the same artifact in `localApprovalLadder` on `POST /api/mic
 - required gate IDs are present;
 - gate sequence numbers are ordered;
 - live tenant automation is not represented as enabled;
-- Foundry IQ is represented as `approval-gated` and `tenant-proof pending`;
+- Foundry IQ is represented as knowledge-grounding proof captured while OpenAPI tool proof and production rollout remain approval-gated;
 - production/customer/security-tool connections remain hard-blocked;
 - the Copilot response contains `localApprovalLadder`;
 - the OpenAPI v2 and OpenAPI 3 contracts include the ladder schemas.

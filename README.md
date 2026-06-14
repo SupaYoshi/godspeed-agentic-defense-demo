@@ -64,6 +64,23 @@ The repo now includes a Copilot-ready bridge endpoint and import contract:
 - `POST /api/microsoft/agent-framework/event` returns a workflow seed event.
 - `microsoft/copilot-studio-openapi-v2.json` is the OpenAPI v2 import file for Copilot Studio REST API tools.
 
+## Live Microsoft Proof
+
+The live Microsoft proof captured for the hackathon is intentionally narrow and evidence-based:
+
+- a dev/test Microsoft Foundry Agent named `Godspeed-Agentic-Defense`;
+- a Foundry IQ / Knowledge layer named `godspeed-defense-mission-knowledge`;
+- grounded mission output that includes Microsoft IQ status, Godspeed knowledge used, approval gates, evidence package, safety boundary and unknowns;
+- trace evidence for the same proof run.
+
+Public-safe screenshots are in:
+
+```text
+artifacts/foundry-iq-live-proof/
+```
+
+This proves the Foundry IQ knowledge-grounding path. It does not claim a production tenant integration, Defender/Sentinel/Intune integration, automated remediation, or a completed Foundry OpenAPI tool call. The OpenAPI tool path is implemented as a public contract and bridge endpoint, with tool-call proof kept separate.
+
 ## What The Demo Shows
 
 The app turns one security scenario into:

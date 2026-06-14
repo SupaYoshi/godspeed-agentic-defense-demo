@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "type": "Foundry IQ",
   "integrationStatus": "approval-gated",
-  "tenantProofStatus": "tenant-proof pending",
+  "tenantProofStatus": "knowledge-grounding proof captured; OpenAPI tool proof pending",
   "targetUse": "Ground the Godspeed orchestrator on safe mission doctrine, approval boundaries and evidence expectations before it calls planning or workflow tools.",
   "microsoftDocs": [
     {
@@ -23,8 +23,8 @@
     "name": "godspeed-defense-mission-knowledge",
     "runtime": "Microsoft Foundry Agent Service",
     "retrievalPath": "Foundry IQ knowledge base connected to the Godspeed agent",
-    "liveTenantState": "not-created-in-repo",
-    "reason": "Creating the Foundry project, knowledge base, index, connection or retrieval tool requires Walter's dev/test tenant approval."
+    "liveTenantState": "dev-test-proof-captured-outside-repo",
+    "reason": "The repository does not create Foundry resources. Walter captured public-safe dev/test proof screenshots after attaching this knowledge layer to the Godspeed Foundry Agent."
   },
   "approvalGateReferences": [
     "approve-public-https-endpoint-choice",
@@ -64,7 +64,7 @@
     "Use the knowledge layer to explain Godspeed mission doctrine and safety gates.",
     "Cite or identify the knowledge source used when the live tenant surface supports citations.",
     "Do not treat local sample knowledge as production evidence.",
-    "Do not claim Foundry IQ retrieval is live until tenant proof screenshots exist."
+    "Do not claim Foundry OpenAPI tool execution until a separate tool-call screenshot and successful call exist."
   ],
   "manualTenantProofSteps": [
     "Create or select Walter's approved dev/test Microsoft Foundry project.",

@@ -114,8 +114,11 @@ if (copilotResponse.microsoftIqLayer.integrationStatus !== "approval-gated") {
   throw new Error("Foundry IQ layer must remain approval-gated until live tenant proof exists");
 }
 
-if (copilotResponse.microsoftIqLayer.tenantProofStatus !== "tenant-proof pending") {
-  throw new Error("Foundry IQ layer must clearly mark tenant proof as pending");
+if (
+  copilotResponse.microsoftIqLayer.tenantProofStatus !==
+  "knowledge-grounding proof captured; OpenAPI tool proof pending"
+) {
+  throw new Error("Foundry IQ layer must mark knowledge-grounding proof captured and OpenAPI tool proof pending");
 }
 
 if (event.type !== "GodspeedMissionCreated") {
@@ -220,8 +223,10 @@ if (foundryIqLayer.integrationStatus !== "approval-gated") {
   throw new Error("Foundry IQ manifest must be approval-gated");
 }
 
-if (foundryIqLayer.tenantProofStatus !== "tenant-proof pending") {
-  throw new Error("Foundry IQ manifest must mark tenant proof pending");
+if (
+  foundryIqLayer.tenantProofStatus !== "knowledge-grounding proof captured; OpenAPI tool proof pending"
+) {
+  throw new Error("Foundry IQ manifest must mark knowledge-grounding proof captured and OpenAPI tool proof pending");
 }
 
 if (!foundryIqLayer.approvalGateReferences.includes("approve-foundry-iq-knowledge-layer")) {

@@ -1,6 +1,6 @@
 # Foundry IQ Tenant Evidence Checklist
 
-Use this checklist only after Walter approves live dev/test tenant work. Until every required screenshot exists, the submission wording must say `approval-gated` and `tenant-proof pending`.
+Use this checklist only after Walter approves live dev/test tenant work. Before screenshots exist, the submission wording must say `approval-gated` and `tenant-proof pending`; after the captured screenshots, use the narrower proof wording below and keep OpenAPI tool claims separate.
 
 ## Minimum Screenshot Set
 

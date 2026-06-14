@@ -49,10 +49,10 @@ Foundry IQ integration status: approval-gated.
 Tenant proof status: tenant-proof pending.
 ```
 
-After live screenshots exist, use:
+After live knowledge-grounding screenshots exist, use this unless the OpenAPI tool has also been configured and tested:
 
 ```text
-Foundry IQ dev/test tenant proof completed with knowledge-base grounding and approval-gated mission output.
+Foundry IQ knowledge-grounding proof captured; OpenAPI tool proof pending.
 ```
 
 ## Tool Use

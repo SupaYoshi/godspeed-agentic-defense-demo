@@ -42,7 +42,7 @@ Microsoft Foundry IQ is the planned Microsoft IQ layer for Godspeed. The repo-lo
 
 - `type`: `Foundry IQ`
 - `integrationStatus`: `approval-gated`
-- `tenantProofStatus`: `tenant-proof pending`
+- `tenantProofStatus`: `knowledge-grounding proof captured; OpenAPI tool proof pending`
 
 The Foundry IQ path is documented in:
 
@@ -50,7 +50,7 @@ The Foundry IQ path is documented in:
 - `microsoft/foundry-iq-integration-runbook.md`
 - `microsoft/knowledge/`
 
-These artifacts define safe grounding sources for mission doctrine, approval boundaries and evidence expectations. They are not a live tenant integration yet.
+These artifacts define safe grounding sources for mission doctrine, approval boundaries and evidence expectations. Dev/test Foundry IQ knowledge-grounding proof is captured; production Microsoft integrations and Foundry OpenAPI tool-call proof remain separate.
 
 ## Runtime
 

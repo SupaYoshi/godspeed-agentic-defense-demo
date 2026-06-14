@@ -1,7 +1,7 @@
 {
   "name": "Godspeed Approval Boundaries",
   "profile": "local-sandbox",
-  "foundryIqStatus": "tenant-proof pending",
+  "foundryIqStatus": "knowledge-grounding proof captured; OpenAPI tool proof pending",
   "allowedInRepo": [
     "read local sample data",
     "generate mission plans",

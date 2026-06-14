@@ -93,7 +93,7 @@ Live tenant approval automation is intentionally out of scope for the public dem
 
 ## Foundry IQ Layer
 
-Godspeed uses Foundry IQ as the planned Microsoft IQ intelligence layer. The current repo state is `approval-gated` and `tenant-proof pending`; no live Foundry IQ knowledge base is created by this repository.
+Godspeed uses Foundry IQ as the Microsoft IQ intelligence layer for the captured dev/test proof. The repository does not create live tenant resources itself; it records the public-safe evidence after the `godspeed-defense-mission-knowledge` knowledge base was attached to the Godspeed Foundry Agent. The Foundry OpenAPI tool-call proof remains separate and pending.
 
 The intended knowledge layer grounds the agent on:
 

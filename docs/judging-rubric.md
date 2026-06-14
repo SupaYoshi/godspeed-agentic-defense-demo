@@ -21,7 +21,7 @@ Relevant Microsoft-facing artifacts:
 - `microsoft/foundry-iq-integration-runbook.md`
 - `microsoft/knowledge/`
 
-Foundry IQ status is deliberately honest: approval-gated and tenant-proof pending until Walter's dev/test tenant is used for live proof.
+Foundry IQ status is deliberately honest: dev/test knowledge-grounding proof has been captured with `godspeed-defense-mission-knowledge` attached to the Godspeed Foundry Agent; Foundry OpenAPI tool-call proof remains pending.
 
 ## Reasoning & Multi-step Thinking - 20%
 

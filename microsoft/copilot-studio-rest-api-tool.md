@@ -72,4 +72,4 @@ It is not connected to a live Copilot tenant in this repository because the publ
 7. Test with a zero-day, phishing, ransomware and cloud exposure scenario.
 8. Use `microsoft/manual-tenant-proof-checklist.md` for approval-gated live tenant evidence capture.
 9. Use `microsoft/integration-approval-ladder.json` to show which Microsoft rollout gate is still pending or blocked.
-10. Treat `microsoftIqLayer.tenantProofStatus` as `tenant-proof pending` until Walter captures live Foundry IQ proof in a dev/test tenant.
+10. Treat `microsoftIqLayer.tenantProofStatus` as knowledge-grounding proof captured, with OpenAPI tool proof pending until a separate tool configuration and test call are captured.

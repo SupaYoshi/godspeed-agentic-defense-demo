@@ -17,7 +17,7 @@ The knowledge layer should ground answers in these principles:
 - Planning is allowed in the local sandbox.
 - Production remediation is not allowed in the local sandbox.
 - Customer data, tenant secrets and production tool connections are out of scope.
-- Foundry IQ live tenant proof is approval-gated and tenant-proof pending.
+- Foundry IQ knowledge-grounding proof has been captured in a dev/test tenant; Foundry OpenAPI tool-call proof remains pending.
 - A mission package is not proof that patching, containment, credential reset or external communication occurred.
 
 Expected evidence includes selected agents, approval gates, action owners, unresolved unknowns, source references and screenshot-ready proof points.

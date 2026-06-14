@@ -37,7 +37,7 @@ In the Microsoft-native target architecture, Copilot is the front door and Godsp
 - Microsoft Agent Framework as the multi-agent workflow path for routing, state, telemetry and human approval gates.
 - GitHub Copilot as the development acceleration story.
 
-Current Microsoft IQ status: Godspeed includes a repo-local Foundry IQ knowledge-layer manifest and safe sample grounding sources. Live Foundry IQ tenant proof is `tenant-proof pending` and requires Walter's approved dev/test tenant before claiming a live integration.
+Current Microsoft IQ status: Godspeed includes a repo-local Foundry IQ knowledge-layer manifest, safe sample grounding sources and captured dev/test Foundry IQ proof screenshots. The `godspeed-defense-mission-knowledge` knowledge layer was attached to the `Godspeed-Agentic-Defense` Foundry Agent and used for a grounded mission response. The Foundry OpenAPI tool-call proof remains pending.
 
 The current repository runs in `local-sandbox` mode for safe review. It contains the production bridge artifacts for the `microsoft-native-target` profile:
 
@@ -64,7 +64,7 @@ The architecture has five layers:
 1. Microsoft 365 Copilot or Copilot Studio captures the scenario and presents the final defense package.
 2. The Godspeed Mission Orchestrator converts the request into goals, non-goals, facts, assumptions, unknowns, selected agents and approval gates.
 3. Microsoft Foundry Agent Service and Microsoft Agent Framework provide the production runtime path for hosted agents, tool calls, workflow state, telemetry and evaluation.
-4. Foundry IQ grounds the agent on approved Godspeed doctrine, safety boundaries and evidence expectations after tenant approval.
+4. Foundry IQ grounds the agent on approved Godspeed doctrine, safety boundaries and evidence expectations in the captured dev/test proof.
 5. Specialist defense agents reason over threat intelligence, exposure, vulnerability priority, log coverage, simulation, patch/change planning, containment, communication and evidence.
 6. The evidence and approval layer produces artifacts and blocks high-impact actions until a human owner approves them.
 
