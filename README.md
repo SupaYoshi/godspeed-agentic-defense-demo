@@ -11,11 +11,12 @@ GODSPEED stands for:
 ## Hackathon Snapshot
 
 - **Track:** Reasoning Agents.
+- **Demo video:** https://www.youtube.com/watch?v=U9ZP6s9Y73s
 - **Working demo:** local browser UI, REST API and CLI mission run.
 - **Microsoft path:** Copilot Studio / Microsoft 365 Copilot front door, Foundry Agent Service runtime path, Agent Framework workflow path, approval-gated Foundry IQ knowledge layer.
-- **Microsoft IQ status:** Foundry IQ integration path is repo-local and tenant-proof pending until Walter's dev/test tenant is approved.
+- **Microsoft IQ status:** Foundry IQ dev/test proof captured with `godspeed-defense-mission-knowledge` attached to the Godspeed Foundry Agent.
 - **Safety model:** sandbox data only, no production access, no tenant secrets, no automatic remediation, human approval gates before risky actions.
-- **Demo evidence:** interface screenshot, architecture diagram, technical background, Copilot-ready OpenAPI contracts and CI checks.
+- **Demo evidence:** video walkthrough, interface screenshot, Foundry IQ proof screenshots, architecture diagram, technical background, Copilot-ready OpenAPI contracts and CI checks.
 
 ## Judging Rubric Fit
 
@@ -55,7 +56,7 @@ The live demo in this repository runs in a local sandbox profile so it can be sh
 
 This repository is explicit about the boundary: the demo is a working sandbox prototype of the Godspeed orchestrator. The production path is Microsoft 365 Copilot or Copilot Studio as the front door, with Microsoft Foundry Agent Service and Microsoft Agent Framework as the managed agent runtime and workflow layer.
 
-The Microsoft IQ requirement is represented honestly: the repo includes a Foundry IQ knowledge-layer manifest, safe sample knowledge sources and validation, but live Foundry IQ tenant proof is still approval-gated and tenant-proof pending.
+The Microsoft IQ requirement is represented honestly: the repo includes a Foundry IQ knowledge-layer manifest, safe sample knowledge sources, validation and captured dev/test proof screenshots showing the `godspeed-defense-mission-knowledge` layer attached to the Godspeed Foundry Agent.
 
 The repo now includes a Copilot-ready bridge endpoint and import contract:
 
