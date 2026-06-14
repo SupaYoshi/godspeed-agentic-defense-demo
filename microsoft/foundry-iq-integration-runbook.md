@@ -15,6 +15,7 @@ Official references:
 ## Local Repo Artifacts
 
 - `microsoft/foundry-iq-knowledge-layer.json` - structured Foundry IQ target manifest.
+- `microsoft/foundry-iq-tenant-evidence-checklist.md` - required screenshot set and submission wording.
 - `microsoft/knowledge/godspeed-iq-grounding-overview.md` - safe grounding document.
 - `microsoft/knowledge/godspeed-approval-boundaries.json` - safe approval-boundary grounding data.
 - `microsoft/integration-approval-ladder.json` - gate model that blocks live work until approval.
@@ -49,6 +50,7 @@ Only after Walter explicitly approves the dev/test tenant work:
    - Godspeed agent instructions/tool config;
    - grounded answer or retrieval trace;
    - approval gates in the final response.
+8. Use `microsoft/foundry-iq-tenant-evidence-checklist.md` to confirm the complete screenshot set and switch from pending wording to proof-complete wording only when evidence exists.
 
 ## What Not To Claim Yet
 
@@ -57,3 +59,5 @@ Do not claim that Foundry IQ is live, connected, retrieved citations, or grounde
 Use this wording until then:
 
 > Godspeed includes a repo-local, approval-gated Foundry IQ knowledge-layer path. Live Foundry IQ tenant proof is pending Walter's dev/test tenant approval.
+
+Use `microsoft/foundry-iq-tenant-evidence-checklist.md` for exact wording before and after tenant proof.

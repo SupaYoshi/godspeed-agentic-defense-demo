@@ -9,6 +9,10 @@ const approvalLadder = JSON.parse(
 const foundryIqLayer = JSON.parse(
   await readFile(new URL("../microsoft/foundry-iq-knowledge-layer.json", import.meta.url), "utf8"),
 );
+const foundryIqEvidenceChecklist = await readFile(
+  new URL("../microsoft/foundry-iq-tenant-evidence-checklist.md", import.meta.url),
+  "utf8",
+);
 const foundryOpenApi = await readFile(new URL("../microsoft/godspeed-mission.openapi.yaml", import.meta.url), "utf8");
 
 const requiredPaths = [
@@ -233,6 +237,25 @@ for (const source of foundryIqLayer.knowledgeSources) {
 
 if (copilotResponse.microsoftIqLayer.knowledgeSources.length !== foundryIqLayer.knowledgeSources.length) {
   throw new Error("Copilot response IQ layer must match the Foundry IQ manifest sources");
+}
+
+const requiredEvidenceChecklistPhrases = [
+  "Foundry project overview",
+  "Foundry IQ knowledge base detail",
+  "Knowledge source list",
+  "Agent configuration",
+  "OpenAPI tool configuration",
+  "Test prompt result",
+  "Grounded or cited answer evidence",
+  "Safety boundary or approval gates",
+  "Submission Wording Before Tenant Proof",
+  "Submission Wording After Tenant Proof",
+];
+
+for (const phrase of requiredEvidenceChecklistPhrases) {
+  if (!foundryIqEvidenceChecklist.includes(phrase)) {
+    throw new Error(`Foundry IQ evidence checklist is missing ${phrase}`);
+  }
 }
 
 const scenarioSamples = [

@@ -165,6 +165,7 @@ See:
 - `microsoft/foundry-agent-framework-bridge.md`
 - `microsoft/foundry-iq-knowledge-layer.json`
 - `microsoft/foundry-iq-integration-runbook.md`
+- `microsoft/foundry-iq-tenant-evidence-checklist.md`
 - `microsoft/knowledge/`
 - `microsoft/integration-approval-ladder.json`
 - `microsoft/integration-approval-ladder-runbook.md`

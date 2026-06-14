@@ -34,6 +34,7 @@ Capture:
 4. Attach the Foundry IQ knowledge base to the Godspeed Foundry Agent Service agent.
 5. Confirm the live response can use the knowledge layer for Godspeed doctrine, safety boundaries and evidence expectations.
 6. Capture screenshots of the Foundry project, Foundry IQ knowledge base, knowledge source list, agent attachment and grounded response.
+7. Confirm the full required screenshot set and wording in `microsoft/foundry-iq-tenant-evidence-checklist.md`.
 
 ## Copilot Studio Proof
 
