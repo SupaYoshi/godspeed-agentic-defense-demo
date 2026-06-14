@@ -48,6 +48,10 @@ The app turns one security scenario into:
 - evidence artifacts;
 - executive summary.
 
+## Interface Preview
+
+![Godspeed demo interface](artifacts/screenshots/godspeed-interface.png)
+
 ## Run Locally
 
 Requirements:
@@ -108,6 +112,7 @@ This is demo mode:
 - `sample-data/` - safe sample assets and signals.
 - `docs/` - architecture, submission draft, video script and security boundaries.
 - `architecture/` - standalone architecture diagram.
+- `artifacts/screenshots/` - interface screenshot for the submission.
 - `artifacts/voice/` - final demo voice-over assets.
 - `microsoft/` - Copilot REST API tool contract, Foundry / Agent Framework bridge and workflow concept.
 - `systemd/` and `nginx/` - optional deployment examples.

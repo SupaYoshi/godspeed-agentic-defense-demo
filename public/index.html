@@ -12,12 +12,27 @@
         <p class="eyebrow">Reasoning Agents track</p>
         <h1>Godspeed Agentic Defense</h1>
       </div>
-      <div class="status-strip" aria-label="Safety status">
-        <span>Copilot front door</span>
-        <span>Foundry path</span>
-        <span>Read-only first</span>
-        <span>Lab-first validation</span>
-        <span>Approval gates on</span>
+      <div class="status-strip" aria-label="Governance controls">
+        <button class="toggle active" type="button" aria-pressed="true" data-control="copilot">
+          <span aria-hidden="true"></span>
+          Copilot front door
+        </button>
+        <button class="toggle active" type="button" aria-pressed="true" data-control="foundry">
+          <span aria-hidden="true"></span>
+          Foundry path
+        </button>
+        <button class="toggle active" type="button" aria-pressed="true" data-control="readOnly">
+          <span aria-hidden="true"></span>
+          Read-only first
+        </button>
+        <button class="toggle active" type="button" aria-pressed="true" data-control="labFirst">
+          <span aria-hidden="true"></span>
+          Lab-first validation
+        </button>
+        <button class="toggle active" type="button" aria-pressed="true" data-control="approvalGates">
+          <span aria-hidden="true"></span>
+          Approval gates
+        </button>
       </div>
     </header>
 
@@ -29,6 +44,13 @@
         </div>
         <label for="scenario">Security scenario</label>
         <textarea id="scenario" rows="9">A new critical vulnerability has been disclosed in a widely used remote access component. The organisation needs to know whether it is exposed, whether existing logs can detect exploitation, what should be tested in a lab first, and what actions require approval.</textarea>
+
+        <div class="scenario-picker" aria-label="Demo scenarios">
+          <button type="button" data-scenario="zeroDay">1 Zero-day</button>
+          <button type="button" data-scenario="phishing">2 Phishing</button>
+          <button type="button" data-scenario="ransomware">3 Ransomware</button>
+          <button type="button" data-scenario="cloud">4 Cloud</button>
+        </div>
 
         <div class="diagram" aria-label="Godspeed architecture">
           <div>Microsoft 365 Copilot</div>
@@ -46,30 +68,35 @@
 
       <section class="workspace" aria-live="polite">
         <div class="metrics">
-          <div>
+          <button class="metric-card" type="button" data-focus="agents">
             <span class="metric" id="agentCount">0</span>
             <span class="metric-label">agents</span>
-          </div>
-          <div>
+          </button>
+          <button class="metric-card" type="button" data-focus="approvals">
             <span class="metric" id="gateCount">0</span>
             <span class="metric-label">approval gates</span>
-          </div>
-          <div>
+          </button>
+          <button class="metric-card" type="button" data-focus="actions">
             <span class="metric" id="actionCount">0</span>
             <span class="metric-label">actions</span>
-          </div>
+          </button>
         </div>
 
         <div class="phase-bar">
-          <span class="active">Intake</span>
-          <span>Specialists</span>
-          <span>Premortem</span>
-          <span>Simulation</span>
-          <span>Approvals</span>
-          <span>Evidence</span>
+          <button class="active" type="button" data-phase="0">Intake</button>
+          <button type="button" data-phase="1">Specialists</button>
+          <button type="button" data-phase="2">Premortem</button>
+          <button type="button" data-phase="3">Simulation</button>
+          <button type="button" data-phase="4">Approvals</button>
+          <button type="button" data-phase="5">Evidence</button>
         </div>
 
-        <section class="panel">
+        <section class="phase-detail" aria-live="polite">
+          <strong id="phaseTitle">Intake</strong>
+          <p id="phaseDetail">Run the mission to classify the scenario and build the governed workflow.</p>
+        </section>
+
+        <section class="panel" id="agentsPanel">
           <h2>Selected Specialist Agents</h2>
           <div id="agents" class="agent-grid"></div>
         </section>
@@ -84,10 +111,15 @@
             <h2>Premortem</h2>
             <ul id="premortem"></ul>
           </div>
-          <div>
+          <div id="approvalsPanel">
             <h2>Approval Gates</h2>
             <ul id="approvals" class="gates"></ul>
           </div>
+        </section>
+
+        <section class="panel" id="actionsPanel">
+          <h2>Action Plan</h2>
+          <div id="actions" class="action-grid"></div>
         </section>
 
         <section class="panel">
