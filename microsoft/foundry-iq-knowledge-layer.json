@@ -50,6 +50,14 @@
       "format": "application/json",
       "sensitivity": "public-demo-safe",
       "purpose": "Ground Foundry IQ on blocked actions, tenant proof state and manual approval gates."
+    },
+    {
+      "sourceId": "godspeed-response-contract",
+      "title": "Godspeed Response Contract",
+      "path": "microsoft/knowledge/godspeed-response-contract.md",
+      "format": "text/markdown",
+      "sensitivity": "public-demo-safe",
+      "purpose": "Ground Foundry IQ on the required mission response structure, screenshot-ready evidence package and non-claim boundaries."
     }
   ],
   "expectedGroundingBehavior": [

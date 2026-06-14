@@ -318,6 +318,19 @@ for (const source of foundryIqLayer.knowledgeSources) {
   }
 }
 
+const uploadBundleReadme = await readFile(
+  new URL("../artifacts/foundry-iq-upload/README.md", import.meta.url),
+  "utf8",
+);
+
+for (const source of foundryIqLayer.knowledgeSources) {
+  const basename = source.path.split("/").at(-1);
+  if (!uploadBundleReadme.includes(basename)) {
+    throw new Error(`Foundry IQ upload bundle README is missing ${basename}`);
+  }
+  await readFile(new URL(`../artifacts/foundry-iq-upload/${basename}`, import.meta.url), "utf8");
+}
+
 const requiredUploadBundleFiles = [
   "README.md",
   "foundry-agent-instructions.md",
@@ -327,6 +340,7 @@ const requiredUploadBundleFiles = [
   "godspeed-approval-boundaries.json",
   "godspeed-foundry-iq-knowledge-pack.zip",
   "godspeed-iq-grounding-overview.md",
+  "godspeed-response-contract.md",
 ];
 
 for (const fileName of requiredUploadBundleFiles) {

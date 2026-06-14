@@ -4,7 +4,8 @@ Upload or link these files to the Foundry IQ knowledge base named `godspeed-defe
 
 1. `godspeed-iq-grounding-overview.md`
 2. `godspeed-approval-boundaries.json`
-3. `../foundry-iq-knowledge-layer.json`
+3. `godspeed-response-contract.md`
+4. `../foundry-iq-knowledge-layer.json`
 
 These files are safe for a dev/test tenant proof:
 
@@ -17,6 +18,7 @@ The knowledge pack should ground the agent on:
 
 - Godspeed mission phases;
 - approval boundaries;
+- required response structure;
 - safety language;
 - evidence expectations;
 - non-claims about remediation or production actions.

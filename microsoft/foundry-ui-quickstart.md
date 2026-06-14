@@ -19,6 +19,7 @@ Current tenant context from Walter:
 6. Upload or link these safe files:
    - `microsoft/knowledge/godspeed-iq-grounding-overview.md`
    - `microsoft/knowledge/godspeed-approval-boundaries.json`
+   - `microsoft/knowledge/godspeed-response-contract.md`
    - `microsoft/foundry-iq-knowledge-layer.json`
 7. Attach that knowledge base to the `Godspeed-Agentic-Defense` agent.
 8. Save/publish the agent if the UI asks for it.

@@ -6,6 +6,7 @@ Upload or link these files to the Foundry IQ knowledge base `godspeed-defense-mi
 
 - `godspeed-iq-grounding-overview.md`
 - `godspeed-approval-boundaries.json`
+- `godspeed-response-contract.md`
 - `foundry-iq-knowledge-layer.json`
 
 Use these files for copy/paste and evidence capture:
