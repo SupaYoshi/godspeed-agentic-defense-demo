@@ -235,6 +235,23 @@ textarea {
   font-weight: 700;
 }
 
+.ask-panel {
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+}
+
+.ask-panel textarea {
+  min-height: 78px;
+}
+
+.ask-panel pre {
+  min-height: 120px;
+  max-height: 220px;
+  margin-top: 10px;
+  overflow: auto;
+}
+
 code,
 pre {
   font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;

@@ -1,5 +1,8 @@
 const scenarioEl = document.querySelector("#scenario");
 const runButton = document.querySelector("#runMission");
+const askQuestionEl = document.querySelector("#askQuestion");
+const askButton = document.querySelector("#askGodspeed");
+const askOutputEl = document.querySelector("#askOutput");
 const agentsEl = document.querySelector("#agents");
 const microsoftFitEl = document.querySelector("#microsoftFit");
 const premortemEl = document.querySelector("#premortem");
@@ -272,7 +275,45 @@ async function runMission() {
   }
 }
 
+async function askGodspeed() {
+  const question = askQuestionEl.value.trim();
+  if (!question) {
+    askOutputEl.textContent = "Question is required.";
+    return;
+  }
+
+  askButton.disabled = true;
+  askButton.textContent = "Asking";
+  askOutputEl.textContent = "Calling Foundry agent...";
+
+  try {
+    const response = await fetch("/api/foundry/ask", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ question }),
+    });
+    const result = await response.json();
+
+    if (!response.ok || !result.ok) {
+      askOutputEl.textContent = result.error || "Foundry question failed.";
+      return;
+    }
+
+    askOutputEl.textContent = [
+      `Agent: ${result.foundry.agent.name} v${result.foundry.agent.version}`,
+      "",
+      result.foundry.outputText || "Foundry returned an empty response.",
+    ].join("\n");
+  } catch (error) {
+    askOutputEl.textContent = error.message;
+  } finally {
+    askButton.disabled = false;
+    askButton.textContent = "Ask";
+  }
+}
+
 runButton.addEventListener("click", runMission);
+askButton.addEventListener("click", askGodspeed);
 phases.forEach((phase) => {
   phase.addEventListener("click", () => inspectPhase(Number(phase.dataset.phase)));
 });

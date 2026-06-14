@@ -100,6 +100,17 @@ function buildFoundryPrompt(input) {
     .join("\n");
 }
 
+function buildFoundryQuestionPrompt(question) {
+  return [
+    "Answer this direct question about Godspeed, this live demo, or the connected Microsoft Foundry agent.",
+    "Do not create a defense mission package unless the user explicitly asks to create, run, or plan a mission.",
+    "If the question asks whether this is real or connected, answer directly and mention the current route: website -> Godspeed backend -> Azure AI Foundry agent -> Godspeed OpenAPI tool and knowledge layer.",
+    "Keep the answer concise.",
+    "",
+    `Question: ${question}`,
+  ].join("\n");
+}
+
 function runFoundryAgent(payload) {
   const script = path.join(rootDir, "scripts", "foundry-agent-response.py");
   const python = process.env.PYTHON || "python3";
@@ -324,6 +335,76 @@ const server = http.createServer(async (req, res) => {
               error: toPublicFoundryError(error),
               details: toPublicFoundryDetails(error),
               localMission,
+            },
+            null,
+            2,
+          ),
+        );
+      }
+      return;
+    }
+
+    if (req.method === "POST" && req.url === "/api/foundry/ask") {
+      const input = await readJson(req);
+      const question = String(input.question || input.prompt || "").trim();
+      if (!question) {
+        send(res, 400, JSON.stringify({ ok: false, error: "question is required" }, null, 2));
+        return;
+      }
+      if (question.length > 3000) {
+        send(res, 400, JSON.stringify({ ok: false, error: "question is too long" }, null, 2));
+        return;
+      }
+
+      const config = getFoundryConfig();
+      if (!config.endpoint) {
+        send(
+          res,
+          501,
+          JSON.stringify(
+            {
+              ok: false,
+              configured: false,
+              error: "Foundry agent bridge is not configured on this server yet.",
+              requiredEnv: ["FOUNDRY_PROJECT_ENDPOINT", "FOUNDRY_AGENT_NAME", "FOUNDRY_AGENT_VERSION"],
+            },
+            null,
+            2,
+          ),
+        );
+        return;
+      }
+
+      try {
+        const foundry = await runFoundryAgent({
+          endpoint: config.endpoint,
+          agentName: config.agentName,
+          agentVersion: config.agentVersion,
+          input: buildFoundryQuestionPrompt(question),
+        });
+        send(
+          res,
+          200,
+          JSON.stringify(
+            {
+              ok: true,
+              source: "azure-foundry-agent",
+              foundry,
+            },
+            null,
+            2,
+          ),
+        );
+      } catch (error) {
+        send(
+          res,
+          502,
+          JSON.stringify(
+            {
+              ok: false,
+              configured: true,
+              error: toPublicFoundryError(error),
+              details: toPublicFoundryDetails(error),
             },
             null,
             2,
