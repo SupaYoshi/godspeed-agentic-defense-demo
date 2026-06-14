@@ -136,6 +136,8 @@ See:
 - `microsoft/godspeed-mission.openapi.yaml`
 - `microsoft/copilot-studio-openapi-v2.json`
 - `microsoft/copilot-studio-rest-api-tool.md`
+- `microsoft/foundry-openapi-tool.md`
+- `microsoft/foundry-agent-definition.json`
 - `microsoft/foundry-agent-framework-bridge.md`
 
 ## Submission Positioning

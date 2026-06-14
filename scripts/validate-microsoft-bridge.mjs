@@ -3,6 +3,7 @@ import { runGodspeedMission } from "../src/godspeed.mjs";
 import { toAgentFrameworkEvent, toCopilotToolResponse } from "../src/microsoft-bridge.mjs";
 
 const openApi = JSON.parse(await readFile(new URL("../microsoft/copilot-studio-openapi-v2.json", import.meta.url), "utf8"));
+const foundryOpenApi = await readFile(new URL("../microsoft/godspeed-mission.openapi.yaml", import.meta.url), "utf8");
 
 const requiredPaths = [
   "/api/microsoft/copilot/mission",
@@ -12,6 +13,9 @@ const requiredPaths = [
 for (const requiredPath of requiredPaths) {
   if (!openApi.paths?.[requiredPath]?.post) {
     throw new Error(`OpenAPI v2 spec is missing POST ${requiredPath}`);
+  }
+  if (!foundryOpenApi.includes(requiredPath)) {
+    throw new Error(`OpenAPI 3 spec is missing ${requiredPath}`);
   }
 }
 

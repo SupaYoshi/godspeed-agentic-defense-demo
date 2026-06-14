@@ -24,6 +24,8 @@ This checklist turns the local sandbox into a Microsoft-connected implementation
 
 ## Foundry / Agent Framework
 
+- Use `microsoft/godspeed-mission.openapi.yaml` as the Foundry OpenAPI tool contract.
+- Use `microsoft/foundry-agent-definition.json` as the version-controlled agent definition intent.
 - Use `/api/microsoft/agent-framework/event` as the workflow seed.
 - Map `specialists` to agent or function nodes.
 - Map `approvalGates` to human-in-the-loop workflow steps.

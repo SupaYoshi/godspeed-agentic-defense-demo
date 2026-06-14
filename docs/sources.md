@@ -7,4 +7,5 @@ Official and primary sources used for positioning:
 - Microsoft Agent Framework workflows: `https://learn.microsoft.com/en-us/agent-framework/workflows/`
 - Microsoft Foundry Agent Service overview: `https://learn.microsoft.com/en-us/azure/foundry/agents/overview`
 - Microsoft Foundry Agent Service tools: `https://learn.microsoft.com/en-us/azure/foundry/agents/concepts/tool-catalog`
+- Microsoft Foundry Agent Service tool best practices: `https://learn.microsoft.com/en-us/azure/foundry/agents/concepts/tool-best-practice`
 - Copilot Studio REST API tool actions: `https://learn.microsoft.com/en-us/microsoft-copilot-studio/agent-extend-action-rest-api`

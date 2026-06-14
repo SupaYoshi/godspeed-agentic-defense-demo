@@ -54,6 +54,12 @@ npm run check:microsoft
 
 This validates that the OpenAPI v2 import file and bridge response shape stay aligned.
 
+## Foundry Tool Artifacts
+
+- `microsoft/godspeed-mission.openapi.yaml` - OpenAPI 3.0 tool contract for Foundry-style API tooling.
+- `microsoft/foundry-openapi-tool.md` - setup and boundary notes for the Foundry OpenAPI tool path.
+- `microsoft/foundry-agent-definition.json` - version-controlled target agent definition intent.
+
 ## Tool Boundary
 
 The production Godspeed orchestrator should expose tools in tiers:
