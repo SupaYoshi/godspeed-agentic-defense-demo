@@ -5,7 +5,7 @@
     "version": "0.1.0",
     "description": "Copilot Studio REST API tool contract for creating governed Godspeed defense missions."
   },
-  "host": "godspeed.example.com",
+  "host": "godspeed.battlecruiser.nl",
   "basePath": "/",
   "schemes": [
     "https"

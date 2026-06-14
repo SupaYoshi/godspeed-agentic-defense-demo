@@ -6,8 +6,8 @@ info:
     REST contract for connecting Microsoft Copilot Studio or Microsoft 365 Copilot
     to the Godspeed governed defense mission orchestrator.
 servers:
-  - url: https://godspeed.example.com
-    description: Production placeholder
+  - url: https://godspeed.battlecruiser.nl
+    description: Public hackathon demo endpoint
   - url: http://127.0.0.1:8088
     description: Local sandbox demo
 paths:

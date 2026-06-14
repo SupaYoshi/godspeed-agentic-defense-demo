@@ -7,6 +7,7 @@ Microsoft Foundry Agent Service can connect agents to custom HTTP APIs through O
 Use:
 
 - `microsoft/godspeed-mission.openapi.yaml`
+- live spec URL: `https://godspeed.battlecruiser.nl/openapi.yaml`
 - operation: `createGodspeedCopilotMission`
 - method: `POST`
 - path: `/api/microsoft/copilot/mission`
@@ -34,16 +35,15 @@ Then call:
 
 ```bash
 curl -fsS \
-  -X POST http://127.0.0.1:8088/api/microsoft/copilot/mission \
+  -X POST https://godspeed.battlecruiser.nl/api/microsoft/copilot/mission \
   -H 'content-type: application/json' \
   --data '{"description":"A critical zero-day affects an internet-facing remote access service.","urgency":"Critical"}'
 ```
 
 ## Foundry Deployment Shape
 
-1. Deploy the Godspeed API behind HTTPS.
-2. Update the `servers` section in `microsoft/godspeed-mission.openapi.yaml`.
-3. In Foundry, configure an OpenAPI tool using the updated spec.
+1. Use the public hackathon endpoint `https://godspeed.battlecruiser.nl`.
+2. In Foundry, configure an OpenAPI tool using `https://godspeed.battlecruiser.nl/openapi.yaml` or upload `microsoft/godspeed-mission.openapi.yaml`.
 4. Attach the tool to a prompt agent or a hosted Agent Framework implementation.
 5. Use managed identity, API key or OAuth depending on deployment boundary.
 6. Keep production action tools separate from the mission-planning tool.

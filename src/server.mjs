@@ -10,6 +10,30 @@ const rootDir = path.resolve(__dirname, "..");
 const publicDir = path.join(rootDir, "public");
 const port = Number(process.env.PORT || 8088);
 
+const publicSpecRoutes = new Map([
+  [
+    "/openapi.yaml",
+    {
+      file: path.join(rootDir, "microsoft", "godspeed-mission.openapi.yaml"),
+      type: "application/yaml; charset=utf-8",
+    },
+  ],
+  [
+    "/microsoft/godspeed-mission.openapi.yaml",
+    {
+      file: path.join(rootDir, "microsoft", "godspeed-mission.openapi.yaml"),
+      type: "application/yaml; charset=utf-8",
+    },
+  ],
+  [
+    "/microsoft/copilot-studio-openapi-v2.json",
+    {
+      file: path.join(rootDir, "microsoft", "copilot-studio-openapi-v2.json"),
+      type: "application/json; charset=utf-8",
+    },
+  ],
+]);
+
 function send(res, status, body, contentType = "application/json") {
   res.writeHead(status, {
     "content-type": contentType,
@@ -48,6 +72,12 @@ const server = http.createServer(async (req, res) => {
   try {
     if (req.method === "GET" && req.url === "/api/health") {
       send(res, 200, JSON.stringify({ ok: true, service: "godspeed-demo", port }));
+      return;
+    }
+
+    if (req.method === "GET" && publicSpecRoutes.has(req.url)) {
+      const spec = publicSpecRoutes.get(req.url);
+      send(res, 200, await readFile(spec.file), spec.type);
       return;
     }
 
