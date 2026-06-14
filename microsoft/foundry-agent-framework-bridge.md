@@ -2,7 +2,7 @@
 
 Godspeed is designed as a two-profile system:
 
-- `local-sandbox`: deterministic demo runtime in this repository.
+- `dev-test-foundry-connected`: deterministic demo runtime in this repository plus the live website-to-Foundry bridge.
 - `microsoft-native-target`: production path using Microsoft Copilot, Foundry Agent Service and Microsoft Agent Framework.
 
 ## Production Shape
@@ -93,7 +93,7 @@ Live tenant approval automation is intentionally out of scope for the public dem
 
 ## Foundry IQ Layer
 
-Godspeed uses Foundry IQ as the Microsoft IQ intelligence layer for the captured dev/test proof. The repository does not create live tenant resources itself; it records the public-safe evidence after the `godspeed-defense-mission-knowledge` knowledge base was attached to the Godspeed Foundry Agent. The Foundry OpenAPI tool-call proof remains separate and pending.
+Godspeed uses Foundry IQ as the Microsoft IQ intelligence layer for the captured dev/test proof. The repository does not create live tenant resources itself; it records the public-safe implementation artifacts and evidence after the `godspeed-defense-mission-knowledge` knowledge base was attached to the Godspeed Foundry Agent. The live website now also routes mission creation through the configured `godspeed_mission_api` OpenAPI tool.
 
 The intended knowledge layer grounds the agent on:
 
@@ -116,6 +116,6 @@ That gives a code-first Agent Framework implementation a deterministic entrypoin
 
 ## Why This Still Counts As A Working Demo
 
-The hackathon demo is intentionally sandboxed. It demonstrates the core agentic behavior: transform a scenario into a governed mission, select specialist agents, create approval gates and produce an evidence package.
+The hackathon demo is intentionally sandboxed. It demonstrates the core agentic behavior: transform a scenario into a governed mission, route through a dev/test Foundry agent, use the Godspeed OpenAPI tool, ground the answer in the knowledge layer, select specialist agents, create approval gates and produce an evidence package.
 
 The Microsoft bridge is documented as the deployment path, not falsely claimed as already deployed in a tenant.

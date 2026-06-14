@@ -30,8 +30,7 @@ The architecture separates the user-facing enterprise front door from the orches
 
 The repository contains two profiles:
 
-- `local-sandbox`: the working hackathon demo. It uses sample data and writes local artifacts.
+- `dev-test-foundry-connected`: the working hackathon demo. The public website calls the Godspeed backend, which calls the dev/test Foundry agent and OpenAPI tool, while still using sample data and approval-gated outputs.
 - `microsoft-native-target`: the implementation path for Microsoft 365 Copilot, Foundry Agent Service and Agent Framework.
 
 The local demo intentionally avoids tenant credentials, production tools, secrets and customer data.
-

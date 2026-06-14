@@ -57,23 +57,10 @@ State that the public demo uses sample or dev/test data only. Do not request sec
 
 ## Microsoft IQ Status
 
-Before live screenshots exist, use this wording:
+Use this current hackathon proof wording:
 
 ```text
-Foundry IQ integration status: approval-gated.
-Tenant proof status: tenant-proof pending.
-```
-
-After live knowledge-grounding screenshots exist, but before the OpenAPI tool is configured and tested, use this narrower wording:
-
-```text
-Foundry IQ knowledge-grounding proof captured; OpenAPI tool proof pending.
-```
-
-Only after a separate OpenAPI tool screenshot and successful tool call exist, use:
-
-```text
-Foundry IQ dev/test tenant proof completed with knowledge-base grounding and approval-gated mission output.
+Dev/test Foundry proof captured with knowledge grounding and OpenAPI tool-backed mission creation.
 ```
 
 ## Do Not Claim
@@ -82,4 +69,4 @@ Foundry IQ dev/test tenant proof completed with knowledge-base grounding and app
 - Do not claim Work IQ, Fabric IQ, Microsoft Graph, Defender, Sentinel, Intune, endpoint-response or ticketing integration.
 - Do not claim remediation, isolation, patching, credential reset, tenant policy change, external communication or production scanning occurred.
 - Do not claim customer or production security data was used.
-- Do not claim OpenAPI tool proof until `createGodspeedCopilotMission` is configured and a test call succeeds.
+- Do not extend the OpenAPI tool proof beyond dev/test mission package creation.

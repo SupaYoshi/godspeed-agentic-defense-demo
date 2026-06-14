@@ -55,7 +55,7 @@
     "type": "Foundry IQ",
     "manifest": "microsoft/foundry-iq-knowledge-layer.json",
     "integrationStatus": "approval-gated",
-    "tenantProofStatus": "knowledge-grounding proof captured; OpenAPI tool proof pending",
+    "tenantProofStatus": "dev/test Foundry proof captured with knowledge grounding and OpenAPI tool-backed mission creation",
     "purpose": "Ground the agent on Godspeed mission doctrine, approval boundaries and evidence expectations."
   },
   "safety": {

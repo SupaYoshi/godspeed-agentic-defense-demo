@@ -1,7 +1,7 @@
 {
   "name": "Godspeed Approval Boundaries",
-  "profile": "local-sandbox",
-  "foundryIqStatus": "knowledge-grounding proof captured; OpenAPI tool proof pending",
+  "profile": "dev-test-foundry-connected",
+  "foundryIqStatus": "dev/test Foundry proof captured with knowledge grounding and OpenAPI tool-backed mission creation",
   "allowedInRepo": [
     "read local sample data",
     "generate mission plans",
@@ -13,7 +13,7 @@
     "create Azure or Microsoft Foundry resources",
     "change tenant settings",
     "store or use secrets",
-    "deploy public endpoints",
+    "deploy production endpoints",
     "connect production Defender, Sentinel, Intune, ticketing or endpoint-response tools",
     "ingest customer or production security data",
     "run production scans, patching, isolation, account resets or external communications"

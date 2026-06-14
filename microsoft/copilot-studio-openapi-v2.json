@@ -205,6 +205,12 @@
     "SourceEndpoints": {
       "type": "object",
       "properties": {
+        "foundryAgent": {
+          "type": "string"
+        },
+        "foundryAsk": {
+          "type": "string"
+        },
         "copilotTool": {
           "type": "string"
         },

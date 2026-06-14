@@ -4,14 +4,16 @@ This page maps Godspeed Agentic Defense to the Microsoft Agents League Hackathon
 
 ## Accuracy & Relevance - 20%
 
-Godspeed is a working sandbox prototype for the Reasoning Agents track. It runs as a browser UI, REST API and CLI workflow, and it turns a security scenario into a governed defense mission.
+Godspeed is a working dev/test Foundry-connected prototype for the Reasoning Agents track. It runs as a browser UI, REST API and CLI workflow, and the live website calls Azure AI Foundry agent `Godspeed-Agentic-Defense` v6 to turn a security scenario into a governed defense mission.
 
-The repository includes source code, architecture, a submission draft, technical background, screenshot evidence, Microsoft bridge endpoints, Copilot Studio OpenAPI contracts, a repo-local Foundry IQ knowledge-layer path and Foundry / Agent Framework implementation artifacts.
+The repository includes source code, architecture, a submission draft, technical background, Microsoft bridge endpoints, Copilot Studio OpenAPI contracts, a repo-local Foundry IQ knowledge-layer path, a website-to-Foundry bridge and Foundry / Agent Framework implementation artifacts.
 
 Relevant Microsoft-facing artifacts:
 
 - `POST /api/microsoft/copilot/mission`
 - `POST /api/microsoft/agent-framework/event`
+- `POST /api/foundry/agent`
+- `POST /api/foundry/ask`
 - `microsoft/copilot-studio-openapi-v2.json`
 - `microsoft/godspeed-mission.openapi.yaml`
 - `microsoft/foundry-openapi-tool.md`
@@ -19,9 +21,10 @@ Relevant Microsoft-facing artifacts:
 - `microsoft/foundry-agent-framework-bridge.md`
 - `microsoft/foundry-iq-knowledge-layer.json`
 - `microsoft/foundry-iq-integration-runbook.md`
+- `microsoft/foundry-website-agent-bridge.md`
 - `microsoft/knowledge/`
 
-Foundry IQ status is deliberately honest: dev/test knowledge-grounding proof has been captured with `godspeed-defense-mission-knowledge` attached to the Godspeed Foundry Agent; Foundry OpenAPI tool-call proof remains pending.
+Foundry status is deliberately honest: dev/test knowledge-grounding proof has been captured with `godspeed-defense-mission-knowledge` attached to the Godspeed Foundry Agent, and the `godspeed_mission_api` OpenAPI tool is configured for mission package creation. This remains dev/test proof, not production remediation or production security-tool integration.
 
 ## Reasoning & Multi-step Thinking - 20%
 
@@ -59,7 +62,7 @@ The output is readable by both technical responders and decision-makers.
 
 ## Reliability & Safety - 20%
 
-Godspeed is sandbox-first by design. The demo does not use production access, tenant secrets, customer data, real remediation, external messaging or automatic patching.
+Godspeed is sandbox-first by design. The live proof uses a dev/test Foundry agent and does not use production access, browser-exposed tenant secrets, customer data, real remediation, external messaging or automatic patching.
 
 Risky actions are planned, not executed. Production changes, containment, patching, credential resets and communications remain blocked until explicit human approval gates are satisfied.
 

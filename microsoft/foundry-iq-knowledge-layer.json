@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "type": "Foundry IQ",
   "integrationStatus": "approval-gated",
-  "tenantProofStatus": "knowledge-grounding proof captured; OpenAPI tool proof pending",
+  "tenantProofStatus": "dev/test Foundry proof captured with knowledge grounding and OpenAPI tool-backed mission creation",
   "targetUse": "Ground the Godspeed orchestrator on safe mission doctrine, approval boundaries and evidence expectations before it calls planning or workflow tools.",
   "microsoftDocs": [
     {
@@ -64,7 +64,7 @@
     "Use the knowledge layer to explain Godspeed mission doctrine and safety gates.",
     "Cite or identify the knowledge source used when the live tenant surface supports citations.",
     "Do not treat local sample knowledge as production evidence.",
-    "Do not claim Foundry OpenAPI tool execution until a separate tool-call screenshot and successful call exist."
+    "Treat Foundry OpenAPI tool execution as dev/test proof only; do not claim production remediation or production security-tool integration."
   ],
   "manualTenantProofSteps": [
     "Create or select Walter's approved dev/test Microsoft Foundry project.",

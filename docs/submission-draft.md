@@ -24,7 +24,7 @@ Security teams are flooded with alerts, vulnerabilities, tool outputs and urgent
 
 Godspeed acts as an agentic command layer. A user describes a security scenario in natural language. Godspeed converts it into a structured mission, selects specialist agents in waves, creates a premortem, plans lab-first validation, blocks risky actions behind human approval, and produces an evidence package.
 
-The current build is a working sandbox prototype. It runs locally, accepts a real mission prompt, reasons over the scenario profile, selects the relevant specialist agents, creates owner-assigned actions, and writes evidence artifacts. It deliberately avoids tenant secrets, production access, customer data, real remediation and external messaging.
+The current build is a working dev/test Foundry-connected prototype. The live website sends `Run Mission` requests to the Godspeed backend, which calls the Azure AI Foundry agent `Godspeed-Agentic-Defense` v6. The agent uses the Godspeed OpenAPI tool and Foundry knowledge layer to return a governed mission package. It deliberately avoids browser-exposed credentials, production access, customer data, real remediation and external messaging.
 
 In the Microsoft-native target architecture, Copilot is the front door and Godspeed is the governed reasoning backend. Instead of asking Copilot to produce a single security answer, the user asks Copilot to launch a controlled defense mission with explicit reasoning steps, specialist ownership, approval gates and auditable evidence.
 
@@ -37,9 +37,9 @@ In the Microsoft-native target architecture, Copilot is the front door and Godsp
 - Microsoft Agent Framework as the multi-agent workflow path for routing, state, telemetry and human approval gates.
 - GitHub Copilot as the development acceleration story.
 
-Current Microsoft IQ status: Godspeed includes a repo-local Foundry IQ knowledge-layer manifest, safe sample grounding sources and captured dev/test Foundry IQ proof screenshots. The `godspeed-defense-mission-knowledge` knowledge layer was attached to the `Godspeed-Agentic-Defense` Foundry Agent and used for a grounded mission response. The Foundry OpenAPI tool-call proof remains pending.
+Current Microsoft IQ status: Godspeed includes a repo-local Foundry IQ knowledge-layer manifest, safe sample grounding sources and captured dev/test Foundry proof. The `godspeed-defense-mission-knowledge` knowledge layer is attached to the `Godspeed-Agentic-Defense` Foundry Agent, and the `godspeed_mission_api` OpenAPI tool creates the governed defense mission package from the live Godspeed API.
 
-The current repository runs in `local-sandbox` mode for safe review. It contains the production bridge artifacts for the `microsoft-native-target` profile:
+The repository still keeps the production boundary explicit. The live proof is dev/test only and does not claim Defender/Sentinel/Intune integration, automated remediation, customer-data access or production tenant changes. It contains the production bridge artifacts for the `microsoft-native-target` profile:
 
 - `microsoft/godspeed-mission.openapi.yaml`
 - `microsoft/copilot-studio-openapi-v2.json`
@@ -49,11 +49,14 @@ The current repository runs in `local-sandbox` mode for safe review. It contains
 - `microsoft/foundry-agent-framework-bridge.md`
 - `microsoft/foundry-iq-knowledge-layer.json`
 - `microsoft/foundry-iq-integration-runbook.md`
+- `microsoft/foundry-website-agent-bridge.md`
 - `microsoft/knowledge/`
 - `microsoft/foundry-workflow-concept.yaml`
 
 The repository also includes Microsoft-facing bridge endpoints:
 
+- `POST /api/foundry/agent`
+- `POST /api/foundry/ask`
 - `POST /api/microsoft/copilot/mission`
 - `POST /api/microsoft/agent-framework/event`
 
@@ -91,7 +94,7 @@ The demo uses sample data only. It does not use production access, tenant secret
 
 Recommended framing:
 
-> Godspeed is a working sandbox prototype of a governed agentic defense orchestrator. It demonstrates mission intake, specialist-agent selection, approval gates, action ownership and evidence packaging. The production path is Microsoft Copilot as front door, with Foundry Agent Service and Microsoft Agent Framework as the managed agent runtime and workflow layer.
+> Godspeed is a working dev/test Foundry-connected prototype of a governed agentic defense orchestrator. It demonstrates mission intake, specialist-agent selection, OpenAPI tool-backed mission creation, knowledge grounding, approval gates, action ownership and evidence packaging. The production path is Microsoft Copilot as front door, with Foundry Agent Service and Microsoft Agent Framework as the managed agent runtime and workflow layer.
 
 ## Demo Video URL
 

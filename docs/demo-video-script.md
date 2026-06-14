@@ -24,5 +24,4 @@ Risky actions are blocked behind approval gates: production scanning, patching, 
 
 ## 1:50 - 2:00
 
-The output is a defense package that can move from local sandbox to Microsoft Foundry Agent Service and Agent Framework for production-grade orchestration.
-
+The output is a defense package that now has a dev/test Foundry-connected path and can move toward Microsoft Foundry Agent Service and Agent Framework for production-grade orchestration.

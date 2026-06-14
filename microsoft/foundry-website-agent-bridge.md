@@ -1,14 +1,25 @@
 # Foundry Website Agent Bridge
 
-This bridge lets the public Godspeed website send a scenario to the configured Azure AI Foundry agent without exposing Azure credentials in browser JavaScript.
+This bridge lets the public Godspeed website send a mission scenario or direct question to the configured Azure AI Foundry agent without exposing Azure credentials in browser JavaScript.
 
 ## Flow
 
-1. Browser sends the scenario to `POST /api/foundry/agent`.
+1. Browser sends the mission scenario to `POST /api/foundry/agent`.
 2. The Godspeed Node backend builds a Foundry prompt that asks the agent to call the Godspeed OpenAPI tool.
 3. The backend invokes `scripts/foundry-agent-response.py`.
 4. The Python helper uses `AIProjectClient` with either `DefaultAzureCredential`, a tenant-approved service principal, or the dev/test MSAL device-code cache.
 5. The website renders the Foundry response and the local Godspeed mission fallback package.
+
+For direct Q&A, the browser sends the question to `POST /api/foundry/ask`. That route uses the same Foundry agent but does not wrap the question as a mission unless the user explicitly asks for one.
+
+## Current Dev/Test Status
+
+- Live agent: `Godspeed-Agentic-Defense` version `6`.
+- Mission route: `POST /api/foundry/agent`.
+- Direct question route: `POST /api/foundry/ask`.
+- Foundry tool: `godspeed_mission_api`.
+- Knowledge layer: `godspeed-defense-mission-knowledge`.
+- Boundary: dev/test proof only; no production remediation, customer data, Defender/Sentinel/Intune actions or browser-exposed credentials.
 
 ## Server Environment
 

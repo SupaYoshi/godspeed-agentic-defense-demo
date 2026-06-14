@@ -1,6 +1,6 @@
 # Microsoft Implementation Checklist
 
-This checklist turns the local sandbox into a Microsoft-connected implementation without putting tenant data or secrets in the public repository.
+This checklist tracks the path from the sandbox implementation to the current Microsoft-connected dev/test proof without putting tenant data or secrets in the public repository.
 
 ## Local Bridge
 
@@ -44,4 +44,4 @@ This checklist turns the local sandbox into a Microsoft-connected implementation
 - Do not store tenant IDs, app secrets, connection strings or API keys in the repo.
 - Do not connect production Defender, Sentinel, Intune, GitHub or ticketing tools in the public demo.
 - Do not execute remediation from the sandbox profile.
-- Keep the public submission wording honest: working sandbox prototype plus Microsoft-ready bridge path.
+- Keep the public submission wording honest: working dev/test Foundry-connected prototype plus production hardening path.

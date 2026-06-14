@@ -8,13 +8,15 @@ const microsoftIqLayer = JSON.parse(
 );
 
 const integrationProfile = {
-  mode: "local-sandbox",
+  mode: "dev-test-foundry-connected",
   microsoftTarget: "Copilot Studio front door with Foundry Agent Service and Agent Framework runtime path",
-  authentication: "not configured in public demo",
+  authentication: "server-side only; no browser-exposed credentials",
   productionExecution: "disabled",
 };
 
 const sourceEndpoints = {
+  foundryAgent: "POST /api/foundry/agent",
+  foundryAsk: "POST /api/foundry/ask",
   copilotTool: "POST /api/microsoft/copilot/mission",
   agentFrameworkEvent: "POST /api/microsoft/agent-framework/event",
   localDemo: "POST /api/mission",
@@ -28,11 +30,11 @@ const safetyBoundary = {
 };
 
 const manualTenantProofSteps = [
-  "Expose the local API through an approved HTTPS endpoint or deploy a reviewed sandbox API.",
-  "Update the Copilot Studio OpenAPI v2 host or Foundry OpenAPI server URL for that endpoint.",
-  "Import the REST API tool in Copilot Studio or configure the OpenAPI tool in Foundry.",
-  "Attach the Godspeed agent instructions and run one sandbox mission from the Microsoft surface.",
-  "Capture screenshots of the tool import, successful mission response, approval gates and evidence package.",
+  "Keep the public website-to-Foundry bridge server-side so credentials never reach browser JavaScript.",
+  "Use the approved dev/test Foundry agent and knowledge layer for hackathon proof.",
+  "Use the Godspeed OpenAPI tool for mission package creation.",
+  "Capture screenshots of the tool config, successful mission response, approval gates and evidence package.",
+  "Replace the dev/test authentication path with managed identity or a tenant-approved service principal before production use.",
 ];
 
 export function toCopilotToolResponse(mission, artifactDir) {

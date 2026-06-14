@@ -1,6 +1,6 @@
 # Foundry IQ Tenant Evidence Checklist
 
-Use this checklist only after Walter approves live dev/test tenant work. Until every required screenshot exists, the submission wording must say `approval-gated` and `tenant-proof pending`.
+Use this checklist only after Walter approves live dev/test tenant work. The current hackathon proof has captured the Foundry knowledge layer and a successful OpenAPI tool-backed mission call. Keep production claims separate from dev/test proof.
 
 ## Minimum Screenshot Set
 
@@ -26,25 +26,21 @@ Optional supporting screenshots:
 Use Godspeed to create a governed defense mission for a critical remote access zero-day. Ground the answer in the Godspeed safety boundary and approval gate knowledge, then return the selected agents, approval gates, evidence package and any unresolved unknowns.
 ```
 
-## Submission Wording Before Tenant Proof
+## Submission Wording
 
-Use this wording while screenshots are missing:
-
-> Godspeed includes a repo-local, approval-gated Foundry IQ knowledge-layer path for grounding the agent in mission doctrine, approval boundaries and evidence expectations. Live Foundry IQ tenant proof is tenant-proof pending and will be completed in Walter's approved dev/test tenant.
-
-Short version:
-
-> Foundry IQ path implemented locally; live tenant proof pending.
-
-## Submission Wording After Tenant Proof
-
-Use this wording only after the required screenshots exist:
+Use this wording after the required knowledge-grounding screenshots exist and the OpenAPI tool has been configured and tested:
 
 > Godspeed integrates Microsoft Foundry IQ in a dev/test tenant by attaching the `godspeed-defense-mission-knowledge` knowledge base to the Godspeed Foundry agent. The knowledge layer grounds responses in Godspeed mission doctrine, approval boundaries and evidence expectations, while the OpenAPI tool creates the governed defense mission package.
 
 Short version:
 
-> Foundry IQ dev/test tenant proof completed with knowledge-base grounding and approval-gated mission output.
+> Foundry dev/test proof completed with knowledge-base grounding and OpenAPI tool-backed mission output.
+
+Only claim the OpenAPI tool path after a separate screenshot shows `createGodspeedCopilotMission` configured and a test call succeeds.
+
+## Current Hackathon Status
+
+As of the live website proof, `Godspeed-Agentic-Defense` version `6` is reachable through the Godspeed backend. The live route uses the `godspeed_mission_api` OpenAPI tool and `godspeed-defense-mission-knowledge` knowledge layer for governed mission creation. This is dev/test proof only, not production remediation.
 
 ## Do Not Claim
 

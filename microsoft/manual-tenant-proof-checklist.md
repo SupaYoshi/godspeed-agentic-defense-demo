@@ -1,6 +1,6 @@
 # Manual Microsoft Tenant Proof Checklist
 
-Use this checklist only after Walter explicitly approves live Microsoft tenant work. The repository is already prepared for these steps, but they are not executed from the local sandbox.
+Use this checklist only after Walter explicitly approves live Microsoft tenant work. The repository is prepared for these steps, and the hackathon proof now uses a dev/test Foundry-connected path rather than production tenant automation.
 
 ## Approval Required First
 

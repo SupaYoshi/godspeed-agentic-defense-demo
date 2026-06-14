@@ -1,6 +1,6 @@
 # Godspeed Agentic Defense
 
-Godspeed is a working sandbox prototype for governed agentic defense missions, built for the Microsoft Agents League Hackathon Reasoning Agents track.
+Godspeed is a working dev/test Foundry-connected prototype for governed agentic defense missions, built for the Microsoft Agents League Hackathon Reasoning Agents track.
 
 It turns a high-pressure security scenario into a controlled multi-agent mission: the right specialist agents, the right evidence, the right approval gates, and a clear executive defense package.
 
@@ -12,11 +12,12 @@ GODSPEED stands for:
 
 - **Track:** Reasoning Agents.
 - **Demo video:** https://www.youtube.com/watch?v=U9ZP6s9Y73s
-- **Working demo:** local browser UI, REST API and CLI mission run.
-- **Microsoft path:** Copilot Studio / Microsoft 365 Copilot front door, Foundry Agent Service runtime path, Agent Framework workflow path, approval-gated Foundry IQ knowledge layer.
-- **Microsoft IQ status:** Foundry IQ dev/test proof captured with `godspeed-defense-mission-knowledge` attached to the Godspeed Foundry Agent.
+- **Working demo:** live browser UI, REST API, CLI mission run and website-to-Foundry agent bridge.
+- **Live endpoint:** https://godspeed.battlecruiser.nl/
+- **Microsoft path:** website -> Godspeed backend -> Azure AI Foundry Agent `Godspeed-Agentic-Defense` v6 -> Godspeed OpenAPI tool -> Foundry IQ / Knowledge layer.
+- **Microsoft IQ status:** dev/test Foundry proof captured with `godspeed-defense-mission-knowledge` attached and `godspeed_mission_api` calling the Godspeed OpenAPI mission endpoint.
 - **Safety model:** sandbox data only, no production access, no tenant secrets, no automatic remediation, human approval gates before risky actions.
-- **Demo evidence:** video walkthrough, interface screenshot, Foundry IQ proof screenshots, architecture diagram, technical background, Copilot-ready OpenAPI contracts and CI checks.
+- **Demo evidence:** video walkthrough, live website, Foundry response proof, architecture diagram, technical background, Copilot-ready OpenAPI contracts and CI checks.
 
 ## Judging Rubric Fit
 
@@ -52,14 +53,16 @@ The demo is designed as a Microsoft-native architecture:
 - **GitHub Copilot** as the developer acceleration story;
 - **Godspeed** as the command layer that turns a vague security request into a governed defense mission.
 
-The live demo in this repository runs in a local sandbox profile so it can be shown without tenant secrets, production access, or customer data. The `microsoft/` folder contains the Foundry and Copilot implementation bridge for the hackathon story.
+The live demo now runs through a server-side Foundry bridge. `Run Mission` calls the Godspeed backend, the backend calls the Azure AI Foundry agent `Godspeed-Agentic-Defense` v6, and the agent uses the `godspeed_mission_api` OpenAPI tool plus the `godspeed-defense-mission-knowledge` knowledge layer. No Azure credentials are exposed in browser JavaScript.
 
-This repository is explicit about the boundary: the demo is a working sandbox prototype of the Godspeed orchestrator. The production path is Microsoft 365 Copilot or Copilot Studio as the front door, with Microsoft Foundry Agent Service and Microsoft Agent Framework as the managed agent runtime and workflow layer.
+This repository is explicit about the boundary: the demo is a working dev/test Foundry-connected prototype of the Godspeed orchestrator. It does not claim production Defender/Sentinel/Intune integration, customer-data access, automatic remediation or production tenant changes. The production path remains Microsoft 365 Copilot or Copilot Studio as the front door, with Microsoft Foundry Agent Service and Microsoft Agent Framework as the managed agent runtime and workflow layer.
 
-The Microsoft IQ requirement is represented honestly: the repo includes a Foundry IQ knowledge-layer manifest, safe sample knowledge sources, validation and captured dev/test proof screenshots showing the `godspeed-defense-mission-knowledge` layer attached to the Godspeed Foundry Agent.
+The Microsoft IQ requirement is represented honestly: the repo includes a Foundry IQ knowledge-layer manifest, safe sample knowledge sources, validation, and captured dev/test proof showing the `godspeed-defense-mission-knowledge` layer attached to the Godspeed Foundry Agent. The current live website also includes a direct `Ask Godspeed` panel for Q&A against the same Foundry agent.
 
 The repo now includes a Copilot-ready bridge endpoint and import contract:
 
+- `POST /api/foundry/agent` sends the mission prompt to the configured Foundry agent.
+- `POST /api/foundry/ask` asks the configured Foundry agent a direct question.
 - `POST /api/microsoft/copilot/mission` returns a Copilot-friendly mission package.
 - `POST /api/microsoft/agent-framework/event` returns a workflow seed event.
 - `microsoft/copilot-studio-openapi-v2.json` is the OpenAPI v2 import file for Copilot Studio REST API tools.
@@ -70,8 +73,10 @@ The live Microsoft proof captured for the hackathon is intentionally narrow and 
 
 - a dev/test Microsoft Foundry Agent named `Godspeed-Agentic-Defense`;
 - a Foundry IQ / Knowledge layer named `godspeed-defense-mission-knowledge`;
-- grounded mission output that includes Microsoft IQ status, Godspeed knowledge used, approval gates, evidence package, safety boundary and unknowns;
-- trace evidence for the same proof run.
+- a configured OpenAPI tool named `godspeed_mission_api` that calls the public Godspeed mission API;
+- a live website flow where `Run Mission` calls Foundry agent v6 and returns a governed mission package;
+- a direct `Ask Godspeed` question panel that answers through the same Foundry agent;
+- mission output that includes Microsoft IQ status, Godspeed knowledge used, approval gates, evidence package, safety boundary and unknowns.
 
 Public-safe screenshots are in:
 
@@ -79,7 +84,7 @@ Public-safe screenshots are in:
 artifacts/foundry-iq-live-proof/
 ```
 
-This proves the Foundry IQ knowledge-grounding path. It does not claim a production tenant integration, Defender/Sentinel/Intune integration, automated remediation, or a completed Foundry OpenAPI tool call. The OpenAPI tool path is implemented as a public contract and bridge endpoint, with tool-call proof kept separate.
+This proves the dev/test Foundry agent path with knowledge grounding and OpenAPI tool-backed mission creation. It does not claim production tenant integration, Defender/Sentinel/Intune integration, automated remediation, credential resets, customer-data access or real-world containment.
 
 ## What The Demo Shows
 
@@ -157,7 +162,7 @@ This is demo mode:
 ## Repository Map
 
 - `src/` - local Godspeed mission engine and API.
-- `public/` - browser demo UI.
+- `public/` - browser demo UI with `Run Mission` and `Ask Godspeed`.
 - `sample-data/` - safe sample assets and signals.
 - `docs/` - architecture, submission draft, video script and security boundaries.
 - `architecture/` - standalone architecture diagram.
@@ -165,6 +170,7 @@ This is demo mode:
 - `artifacts/foundry-iq-upload/` - upload-ready Foundry IQ knowledge pack for the approved dev/test tenant.
 - `artifacts/voice/` - final demo voice-over assets.
 - `microsoft/` - Copilot REST API tool contract, Foundry / Agent Framework bridge and workflow concept.
+- `microsoft/foundry-website-agent-bridge.md` - server-side website-to-Foundry bridge notes.
 - `scripts/validate-microsoft-bridge.mjs` - local validation for the Copilot/Agent Framework bridge contract.
 - `systemd/` and `nginx/` - optional deployment examples.
 

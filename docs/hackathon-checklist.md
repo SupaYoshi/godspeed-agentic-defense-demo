@@ -13,7 +13,7 @@
 
 - Keep the demo video under 2 minutes.
 - Submit under the Reasoning Agents track.
-- Use the local sandbox as the working demo.
+- Use the live dev/test Foundry-connected website as the working demo.
 - Explain the Microsoft-native path clearly.
 - Keep private OpenClaw details out of the public repository.
 - Do not include secrets, tokens, customer data, internal URLs or private memory.
@@ -26,4 +26,3 @@
 - Run the app locally.
 - Confirm README and architecture diagram are present.
 - Confirm video URL and repo URL are correct.
-

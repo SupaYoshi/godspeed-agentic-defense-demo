@@ -2,18 +2,22 @@
 
 Godspeed is a governed mission-orchestration layer for security work.
 
-The demo in this repository is a local sandbox. It proves the workflow without requiring Microsoft tenant credentials, production security tools, customer data or secrets.
+The demo in this repository is a dev/test Foundry-connected sandbox. It proves the workflow without browser-exposed Microsoft credentials, production security tools, customer data or production remediation.
 
 ## Current Working Components
 
 - Browser mission UI in `public/`.
 - Local API in `src/server.mjs`.
+- Live website-to-Foundry bridge at `POST /api/foundry/agent`.
+- Direct Foundry Q&A route at `POST /api/foundry/ask`.
 - Mission engine in `src/godspeed.mjs`.
 - Evidence artifact writer for `artifacts/last-run/`.
 - Scenario-aware specialist-agent selection.
 - Human approval gates for high-impact actions.
 - Action plan with owners, support agents and reasoning.
 - Microsoft implementation bridge in `microsoft/`.
+- Azure AI Foundry agent `Godspeed-Agentic-Defense` v6 used for the live dev/test proof.
+- Foundry knowledge layer `godspeed-defense-mission-knowledge` and OpenAPI tool `godspeed_mission_api` used in the live mission flow.
 
 ## API Flow
 
@@ -21,6 +25,14 @@ The demo in this repository is a local sandbox. It proves the workflow without r
 POST /api/mission
   input: mission scenario, urgency, boundary, approval owner
   output: selected agents, gates, action plan, defense package
+
+POST /api/foundry/agent
+  input: mission scenario
+  output: Foundry agent response plus local mission fallback package
+
+POST /api/foundry/ask
+  input: direct question
+  output: concise Foundry agent answer
 ```
 
 The same API can be used by:
@@ -71,4 +83,4 @@ Microsoft Agent Framework is the code-first target for the workflow graph: intak
 
 Use this wording:
 
-> Godspeed is a working sandbox prototype of a governed agentic defense orchestrator. It demonstrates mission intake, specialist-agent selection, approval gates, action ownership and evidence packaging. The production path is Microsoft Copilot as front door, with Foundry Agent Service and Microsoft Agent Framework as the managed agent runtime and workflow layer.
+> Godspeed is a working dev/test Foundry-connected prototype of a governed agentic defense orchestrator. It demonstrates mission intake, specialist-agent selection, OpenAPI tool-backed mission creation, knowledge grounding, approval gates, action ownership and evidence packaging. The production path is Microsoft Copilot as front door, with Foundry Agent Service and Microsoft Agent Framework as the managed agent runtime and workflow layer.

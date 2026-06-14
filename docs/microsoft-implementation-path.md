@@ -36,13 +36,22 @@ The concrete production workflow mapping is documented in:
 - `microsoft/foundry-agent-framework-bridge.md`
 - `microsoft/foundry-workflow-concept.yaml`
 
+## Current Live Proof
+
+The current live proof is no longer only a local mapping. The public website at `https://godspeed.battlecruiser.nl/` has two Foundry-backed routes:
+
+- `POST /api/foundry/agent` for governed mission creation.
+- `POST /api/foundry/ask` for direct questions to the agent.
+
+The live dev/test agent is `Godspeed-Agentic-Defense` version `6`. It uses the `godspeed_mission_api` OpenAPI tool and the `godspeed-defense-mission-knowledge` knowledge layer.
+
 ## Intelligence Layer
 
 Microsoft Foundry IQ is the planned Microsoft IQ layer for Godspeed. The repo-local state is:
 
 - `type`: `Foundry IQ`
 - `integrationStatus`: `approval-gated`
-- `tenantProofStatus`: `knowledge-grounding proof captured; OpenAPI tool proof pending`
+- `tenantProofStatus`: `dev/test Foundry proof captured with knowledge grounding and OpenAPI tool-backed mission creation`
 
 The Foundry IQ path is documented in:
 
@@ -50,7 +59,7 @@ The Foundry IQ path is documented in:
 - `microsoft/foundry-iq-integration-runbook.md`
 - `microsoft/knowledge/`
 
-These artifacts define safe grounding sources for mission doctrine, approval boundaries and evidence expectations. Dev/test Foundry IQ knowledge-grounding proof is captured; production Microsoft integrations and Foundry OpenAPI tool-call proof remain separate.
+These artifacts define safe grounding sources for mission doctrine, approval boundaries and evidence expectations. Dev/test Foundry IQ knowledge-grounding proof and Foundry OpenAPI tool-call proof are captured; production Microsoft integrations remain separate and approval-gated.
 
 ## Runtime
 
@@ -64,26 +73,27 @@ Microsoft Foundry Agent Service is the managed runtime path for:
 
 ## Demo Boundary
 
-The current demo runs without Microsoft tenant credentials so it can be reviewed safely. It still makes the Microsoft integration explicit through:
+The current live demo uses a server-side dev/test Foundry bridge, not browser-side credentials. It still keeps production boundaries explicit through:
 
 - architecture diagram;
 - README track positioning;
 - Copilot front door contract;
 - Foundry workflow concept;
 - Agent Framework implementation notes;
-- OpenAPI contract for a Copilot REST API tool;
+- OpenAPI contracts for Copilot Studio and Foundry tools;
+- website-to-Foundry bridge documentation;
 - bridge responses with `integrationProfile`, `safetyBoundary`, `localApprovalLadder`, `microsoftIqLayer`, `suggestedCopilotReply` and manual tenant proof steps;
 - UI proof points.
 
 ## Next Build Step
 
-After registration and platform access are confirmed, the practical next build step is:
+The hackathon proof is now working. The practical next build step after submission is production hardening:
 
-1. Create a Foundry project.
-2. Create a Godspeed orchestrator agent.
-3. Add specialist agents as workflow nodes.
-4. Add human approval nodes before production actions.
-5. Connect the existing `/api/mission` contract as either a tool or backend service.
+1. Replace the dev/test MSAL token cache with a tenant-approved service principal or managed identity.
+2. Add durable mission storage and audit history.
+3. Add a production human-approval UI.
+4. Add scoped connectors only after explicit approval.
+5. Build evaluation sets for mission quality and unsafe-action prevention.
 
 Use `microsoft/manual-tenant-proof-checklist.md` for the exact approval-gated tenant proof sequence and screenshot/evidence captures.
 

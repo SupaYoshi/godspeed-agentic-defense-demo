@@ -67,9 +67,9 @@ It is not connected to a live Copilot tenant in this repository because the publ
 2. Update the `host` in `microsoft/copilot-studio-openapi-v2.json`.
 3. In Copilot Studio, add a REST API tool and upload `microsoft/copilot-studio-openapi-v2.json`.
 4. Select `createGodspeedCopilotMission`.
-5. Use no authentication for the local sandbox, or API key/OAuth for a deployed environment.
+5. Use no authentication only for local sandbox testing, or API key/OAuth for a deployed environment.
 6. Add `microsoft/copilot-studio-agent-instructions.md` to the agent instructions.
 7. Test with a zero-day, phishing, ransomware and cloud exposure scenario.
 8. Use `microsoft/manual-tenant-proof-checklist.md` for approval-gated live tenant evidence capture.
 9. Use `microsoft/integration-approval-ladder.json` to show which Microsoft rollout gate is still pending or blocked.
-10. Treat `microsoftIqLayer.tenantProofStatus` as knowledge-grounding proof captured, with OpenAPI tool proof pending until a separate tool configuration and test call are captured.
+10. Treat `microsoftIqLayer.tenantProofStatus` as dev/test proof after the Foundry knowledge layer and OpenAPI tool call are captured; keep production claims separate.

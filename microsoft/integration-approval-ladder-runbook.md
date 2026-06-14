@@ -2,7 +2,7 @@
 
 This runbook answers the practical question: it is too early to automate live tenant approvals, but it is the right time to model the integration gates locally.
 
-The ladder is a demo-safe governance artifact. It shows judges and reviewers how Godspeed would move from local sandbox proof to Microsoft Copilot Studio, Foundry and Agent Framework evidence without pretending that live tenant actions have already happened.
+The ladder is a demo-safe governance artifact. It shows judges and reviewers how Godspeed moves from sandbox proof to dev/test Microsoft Copilot Studio, Foundry and Agent Framework evidence without pretending that production tenant actions have happened.
 
 ## Structured Artifact
 
@@ -47,7 +47,7 @@ The bridge includes the same artifact in `localApprovalLadder` on `POST /api/mic
 - required gate IDs are present;
 - gate sequence numbers are ordered;
 - live tenant automation is not represented as enabled;
-- Foundry IQ is represented as knowledge-grounding proof captured while OpenAPI tool proof and production rollout remain approval-gated;
+- Foundry IQ is represented as dev/test knowledge-grounding proof captured with OpenAPI tool-backed mission creation, while production rollout remains approval-gated;
 - production/customer/security-tool connections remain hard-blocked;
 - the Copilot response contains `localApprovalLadder`;
 - the OpenAPI v2 and OpenAPI 3 contracts include the ladder schemas.

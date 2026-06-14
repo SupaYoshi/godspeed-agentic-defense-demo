@@ -107,8 +107,8 @@ if (!Array.isArray(copilotResponse.approvalGates) || copilotResponse.approvalGat
   throw new Error("Copilot response must include approval gates");
 }
 
-if (copilotResponse.integrationProfile.mode !== "local-sandbox") {
-  throw new Error("Copilot response must identify the local-sandbox integration profile");
+if (copilotResponse.integrationProfile.mode !== "dev-test-foundry-connected") {
+  throw new Error("Copilot response must identify the dev-test Foundry-connected integration profile");
 }
 
 if (!copilotResponse.safetyBoundary.riskyActions.toLowerCase().includes("blocked")) {
@@ -117,6 +117,10 @@ if (!copilotResponse.safetyBoundary.riskyActions.toLowerCase().includes("blocked
 
 if (!copilotResponse.sourceEndpoints.copilotTool.includes("/api/microsoft/copilot/mission")) {
   throw new Error("Copilot response must include the Copilot tool endpoint");
+}
+
+if (!copilotResponse.sourceEndpoints.foundryAgent.includes("/api/foundry/agent")) {
+  throw new Error("Copilot response must include the Foundry agent endpoint");
 }
 
 if (!copilotResponse.suggestedCopilotReply.disclaimer.includes("does not prove remediation")) {
@@ -145,9 +149,9 @@ if (copilotResponse.microsoftIqLayer.integrationStatus !== "approval-gated") {
 
 if (
   copilotResponse.microsoftIqLayer.tenantProofStatus !==
-  "knowledge-grounding proof captured; OpenAPI tool proof pending"
+  "dev/test Foundry proof captured with knowledge grounding and OpenAPI tool-backed mission creation"
 ) {
-  throw new Error("Foundry IQ layer must mark knowledge-grounding proof captured and OpenAPI tool proof pending");
+  throw new Error("Foundry IQ layer must mark the current dev/test Foundry proof status");
 }
 
 if (event.type !== "GodspeedMissionCreated") {
@@ -253,9 +257,10 @@ if (foundryIqLayer.integrationStatus !== "approval-gated") {
 }
 
 if (
-  foundryIqLayer.tenantProofStatus !== "knowledge-grounding proof captured; OpenAPI tool proof pending"
+  foundryIqLayer.tenantProofStatus !==
+  "dev/test Foundry proof captured with knowledge grounding and OpenAPI tool-backed mission creation"
 ) {
-  throw new Error("Foundry IQ manifest must mark knowledge-grounding proof captured and OpenAPI tool proof pending");
+  throw new Error("Foundry IQ manifest must mark the current dev/test Foundry proof status");
 }
 
 if (!foundryIqLayer.approvalGateReferences.includes("approve-foundry-iq-knowledge-layer")) {
@@ -291,8 +296,8 @@ const requiredEvidenceChecklistPhrases = [
   "Grounded or cited answer evidence",
   "Safety boundary or approval gates",
   "OpenAPI tool configuration",
-  "Submission Wording Before Tenant Proof",
-  "Submission Wording After Tenant Proof",
+  "Submission Wording",
+  "Current Hackathon Status",
 ];
 
 for (const phrase of requiredEvidenceChecklistPhrases) {
@@ -334,7 +339,12 @@ for (const phrase of requiredFoundryQuickstartPhrases) {
   }
 }
 
-for (const phrase of ["Mission summary", "Approval gates", "Microsoft IQ status", "tenant-proof pending"]) {
+for (const phrase of [
+  "Mission summary",
+  "Approval gates",
+  "Microsoft IQ status",
+  "Dev/test Foundry proof captured",
+]) {
   if (!foundryAgentInstructions.includes(phrase)) {
     throw new Error(`Foundry agent instructions are missing ${phrase}`);
   }
