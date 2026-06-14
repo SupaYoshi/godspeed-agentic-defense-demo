@@ -18,6 +18,7 @@ Official references:
 - `microsoft/foundry-ui-quickstart.md` - exact Foundry UI click path for Walter.
 - `microsoft/foundry-agent-instructions.md` - copy/paste agent instructions.
 - `microsoft/foundry-iq-tenant-evidence-checklist.md` - required screenshot set and submission wording.
+- `microsoft/foundry-live-proof.md` - no-secrets template for recording captured Foundry proof.
 - `microsoft/knowledge/godspeed-iq-grounding-overview.md` - safe grounding document.
 - `microsoft/knowledge/godspeed-approval-boundaries.json` - safe approval-boundary grounding data.
 - `microsoft/integration-approval-ladder.json` - gate model that blocks live work until approval.
@@ -41,20 +42,22 @@ Only after Walter explicitly approves the dev/test tenant work:
 4. Create a Foundry IQ knowledge base named `godspeed-defense-mission-knowledge`.
 5. Upload or link the safe files under `microsoft/knowledge/`.
 6. Attach the Foundry IQ knowledge base to the Godspeed Foundry Agent Service agent.
-7. Connect the Godspeed OpenAPI tool after endpoint and auth gates are approved.
-8. Run these sample prompts:
+7. Capture the minimum Foundry IQ screenshots before attempting optional tools.
+8. Connect the Godspeed OpenAPI tool only after endpoint and auth gates are approved.
+9. Run these sample prompts:
    - zero-day remote access exposure mission;
    - phishing and token theft mission;
    - ransomware recovery evidence mission;
    - cloud exposure mission.
-9. Capture screenshots of:
+10. Capture screenshots of:
    - Foundry project;
    - Foundry IQ knowledge base;
    - knowledge source list;
    - Godspeed agent instructions/tool config;
    - grounded answer or retrieval trace;
    - approval gates in the final response.
-10. Use `microsoft/foundry-iq-tenant-evidence-checklist.md` to confirm the complete screenshot set and switch from pending wording to proof-complete wording only when evidence exists.
+11. Record screenshot filenames in `microsoft/foundry-live-proof.md`.
+12. Use `microsoft/foundry-iq-tenant-evidence-checklist.md` to confirm the complete screenshot set and switch from pending wording to proof-complete wording only when evidence exists.
 
 ## What Not To Claim Yet
 

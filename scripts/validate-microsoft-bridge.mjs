@@ -13,6 +13,7 @@ const foundryIqEvidenceChecklist = await readFile(
   new URL("../microsoft/foundry-iq-tenant-evidence-checklist.md", import.meta.url),
   "utf8",
 );
+const foundryLiveProof = await readFile(new URL("../microsoft/foundry-live-proof.md", import.meta.url), "utf8");
 const foundryUiQuickstart = await readFile(new URL("../microsoft/foundry-ui-quickstart.md", import.meta.url), "utf8");
 const foundryAgentInstructions = await readFile(
   new URL("../microsoft/foundry-agent-instructions.md", import.meta.url),
@@ -247,13 +248,14 @@ if (copilotResponse.microsoftIqLayer.knowledgeSources.length !== foundryIqLayer.
 
 const requiredEvidenceChecklistPhrases = [
   "Foundry project overview",
-  "Foundry IQ knowledge base detail",
+  "Agent model/configuration",
+  "Foundry IQ or Knowledge detail",
   "Knowledge source list",
   "Agent configuration",
-  "OpenAPI tool configuration",
   "Test prompt result",
   "Grounded or cited answer evidence",
   "Safety boundary or approval gates",
+  "OpenAPI tool configuration",
   "Submission Wording Before Tenant Proof",
   "Submission Wording After Tenant Proof",
 ];
@@ -261,6 +263,18 @@ const requiredEvidenceChecklistPhrases = [
 for (const phrase of requiredEvidenceChecklistPhrases) {
   if (!foundryIqEvidenceChecklist.includes(phrase)) {
     throw new Error(`Foundry IQ evidence checklist is missing ${phrase}`);
+  }
+}
+
+for (const phrase of [
+  "Foundry project: `Godspeed-Agentic-Defense`",
+  "Region: `Sweden Central`",
+  "Model: `GPT-4.1`",
+  "Knowledge base: `godspeed-defense-mission-knowledge`",
+  "Status: `pending-screenshots`",
+]) {
+  if (!foundryLiveProof.includes(phrase)) {
+    throw new Error(`Foundry live proof template is missing ${phrase}`);
   }
 }
 

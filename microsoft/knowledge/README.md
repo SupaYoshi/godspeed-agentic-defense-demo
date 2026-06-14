@@ -4,6 +4,7 @@ Upload or link these files to the Foundry IQ knowledge base named `godspeed-defe
 
 1. `godspeed-iq-grounding-overview.md`
 2. `godspeed-approval-boundaries.json`
+3. `../foundry-iq-knowledge-layer.json`
 
 These files are safe for a dev/test tenant proof:
 

@@ -19,12 +19,14 @@ Current tenant context from Walter:
 6. Upload or link these safe files:
    - `microsoft/knowledge/godspeed-iq-grounding-overview.md`
    - `microsoft/knowledge/godspeed-approval-boundaries.json`
+   - `microsoft/foundry-iq-knowledge-layer.json`
 7. Attach that knowledge base to the `Godspeed-Agentic-Defense` agent.
-8. Open Tools.
-9. If an approved HTTPS endpoint exists, add the OpenAPI tool from `microsoft/godspeed-mission.openapi.yaml` and select `createGodspeedCopilotMission`.
-10. If no approved HTTPS endpoint exists yet, skip the tool and capture Foundry IQ grounding proof first. Do not claim OpenAPI tool proof.
-11. Run the test prompt from `microsoft/foundry-iq-tenant-evidence-checklist.md`.
-12. Capture screenshots listed in `microsoft/foundry-iq-tenant-evidence-checklist.md`.
+8. Save/publish the agent if the UI asks for it.
+9. Run the test prompt from `microsoft/foundry-iq-tenant-evidence-checklist.md`.
+10. Capture the minimum screenshots listed in `microsoft/foundry-iq-tenant-evidence-checklist.md`.
+11. Open Tools only if an approved HTTPS endpoint exists.
+12. If an approved HTTPS endpoint exists, add the OpenAPI tool from `microsoft/godspeed-mission.openapi.yaml` and select `createGodspeedCopilotMission`.
+13. If no approved HTTPS endpoint exists yet, skip the tool and capture Foundry IQ grounding proof first. Do not claim OpenAPI tool proof.
 
 ## Do Not Do In The Tenant
 
@@ -44,3 +46,4 @@ The minimum live proof is:
 - Safe Godspeed knowledge files are attached.
 - Test response references Godspeed safety boundaries or approval gates from the knowledge source.
 - Screenshots show the evidence.
+- OpenAPI tool proof is optional under deadline pressure and should only be claimed after the endpoint/tool call works.
