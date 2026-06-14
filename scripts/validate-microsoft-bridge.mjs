@@ -19,6 +19,7 @@ const foundryAgentInstructions = await readFile(
   new URL("../microsoft/foundry-agent-instructions.md", import.meta.url),
   "utf8",
 );
+const foundryLiveSmokeTest = await readFile(new URL("../microsoft/foundry-live-smoke-test.md", import.meta.url), "utf8");
 const knowledgeReadme = await readFile(new URL("../microsoft/knowledge/README.md", import.meta.url), "utf8");
 const foundryOpenApi = await readFile(new URL("../microsoft/godspeed-mission.openapi.yaml", import.meta.url), "utf8");
 
@@ -296,6 +297,18 @@ for (const phrase of requiredFoundryQuickstartPhrases) {
 for (const phrase of ["Mission summary", "Approval gates", "Microsoft IQ status", "tenant-proof pending"]) {
   if (!foundryAgentInstructions.includes(phrase)) {
     throw new Error(`Foundry agent instructions are missing ${phrase}`);
+  }
+}
+
+for (const phrase of [
+  "critical remote access zero-day",
+  "Pass Criteria",
+  "Fail Criteria",
+  "Microsoft IQ status",
+  "foundry-iq-live-smoke-test-result.png",
+]) {
+  if (!foundryLiveSmokeTest.includes(phrase)) {
+    throw new Error(`Foundry live smoke test is missing ${phrase}`);
   }
 }
 

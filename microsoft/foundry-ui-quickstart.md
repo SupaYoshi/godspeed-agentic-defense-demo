@@ -22,7 +22,7 @@ Current tenant context from Walter:
    - `microsoft/foundry-iq-knowledge-layer.json`
 7. Attach that knowledge base to the `Godspeed-Agentic-Defense` agent.
 8. Save/publish the agent if the UI asks for it.
-9. Run the test prompt from `microsoft/foundry-iq-tenant-evidence-checklist.md`.
+9. Run the test prompt from `microsoft/foundry-live-smoke-test.md`.
 10. Capture the minimum screenshots listed in `microsoft/foundry-iq-tenant-evidence-checklist.md`.
 11. Open Tools only if an approved HTTPS endpoint exists.
 12. If an approved HTTPS endpoint exists, add the OpenAPI tool from `microsoft/godspeed-mission.openapi.yaml` and select `createGodspeedCopilotMission`.

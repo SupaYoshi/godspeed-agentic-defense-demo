@@ -27,6 +27,7 @@ Add screenshot filenames after capture:
 - Knowledge base / source list: `TBD`
 - Knowledge attached to agent: `TBD`
 - Test prompt answer: `TBD`
+- Live smoke test result: `foundry-iq-live-smoke-test-result.png` or `TBD`
 - Citation/source trace, if available: `TBD`
 - Approval gates / evidence package: `TBD`
 
