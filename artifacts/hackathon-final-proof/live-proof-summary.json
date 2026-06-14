@@ -1,0 +1,13 @@
+{
+  "capturedAt": "2026-06-14T23:08:28.681Z",
+  "url": "https://godspeed.battlecruiser.nl/",
+  "result": {
+    "title": "Godspeed Demo",
+    "foundryStatus": "Foundry response",
+    "foundryOutput": "Agent: Godspeed-Agentic-Defense v6\n\nMission Summary:\nGodspeed classified the scenario as a Phishing / identity compromise involving suspected Microsoft 365 token theft after a phishing campaign. The mission focuses on investigation, evidence gathering, detection coverage assessment, safe lab-first validation for mitigation plans, and blocking any risky production actions behind explicit human approval gates. No production remediation steps are taken without approval.\n\nSelected Specialist Agents:\n- Mission Analyst: Defines mission goals, boundaries, unknowns, decision points.\n- Threat Intelligence Agent: Maps attacker behavior and validates evidence.\n- Log Coverage Agent: Checks telemetry for exposure and detection gaps.\n- Evidence & Audit Agent: Captures facts, assumptions, source data, unresolved unknowns, and approvals.\n- Containment Agent (standby): Prepares isolation and credential rotation options behind approval gates.\n- Communications Draft Agent (standby): Drafts internal updates and briefings.\n- Identity & Access Agent: Assesses sign-in anomalies and privileged account risks.\n- Mail Security Agent: Reviews phishing mail flow and impacts.\n\nApproval Gates:\n- Disable or reset user accounts (blocked until explicit approval)\n- Purge messages from mailboxes (blocked)\n- Revoke sessions or tokens tenant-wide (blocked)\n- Send external status update (requires approval)\n\nAction Plan:\n- Immediate: Create phishing/identity compromise mission brief (Mission Analyst with Evidence & Audit and Threat Intel)\n- Immediate: Map evidence sources and detect telemetry gaps (Log Coverage, Identity & Access, Evidence & Audit)\n- Short-term: Build lab-first mitigation and rollback plan (Mission Analyst, Patch & Change, Containment)\n- Short-term: Draft approval request for patch or containment (Evidence & Audit, Containment, Communications Draft)\n- 30 days: Convert lessons learned into repeatable playbook (Communications Draft, Mission Analyst, Evidence & Audit)\n\nEvidence Package:\n- Fa",
+    "askOutput": "Agent: Godspeed-Agentic-Defense v6\n\nYes, this agent is real and active. The current route is: website -> Godspeed backend -> Azure AI Foundry agent -> Godspeed OpenAPI tool and knowledge layer.",
+    "agentCount": "8",
+    "gateCount": "4",
+    "actionCount": "5"
+  }
+}

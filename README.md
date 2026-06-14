@@ -84,6 +84,13 @@ Public-safe screenshots are in:
 artifacts/foundry-iq-live-proof/
 ```
 
+Final live browser proof, including screenshots and a short recording of both
+`Run Mission` and `Ask Godspeed`, is in:
+
+```text
+artifacts/hackathon-final-proof/
+```
+
 This proves the dev/test Foundry agent path with knowledge grounding and OpenAPI tool-backed mission creation. It does not claim production tenant integration, Defender/Sentinel/Intune integration, automated remediation, credential resets, customer-data access or real-world containment.
 
 ## What The Demo Shows
