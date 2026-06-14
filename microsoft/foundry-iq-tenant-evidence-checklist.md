@@ -38,13 +38,23 @@ Short version:
 
 ## Submission Wording After Tenant Proof
 
-Use this wording only after the required screenshots exist:
+Use this wording only after the required knowledge-grounding screenshots exist and a separate OpenAPI tool screenshot shows `createGodspeedCopilotMission` configured and tested:
 
 > Godspeed integrates Microsoft Foundry IQ in a dev/test tenant by attaching the `godspeed-defense-mission-knowledge` knowledge base to the Godspeed Foundry agent. The knowledge layer grounds responses in Godspeed mission doctrine, approval boundaries and evidence expectations, while the OpenAPI tool creates the governed defense mission package.
 
 Short version:
 
 > Foundry IQ dev/test tenant proof completed with knowledge-base grounding and approval-gated mission output.
+
+If only the Foundry agent and knowledge screenshots exist, but the OpenAPI tool has not been configured or tested yet, use this narrower wording instead:
+
+> Godspeed has dev/test Foundry IQ knowledge-grounding proof: the `godspeed-defense-mission-knowledge` knowledge base is attached to the Godspeed Foundry agent and grounds answers in Godspeed mission doctrine, approval boundaries and evidence expectations. OpenAPI tool proof remains pending.
+
+Short version:
+
+> Foundry IQ knowledge-grounding proof captured; OpenAPI tool proof pending.
+
+Only claim the OpenAPI tool path after a separate screenshot shows `createGodspeedCopilotMission` configured and a test call succeeds.
 
 ## Do Not Claim
 
