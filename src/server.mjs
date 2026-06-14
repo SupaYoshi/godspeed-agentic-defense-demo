@@ -40,6 +40,20 @@ const publicSpecRoutes = new Map([
     },
   ],
   [
+    "/openapi-foundry.json",
+    {
+      file: path.join(rootDir, "microsoft", "foundry-openapi-tool.json"),
+      type: "application/json; charset=utf-8",
+    },
+  ],
+  [
+    "/microsoft/foundry-openapi-tool.json",
+    {
+      file: path.join(rootDir, "microsoft", "foundry-openapi-tool.json"),
+      type: "application/json; charset=utf-8",
+    },
+  ],
+  [
     "/microsoft/copilot-studio-openapi-v2.json",
     {
       file: path.join(rootDir, "microsoft", "copilot-studio-openapi-v2.json"),

@@ -26,6 +26,9 @@ const foundryConnectionOpenApi = await readFile(
   new URL("../microsoft/foundry-openapi-tool.yaml", import.meta.url),
   "utf8",
 );
+const foundryConnectionOpenApiJson = JSON.parse(
+  await readFile(new URL("../microsoft/foundry-openapi-tool.json", import.meta.url), "utf8"),
+);
 
 const requiredPaths = [
   "/api/microsoft/copilot/mission",
@@ -50,6 +53,17 @@ for (const phrase of [
   if (!foundryConnectionOpenApi.includes(phrase)) {
     throw new Error(`Foundry connection OpenAPI spec is missing ${phrase}`);
   }
+}
+
+if (
+  foundryConnectionOpenApiJson.paths?.["/api/microsoft/copilot/mission"]?.post?.operationId !==
+  "createGodspeedCopilotMission"
+) {
+  throw new Error("Foundry connection JSON OpenAPI spec is missing createGodspeedCopilotMission");
+}
+
+if (foundryConnectionOpenApiJson.components?.securitySchemes?.FoundryProofKey?.name !== "x-godspeed-proof-key") {
+  throw new Error("Foundry connection JSON OpenAPI spec is missing x-godspeed-proof-key");
 }
 
 const mission = runGodspeedMission({

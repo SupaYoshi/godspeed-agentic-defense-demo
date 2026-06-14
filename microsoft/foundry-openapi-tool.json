@@ -1,0 +1,179 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Godspeed Foundry Mission Tool",
+    "version": "0.1.0",
+    "description": "Foundry-friendly OpenAPI tool contract for the Godspeed hackathon sandbox. The x-godspeed-proof-key header exists so Microsoft Foundry can attach a required dev/test connection. The public sandbox endpoint accepts the header but does not treat it as production authentication.\n"
+  },
+  "servers": [
+    {
+      "url": "https://godspeed.battlecruiser.nl",
+      "description": "Public hackathon demo endpoint"
+    }
+  ],
+  "paths": {
+    "/api/microsoft/copilot/mission": {
+      "post": {
+        "operationId": "createGodspeedCopilotMission",
+        "summary": "Create a Copilot-ready governed defense mission",
+        "description": "Converts a security scenario into a Copilot-friendly mission package with selected agents, approval gates, action plan, evidence package, safety boundary and Microsoft IQ status.\n",
+        "security": [
+          {
+            "FoundryProofKey": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "description"
+                ],
+                "properties": {
+                  "title": {
+                    "type": "string",
+                    "description": "Short mission title."
+                  },
+                  "description": {
+                    "type": "string",
+                    "description": "Natural-language security scenario."
+                  },
+                  "urgency": {
+                    "type": "string",
+                    "enum": [
+                      "Low",
+                      "Medium",
+                      "High",
+                      "Critical"
+                    ]
+                  },
+                  "boundary": {
+                    "type": "string",
+                    "description": "Safety boundary, non-goals and approval constraints."
+                  },
+                  "approvalOwner": {
+                    "type": "string",
+                    "description": "Human owner for approval-gated actions."
+                  }
+                }
+              },
+              "example": {
+                "title": "Suspected Microsoft 365 token theft",
+                "description": "A phishing campaign led to suspected token theft in Microsoft 365. Create a governed defense mission with approval gates.",
+                "urgency": "High",
+                "boundary": "Read-only first. No production changes without approval.",
+                "approvalOwner": "Security incident commander"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Copilot-ready mission package created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "missionId": {
+                      "type": "string"
+                    },
+                    "scenarioProfile": {
+                      "type": "string"
+                    },
+                    "selectedTrack": {
+                      "type": "string"
+                    },
+                    "selectedAgents": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "action": {
+                            "type": "string"
+                          },
+                          "finding": {
+                            "type": "string"
+                          },
+                          "wave": {
+                            "type": "integer"
+                          },
+                          "status": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "approvalGates": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "action": {
+                            "type": "string"
+                          },
+                          "reason": {
+                            "type": "string"
+                          },
+                          "state": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "actionPlan": {
+                      "type": "array",
+                      "items": {
+                        "type": "object"
+                      }
+                    },
+                    "defensePackage": {
+                      "type": "object"
+                    },
+                    "safetyBoundary": {
+                      "type": "object"
+                    },
+                    "sourceEndpoints": {
+                      "type": "object"
+                    },
+                    "microsoftIqLayer": {
+                      "type": "object"
+                    },
+                    "suggestedCopilotReply": {
+                      "type": "object"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request body."
+          },
+          "500": {
+            "description": "Mission engine error."
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "FoundryProofKey": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "x-godspeed-proof-key",
+        "description": "Dev/test proof header for Microsoft Foundry connection setup. Use a non-secret value such as godspeed-foundry-devtest.\n"
+      }
+    }
+  }
+}

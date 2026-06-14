@@ -9,6 +9,7 @@ Use:
 - `microsoft/godspeed-mission.openapi.yaml`
 - live spec URL: `https://godspeed.battlecruiser.nl/openapi.yaml`
 - Foundry connection-friendly spec: `https://godspeed.battlecruiser.nl/openapi-foundry.yaml`
+- Foundry connection-friendly JSON spec: `https://godspeed.battlecruiser.nl/openapi-foundry.json`
 - operation: `createGodspeedCopilotMission`
 - method: `POST`
 - path: `/api/microsoft/copilot/mission`
@@ -44,7 +45,7 @@ curl -fsS \
 ## Foundry Deployment Shape
 
 1. Use the public hackathon endpoint `https://godspeed.battlecruiser.nl`.
-2. In Foundry, configure an OpenAPI tool using `https://godspeed.battlecruiser.nl/openapi-foundry.yaml` or upload `microsoft/foundry-openapi-tool.yaml`.
+2. In Foundry, configure an OpenAPI tool by pasting the JSON from `https://godspeed.battlecruiser.nl/openapi-foundry.json` or upload `microsoft/foundry-openapi-tool.json`.
 3. If Foundry requires a connection, use header key `x-godspeed-proof-key` with value `godspeed-foundry-devtest`. This is only a dev/test proof header; it is not production authentication.
 4. Attach the tool to a prompt agent or a hosted Agent Framework implementation.
 5. Use managed identity, API key or OAuth depending on deployment boundary.
