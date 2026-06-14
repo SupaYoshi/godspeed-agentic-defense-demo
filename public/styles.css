@@ -237,8 +237,35 @@ textarea {
 
 .ask-panel {
   margin-top: 18px;
-  padding-top: 18px;
-  border-top: 1px solid var(--line);
+  padding: 0 12px 12px;
+  overflow: hidden;
+  border: 1px solid #b6e0d2;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.ask-banner {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin: 0 -12px 14px;
+  padding: 9px 12px;
+  background: var(--green);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.ask-banner span {
+  display: grid;
+  width: 22px;
+  height: 22px;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--green);
+  font-weight: 900;
 }
 
 .ask-panel textarea {
