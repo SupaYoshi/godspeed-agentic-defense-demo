@@ -22,6 +22,10 @@ const foundryAgentInstructions = await readFile(
 const foundryLiveSmokeTest = await readFile(new URL("../microsoft/foundry-live-smoke-test.md", import.meta.url), "utf8");
 const knowledgeReadme = await readFile(new URL("../microsoft/knowledge/README.md", import.meta.url), "utf8");
 const foundryOpenApi = await readFile(new URL("../microsoft/godspeed-mission.openapi.yaml", import.meta.url), "utf8");
+const foundryConnectionOpenApi = await readFile(
+  new URL("../microsoft/foundry-openapi-tool.yaml", import.meta.url),
+  "utf8",
+);
 
 const requiredPaths = [
   "/api/microsoft/copilot/mission",
@@ -34,6 +38,17 @@ for (const requiredPath of requiredPaths) {
   }
   if (!foundryOpenApi.includes(requiredPath)) {
     throw new Error(`OpenAPI 3 spec is missing ${requiredPath}`);
+  }
+}
+
+for (const phrase of [
+  "/api/microsoft/copilot/mission",
+  "operationId: createGodspeedCopilotMission",
+  "FoundryProofKey",
+  "name: x-godspeed-proof-key",
+]) {
+  if (!foundryConnectionOpenApi.includes(phrase)) {
+    throw new Error(`Foundry connection OpenAPI spec is missing ${phrase}`);
   }
 }
 
