@@ -82,7 +82,7 @@ To be added after recording.
 
 ## Public Repository URL
 
-To be added after publication.
+https://github.com/SupaYoshi/godspeed-agentic-defense-demo
 
 ## Track
 

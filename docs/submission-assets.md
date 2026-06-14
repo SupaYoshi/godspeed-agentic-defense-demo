@@ -10,7 +10,7 @@ Use these fields for the hackathon form.
 
 ## Repository
 
-- Public repository URL: to be added after GitHub publication.
+- Public repository URL: https://github.com/SupaYoshi/godspeed-agentic-defense-demo
 - Main README: `README.md`
 - Submission text: `docs/submission-draft.md`
 
