@@ -1,12 +1,30 @@
 # Godspeed Agentic Defense
 
-Godspeed is a hackathon demo for governed agentic defense missions.
+Godspeed is a working sandbox prototype for governed agentic defense missions, built for the Microsoft Agents League Hackathon Reasoning Agents track.
 
-It turns a high-pressure security scenario into a controlled mission plan: the right specialist agents, the right evidence, the right approval gates, and a clear executive defense package.
+It turns a high-pressure security scenario into a controlled multi-agent mission: the right specialist agents, the right evidence, the right approval gates, and a clear executive defense package.
 
 GODSPEED stands for:
 
 **Governed Orchestration for Defense, Simulation, Prioritisation, Evidence, Execution and Decisioning.**
+
+## Hackathon Snapshot
+
+- **Track:** Reasoning Agents.
+- **Working demo:** local browser UI, REST API and CLI mission run.
+- **Microsoft path:** Copilot Studio / Microsoft 365 Copilot front door, Foundry Agent Service runtime path, Agent Framework workflow path.
+- **Safety model:** sandbox data only, no production access, no tenant secrets, no automatic remediation, human approval gates before risky actions.
+- **Demo evidence:** interface screenshot, architecture diagram, technical background, Copilot-ready OpenAPI contracts and CI checks.
+
+## Judging Rubric Fit
+
+- **Accuracy & Relevance:** working agentic defense prototype with source code, demo artifacts, architecture, Microsoft bridge endpoints and Copilot/Foundry contracts.
+- **Reasoning & Multi-step Thinking:** scenario classification, specialist-agent selection, facts/assumptions/unknowns, premortem, lab-first validation, action ownership and evidence packaging.
+- **Creativity & Originality:** Godspeed does not make Copilot answer a security question; it makes Copilot launch a governed defense mission.
+- **User Experience & Presentation:** browser UI shows the mission flow end to end, with a concise executive package for review.
+- **Reliability & Safety:** sandbox-first design, human-in-the-loop approval gates, no production actions, no customer data, no external messaging and CI validation.
+
+See `docs/judging-rubric.md` for the submission-ready scoring narrative.
 
 ## Track Fit
 

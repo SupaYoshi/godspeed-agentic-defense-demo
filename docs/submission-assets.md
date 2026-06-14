@@ -18,6 +18,17 @@ Use these fields for the hackathon form.
 
 - Demo video URL: to be added after upload.
 - Suggested title: Godspeed Agentic Defense - Hackathon Demo
+- Suggested visibility: unlisted.
+
+## Copy-Paste Submission Links
+
+- GitHub repository: https://github.com/SupaYoshi/godspeed-agentic-defense-demo
+- Architecture diagram: https://github.com/SupaYoshi/godspeed-agentic-defense-demo/blob/main/architecture/godspeed-architecture.svg
+- Technical background: https://github.com/SupaYoshi/godspeed-agentic-defense-demo/blob/main/docs/technical-background.md
+- Microsoft implementation path: https://github.com/SupaYoshi/godspeed-agentic-defense-demo/blob/main/docs/microsoft-implementation-path.md
+- Copilot Studio OpenAPI import file: https://github.com/SupaYoshi/godspeed-agentic-defense-demo/blob/main/microsoft/copilot-studio-openapi-v2.json
+- Foundry OpenAPI tool path: https://github.com/SupaYoshi/godspeed-agentic-defense-demo/blob/main/microsoft/foundry-openapi-tool.md
+- Judging rubric response: https://github.com/SupaYoshi/godspeed-agentic-defense-demo/blob/main/docs/judging-rubric.md
 
 ## Architecture
 
@@ -37,3 +48,10 @@ Godspeed uses Microsoft 365 Copilot or Copilot Studio as the enterprise front do
 ## Safety Statement
 
 Godspeed is intentionally sandbox-first. It plans risky security actions, but does not execute them. Production changes, containment, patching, credential resets and external communication remain blocked until an explicit human approval gate is satisfied.
+
+## Short Discord / Community Vote Post
+
+Godspeed Agentic Defense is our Microsoft Agents League Reasoning Agents submission. It turns an urgent cyber incident prompt into a governed multi-agent defense mission: specialist agents, multi-step reasoning, premortem, lab-first validation, human approval gates and an evidence package.
+
+Demo: [paste YouTube URL]
+Repo: https://github.com/SupaYoshi/godspeed-agentic-defense-demo

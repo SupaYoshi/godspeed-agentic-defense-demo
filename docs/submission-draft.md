@@ -26,6 +26,8 @@ Godspeed acts as an agentic command layer. A user describes a security scenario 
 
 The current build is a working sandbox prototype. It runs locally, accepts a real mission prompt, reasons over the scenario profile, selects the relevant specialist agents, creates owner-assigned actions, and writes evidence artifacts. It deliberately avoids tenant secrets, production access, customer data, real remediation and external messaging.
 
+In the Microsoft-native target architecture, Copilot is the front door and Godspeed is the governed reasoning backend. Instead of asking Copilot to produce a single security answer, the user asks Copilot to launch a controlled defense mission with explicit reasoning steps, specialist ownership, approval gates and auditable evidence.
+
 ## Microsoft Technology Use
 
 - Microsoft 365 Copilot or Copilot Studio as the enterprise front door.
@@ -37,9 +39,17 @@ The current build is a working sandbox prototype. It runs locally, accepts a rea
 The current repository runs in `local-sandbox` mode for safe review. It contains the production bridge artifacts for the `microsoft-native-target` profile:
 
 - `microsoft/godspeed-mission.openapi.yaml`
+- `microsoft/copilot-studio-openapi-v2.json`
 - `microsoft/copilot-studio-rest-api-tool.md`
+- `microsoft/foundry-openapi-tool.md`
+- `microsoft/foundry-agent-definition.json`
 - `microsoft/foundry-agent-framework-bridge.md`
 - `microsoft/foundry-workflow-concept.yaml`
+
+The repository also includes Microsoft-facing bridge endpoints:
+
+- `POST /api/microsoft/copilot/mission`
+- `POST /api/microsoft/agent-framework/event`
 
 ## Architecture Overview
 
@@ -89,3 +99,15 @@ https://github.com/SupaYoshi/godspeed-agentic-defense-demo
 Reasoning Agents.
 
 Why this track: the core value is multi-step reasoning under operational risk. Godspeed separates facts from assumptions, selects the right specialist agents, plans safe validation, identifies unknowns, and blocks unsafe actions until a human approves them.
+
+## Judging Rubric Summary
+
+Accuracy & Relevance: Godspeed is a working agentic prototype with source code, demo UI, REST API, CLI workflow, architecture, Microsoft bridge endpoints and Copilot/Foundry implementation artifacts.
+
+Reasoning & Multi-step Thinking: The project demonstrates scenario classification, specialist-agent selection, facts/assumptions/unknowns, premortem analysis, lab-first validation, approval gates, owner-assigned actions and evidence packaging.
+
+Creativity & Originality: Godspeed changes the role of Copilot from an answer surface into the front door for a governed cyber defense mission.
+
+User Experience & Presentation: The browser demo shows the mission lifecycle end to end and produces an executive defense package that can be reviewed by a human decision-maker.
+
+Reliability & Safety: The design is sandbox-first and human-in-the-loop. It avoids production access, tenant secrets, customer data, real remediation, external messaging and automatic patching.
