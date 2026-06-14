@@ -1,0 +1,28 @@
+{
+  "name": "Godspeed Approval Boundaries",
+  "profile": "local-sandbox",
+  "foundryIqStatus": "tenant-proof pending",
+  "allowedInRepo": [
+    "read local sample data",
+    "generate mission plans",
+    "generate approval gates",
+    "generate evidence package drafts",
+    "validate OpenAPI and bridge contracts"
+  ],
+  "blockedWithoutSeparateApproval": [
+    "create Azure or Microsoft Foundry resources",
+    "change tenant settings",
+    "store or use secrets",
+    "deploy public endpoints",
+    "connect production Defender, Sentinel, Intune, ticketing or endpoint-response tools",
+    "ingest customer or production security data",
+    "run production scans, patching, isolation, account resets or external communications"
+  ],
+  "manualProofRequired": [
+    "Foundry project screenshot",
+    "Foundry IQ knowledge base screenshot",
+    "knowledge source upload or link screenshot",
+    "Godspeed agent tool configuration screenshot",
+    "grounded response screenshot with approval gates"
+  ]
+}

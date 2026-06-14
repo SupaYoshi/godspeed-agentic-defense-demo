@@ -305,6 +305,21 @@ for (const source of foundryIqLayer.knowledgeSources) {
   }
 }
 
+const requiredUploadBundleFiles = [
+  "README.md",
+  "foundry-agent-instructions.md",
+  "foundry-iq-knowledge-layer.json",
+  "foundry-iq-tenant-evidence-checklist.md",
+  "foundry-ui-quickstart.md",
+  "godspeed-approval-boundaries.json",
+  "godspeed-foundry-iq-knowledge-pack.zip",
+  "godspeed-iq-grounding-overview.md",
+];
+
+for (const fileName of requiredUploadBundleFiles) {
+  await readFile(new URL(`../artifacts/foundry-iq-upload/${fileName}`, import.meta.url));
+}
+
 const scenarioSamples = [
   {
     description: "A phishing campaign led to suspected account token theft in Microsoft 365.",

@@ -144,6 +144,7 @@ This is demo mode:
 - `docs/` - architecture, submission draft, video script and security boundaries.
 - `architecture/` - standalone architecture diagram.
 - `artifacts/screenshots/` - interface screenshot for the submission.
+- `artifacts/foundry-iq-upload/` - upload-ready Foundry IQ knowledge pack for the approved dev/test tenant.
 - `artifacts/voice/` - final demo voice-over assets.
 - `microsoft/` - Copilot REST API tool contract, Foundry / Agent Framework bridge and workflow concept.
 - `scripts/validate-microsoft-bridge.mjs` - local validation for the Copilot/Agent Framework bridge contract.
