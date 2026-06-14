@@ -1,6 +1,10 @@
 {
   "capturedAt": "2026-06-14T23:08:28.681Z",
   "url": "https://godspeed.battlecruiser.nl/",
+  "submissionVideo": {
+    "file": "godspeed-working-demo-proof-foundry.mov",
+    "description": "Walter-recorded live proof video showing both Run Mission and Ask Godspeed."
+  },
   "result": {
     "title": "Godspeed Demo",
     "foundryStatus": "Foundry response",

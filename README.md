@@ -84,7 +84,7 @@ Public-safe screenshots are in:
 artifacts/foundry-iq-live-proof/
 ```
 
-Final live browser proof, including screenshots and a short recording of both
+Final live browser proof, including screenshots and Walter's short recording of both
 `Run Mission` and `Ask Godspeed`, is in:
 
 ```text
