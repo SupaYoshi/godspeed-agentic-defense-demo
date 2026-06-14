@@ -71,6 +71,8 @@ npm run check:microsoft
 npm start
 ```
 
+The same checks run in GitHub Actions on pushes and pull requests.
+
 Open:
 
 ```text

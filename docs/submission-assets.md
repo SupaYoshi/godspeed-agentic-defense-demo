@@ -25,6 +25,9 @@ Use these fields for the hackathon form.
 - Technical background: `docs/technical-background.md`
 - Microsoft implementation path: `docs/microsoft-implementation-path.md`
 - Copilot Studio REST API tool contract: `microsoft/godspeed-mission.openapi.yaml`
+- Copilot Studio OpenAPI v2 import file: `microsoft/copilot-studio-openapi-v2.json`
+- Foundry OpenAPI tool path: `microsoft/foundry-openapi-tool.md`
+- Foundry agent definition intent: `microsoft/foundry-agent-definition.json`
 - Foundry / Agent Framework bridge: `microsoft/foundry-agent-framework-bridge.md`
 
 ## Architecture Overview
