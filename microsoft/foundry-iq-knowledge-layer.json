@@ -1,0 +1,70 @@
+{
+  "name": "Godspeed Foundry IQ Knowledge Layer",
+  "version": "0.1.0",
+  "type": "Foundry IQ",
+  "integrationStatus": "approval-gated",
+  "tenantProofStatus": "tenant-proof pending",
+  "targetUse": "Ground the Godspeed orchestrator on safe mission doctrine, approval boundaries and evidence expectations before it calls planning or workflow tools.",
+  "microsoftDocs": [
+    {
+      "title": "What is Foundry IQ?",
+      "url": "https://learn.microsoft.com/en-us/azure/foundry/agents/concepts/what-is-foundry-iq"
+    },
+    {
+      "title": "Connect Agents to Foundry IQ Knowledge Bases",
+      "url": "https://learn.microsoft.com/en-us/azure/foundry/agents/how-to/foundry-iq-connect"
+    },
+    {
+      "title": "Microsoft Foundry Agent Service overview",
+      "url": "https://learn.microsoft.com/en-us/azure/foundry/agents/overview"
+    }
+  ],
+  "knowledgeBaseTarget": {
+    "name": "godspeed-defense-mission-knowledge",
+    "runtime": "Microsoft Foundry Agent Service",
+    "retrievalPath": "Foundry IQ knowledge base connected to the Godspeed agent",
+    "liveTenantState": "not-created-in-repo",
+    "reason": "Creating the Foundry project, knowledge base, index, connection or retrieval tool requires Walter's dev/test tenant approval."
+  },
+  "approvalGateReferences": [
+    "approve-public-https-endpoint-choice",
+    "approve-sandbox-auth-mode",
+    "approve-foundry-iq-knowledge-layer",
+    "approve-foundry-openapi-tool-configuration",
+    "approve-test-prompts-and-screenshots",
+    "block-production-customer-security-tool-connections"
+  ],
+  "knowledgeSources": [
+    {
+      "sourceId": "godspeed-iq-grounding-overview",
+      "title": "Godspeed IQ Grounding Overview",
+      "path": "microsoft/knowledge/godspeed-iq-grounding-overview.md",
+      "format": "text/markdown",
+      "sensitivity": "public-demo-safe",
+      "purpose": "Ground Foundry IQ on Godspeed mission phases, evidence expectations and safety language."
+    },
+    {
+      "sourceId": "godspeed-approval-boundaries",
+      "title": "Godspeed Approval Boundaries",
+      "path": "microsoft/knowledge/godspeed-approval-boundaries.json",
+      "format": "application/json",
+      "sensitivity": "public-demo-safe",
+      "purpose": "Ground Foundry IQ on blocked actions, tenant proof state and manual approval gates."
+    }
+  ],
+  "expectedGroundingBehavior": [
+    "Use the knowledge layer to explain Godspeed mission doctrine and safety gates.",
+    "Cite or identify the knowledge source used when the live tenant surface supports citations.",
+    "Do not treat local sample knowledge as production evidence.",
+    "Do not claim Foundry IQ retrieval is live until tenant proof screenshots exist."
+  ],
+  "manualTenantProofSteps": [
+    "Create or select Walter's approved dev/test Microsoft Foundry project.",
+    "Create a Foundry IQ knowledge base named godspeed-defense-mission-knowledge.",
+    "Upload or link the safe files under microsoft/knowledge/ as grounding sources.",
+    "Attach the Foundry IQ knowledge base to the Godspeed Foundry Agent Service agent.",
+    "Connect the Godspeed OpenAPI tool after endpoint and auth gates are approved.",
+    "Run zero-day, phishing, ransomware and cloud exposure prompts.",
+    "Capture screenshots of the knowledge source configuration, agent tool configuration, grounded answer and approval gates."
+  ]
+}

@@ -3,6 +3,9 @@ import { readFileSync } from "node:fs";
 const approvalLadder = JSON.parse(
   readFileSync(new URL("../microsoft/integration-approval-ladder.json", import.meta.url), "utf8"),
 );
+const microsoftIqLayer = JSON.parse(
+  readFileSync(new URL("../microsoft/foundry-iq-knowledge-layer.json", import.meta.url), "utf8"),
+);
 
 const integrationProfile = {
   mode: "local-sandbox",
@@ -75,6 +78,7 @@ export function toCopilotToolResponse(mission, artifactDir) {
     actionPlan,
     defensePackage,
     localApprovalLadder: approvalLadder,
+    microsoftIqLayer,
     suggestedCopilotReply: {
       opening: mission.executiveSummary,
       requiredSections: [
@@ -119,6 +123,12 @@ export function toAgentFrameworkEvent(mission) {
           profile: approvalLadder.profile,
           defaultState: approvalLadder.defaultState,
           hardBlockGate: "block-production-customer-security-tool-connections",
+        },
+        microsoftIqLayer: {
+          type: microsoftIqLayer.type,
+          integrationStatus: microsoftIqLayer.integrationStatus,
+          tenantProofStatus: microsoftIqLayer.tenantProofStatus,
+          approvalGate: "approve-foundry-iq-knowledge-layer",
         },
       },
       outputArtifacts: [

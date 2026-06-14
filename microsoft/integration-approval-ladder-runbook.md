@@ -9,6 +9,7 @@ The ladder is a demo-safe governance artifact. It shows judges and reviewers how
 Use:
 
 - `microsoft/integration-approval-ladder.json`
+- `microsoft/foundry-iq-knowledge-layer.json`
 
 The bridge includes the same artifact in `localApprovalLadder` on `POST /api/microsoft/copilot/mission`, so Copilot or Foundry can display the pending gates beside the mission plan.
 
@@ -25,8 +26,9 @@ The bridge includes the same artifact in `localApprovalLadder` on `POST /api/mic
 2. Approve sandbox authentication mode.
 3. Approve Copilot Studio OpenAPI import.
 4. Approve Foundry OpenAPI tool configuration.
-5. Approve test prompts and screenshots.
-6. Block production, customer and security-tool connections until separate approval.
+5. Approve Foundry IQ knowledge layer.
+6. Approve test prompts and screenshots.
+7. Block production, customer and security-tool connections until separate approval.
 
 ## How To Use In The Demo
 
@@ -45,6 +47,7 @@ The bridge includes the same artifact in `localApprovalLadder` on `POST /api/mic
 - required gate IDs are present;
 - gate sequence numbers are ordered;
 - live tenant automation is not represented as enabled;
+- Foundry IQ is represented as `approval-gated` and `tenant-proof pending`;
 - production/customer/security-tool connections remain hard-blocked;
 - the Copilot response contains `localApprovalLadder`;
 - the OpenAPI v2 and OpenAPI 3 contracts include the ladder schemas.

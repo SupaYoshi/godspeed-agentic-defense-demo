@@ -23,8 +23,17 @@ npm start
 Capture:
 
 - `/api/health` response.
-- `POST /api/microsoft/copilot/mission` response showing `selectedAgents`, `approvalGates`, `actionPlan`, `defensePackage`, `safetyBoundary`, `localApprovalLadder` and `manualTenantProofSteps`.
+- `POST /api/microsoft/copilot/mission` response showing `selectedAgents`, `approvalGates`, `actionPlan`, `defensePackage`, `safetyBoundary`, `localApprovalLadder`, `microsoftIqLayer` and `manualTenantProofSteps`.
 - `POST /api/microsoft/agent-framework/event` response showing `GodspeedMissionCreated`.
+
+## Foundry IQ Proof
+
+1. Create or select Walter's approved Microsoft Foundry dev/test project.
+2. Create a Foundry IQ knowledge base named `godspeed-defense-mission-knowledge`.
+3. Upload or link the safe files listed in `microsoft/foundry-iq-knowledge-layer.json`.
+4. Attach the Foundry IQ knowledge base to the Godspeed Foundry Agent Service agent.
+5. Confirm the live response can use the knowledge layer for Godspeed doctrine, safety boundaries and evidence expectations.
+6. Capture screenshots of the Foundry project, Foundry IQ knowledge base, knowledge source list, agent attachment and grounded response.
 
 ## Copilot Studio Proof
 

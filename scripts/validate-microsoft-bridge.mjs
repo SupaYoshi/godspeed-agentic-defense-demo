@@ -6,6 +6,9 @@ const openApi = JSON.parse(await readFile(new URL("../microsoft/copilot-studio-o
 const approvalLadder = JSON.parse(
   await readFile(new URL("../microsoft/integration-approval-ladder.json", import.meta.url), "utf8"),
 );
+const foundryIqLayer = JSON.parse(
+  await readFile(new URL("../microsoft/foundry-iq-knowledge-layer.json", import.meta.url), "utf8"),
+);
 const foundryOpenApi = await readFile(new URL("../microsoft/godspeed-mission.openapi.yaml", import.meta.url), "utf8");
 
 const requiredPaths = [
@@ -44,6 +47,7 @@ const requiredCopilotFields = [
   "actionPlan",
   "defensePackage",
   "localApprovalLadder",
+  "microsoftIqLayer",
   "suggestedCopilotReply",
   "manualTenantProofSteps",
 ];
@@ -90,6 +94,18 @@ if (copilotResponse.localApprovalLadder.defaultState !== "not-approved") {
   throw new Error("Integration approval ladder must default to not-approved");
 }
 
+if (copilotResponse.microsoftIqLayer.type !== "Foundry IQ") {
+  throw new Error("Copilot response must include a Foundry IQ Microsoft IQ layer");
+}
+
+if (copilotResponse.microsoftIqLayer.integrationStatus !== "approval-gated") {
+  throw new Error("Foundry IQ layer must remain approval-gated until live tenant proof exists");
+}
+
+if (copilotResponse.microsoftIqLayer.tenantProofStatus !== "tenant-proof pending") {
+  throw new Error("Foundry IQ layer must clearly mark tenant proof as pending");
+}
+
 if (event.type !== "GodspeedMissionCreated") {
   throw new Error("Agent Framework event type is incorrect");
 }
@@ -102,6 +118,10 @@ if (event.workflow.guardrails?.approvalLadder?.hardBlockGate !== "block-producti
   throw new Error("Agent Framework guardrails must reference the production/customer/security-tool hard block");
 }
 
+if (event.workflow.guardrails?.microsoftIqLayer?.approvalGate !== "approve-foundry-iq-knowledge-layer") {
+  throw new Error("Agent Framework guardrails must reference the Foundry IQ approval gate");
+}
+
 const requiredOpenApiDefinitions = [
   "IntegrationProfile",
   "SafetyBoundary",
@@ -109,6 +129,9 @@ const requiredOpenApiDefinitions = [
   "SuggestedCopilotReply",
   "LocalApprovalLadder",
   "ApprovalLadderGate",
+  "MicrosoftIqLayer",
+  "MicrosoftDocReference",
+  "IqKnowledgeSource",
 ];
 
 for (const definition of requiredOpenApiDefinitions) {
@@ -125,6 +148,7 @@ const requiredApprovalGateIds = [
   "approve-sandbox-auth-mode",
   "approve-copilot-studio-openapi-import",
   "approve-foundry-openapi-tool-configuration",
+  "approve-foundry-iq-knowledge-layer",
   "approve-test-prompts-and-screenshots",
   "block-production-customer-security-tool-connections",
 ];
@@ -174,6 +198,41 @@ for (const blockedTerm of ["customer data", "production scans", "tenant-wide pol
 
 if (copilotResponse.localApprovalLadder.gates.length !== approvalLadder.gates.length) {
   throw new Error("Copilot response ladder must match the structured approval ladder artifact");
+}
+
+if (foundryIqLayer.type !== "Foundry IQ") {
+  throw new Error("Foundry IQ manifest must identify type as Foundry IQ");
+}
+
+if (foundryIqLayer.integrationStatus !== "approval-gated") {
+  throw new Error("Foundry IQ manifest must be approval-gated");
+}
+
+if (foundryIqLayer.tenantProofStatus !== "tenant-proof pending") {
+  throw new Error("Foundry IQ manifest must mark tenant proof pending");
+}
+
+if (!foundryIqLayer.approvalGateReferences.includes("approve-foundry-iq-knowledge-layer")) {
+  throw new Error("Foundry IQ manifest must reference the Foundry IQ approval gate");
+}
+
+if (!foundryIqLayer.microsoftDocs.every((doc) => doc.url.startsWith("https://learn.microsoft.com/"))) {
+  throw new Error("Foundry IQ manifest must cite official Microsoft Learn references");
+}
+
+if (!Array.isArray(foundryIqLayer.knowledgeSources) || foundryIqLayer.knowledgeSources.length < 2) {
+  throw new Error("Foundry IQ manifest must include at least two safe knowledge sources");
+}
+
+for (const source of foundryIqLayer.knowledgeSources) {
+  if (source.sensitivity !== "public-demo-safe") {
+    throw new Error(`Knowledge source ${source.sourceId} must be public-demo-safe`);
+  }
+  await readFile(new URL(`../${source.path}`, import.meta.url), "utf8");
+}
+
+if (copilotResponse.microsoftIqLayer.knowledgeSources.length !== foundryIqLayer.knowledgeSources.length) {
+  throw new Error("Copilot response IQ layer must match the Foundry IQ manifest sources");
 }
 
 const scenarioSamples = [

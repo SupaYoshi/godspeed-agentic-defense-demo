@@ -59,6 +59,9 @@ This validates that the OpenAPI v2 import file and bridge response shape stay al
 - `microsoft/godspeed-mission.openapi.yaml` - OpenAPI 3.0 tool contract for Foundry-style API tooling.
 - `microsoft/foundry-openapi-tool.md` - setup and boundary notes for the Foundry OpenAPI tool path.
 - `microsoft/foundry-agent-definition.json` - version-controlled target agent definition intent.
+- `microsoft/foundry-iq-knowledge-layer.json` - approval-gated Foundry IQ knowledge-layer manifest.
+- `microsoft/foundry-iq-integration-runbook.md` - tenant-proof steps for connecting the knowledge layer later.
+- `microsoft/knowledge/` - safe sample grounding sources for the Foundry IQ proof.
 - `microsoft/integration-approval-ladder.json` - local/demo gate model for Microsoft rollout approvals.
 - `microsoft/integration-approval-ladder-runbook.md` - operator runbook for using the ladder without live tenant automation.
 
@@ -82,10 +85,22 @@ Live tenant approval automation is intentionally out of scope for the public dem
 2. Approve sandbox authentication mode.
 3. Approve Copilot Studio OpenAPI import.
 4. Approve Foundry OpenAPI tool configuration.
-5. Approve test prompts and screenshots.
-6. Keep production, customer and security-tool connections blocked until separate approval exists.
+5. Approve Foundry IQ knowledge layer.
+6. Approve test prompts and screenshots.
+7. Keep production, customer and security-tool connections blocked until separate approval exists.
 
-`POST /api/microsoft/copilot/mission` returns this model as `localApprovalLadder`, and `npm run check:microsoft` validates the required gates.
+`POST /api/microsoft/copilot/mission` returns this model as `localApprovalLadder` and returns the Foundry IQ target as `microsoftIqLayer`. `npm run check:microsoft` validates both.
+
+## Foundry IQ Layer
+
+Godspeed uses Foundry IQ as the planned Microsoft IQ intelligence layer. The current repo state is `approval-gated` and `tenant-proof pending`; no live Foundry IQ knowledge base is created by this repository.
+
+The intended knowledge layer grounds the agent on:
+
+- Godspeed mission doctrine;
+- approval boundaries;
+- evidence expectations;
+- non-claims about production remediation.
 
 ## Agent Framework Workflow Seed
 

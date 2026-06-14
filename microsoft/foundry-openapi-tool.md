@@ -19,6 +19,7 @@ This operation returns a compact response suitable for an agent tool call:
 - defense package;
 - integration profile and safety boundary;
 - local integration approval ladder;
+- Microsoft IQ layer status through `microsoftIqLayer` with type `Foundry IQ`;
 - manual tenant proof steps;
 - artifact location.
 
@@ -48,6 +49,7 @@ curl -fsS \
 6. Keep production action tools separate from the mission-planning tool.
 7. Use `microsoft/manual-tenant-proof-checklist.md` for live tenant evidence capture after Walter approval.
 8. Keep `block-production-customer-security-tool-connections` blocked until a separate approval package exists.
+9. Use `microsoft/foundry-iq-integration-runbook.md` before claiming a live Foundry IQ integration.
 
 ## Agent Instructions
 

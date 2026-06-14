@@ -12,7 +12,8 @@ GODSPEED stands for:
 
 - **Track:** Reasoning Agents.
 - **Working demo:** local browser UI, REST API and CLI mission run.
-- **Microsoft path:** Copilot Studio / Microsoft 365 Copilot front door, Foundry Agent Service runtime path, Agent Framework workflow path.
+- **Microsoft path:** Copilot Studio / Microsoft 365 Copilot front door, Foundry Agent Service runtime path, Agent Framework workflow path, approval-gated Foundry IQ knowledge layer.
+- **Microsoft IQ status:** Foundry IQ integration path is repo-local and tenant-proof pending until Walter's dev/test tenant is approved.
 - **Safety model:** sandbox data only, no production access, no tenant secrets, no automatic remediation, human approval gates before risky actions.
 - **Demo evidence:** interface screenshot, architecture diagram, technical background, Copilot-ready OpenAPI contracts and CI checks.
 
@@ -45,6 +46,7 @@ The demo is designed as a Microsoft-native architecture:
 
 - **Microsoft 365 Copilot / Copilot Studio** as the enterprise front door;
 - **Microsoft Foundry Agent Service** as the managed agent runtime path;
+- **Microsoft Foundry IQ** as the approval-gated knowledge layer for mission doctrine, safety boundaries and evidence expectations;
 - **Microsoft Agent Framework** as the multi-agent orchestration implementation path;
 - **GitHub Copilot** as the developer acceleration story;
 - **Godspeed** as the command layer that turns a vague security request into a governed defense mission.
@@ -52,6 +54,8 @@ The demo is designed as a Microsoft-native architecture:
 The live demo in this repository runs in a local sandbox profile so it can be shown without tenant secrets, production access, or customer data. The `microsoft/` folder contains the Foundry and Copilot implementation bridge for the hackathon story.
 
 This repository is explicit about the boundary: the demo is a working sandbox prototype of the Godspeed orchestrator. The production path is Microsoft 365 Copilot or Copilot Studio as the front door, with Microsoft Foundry Agent Service and Microsoft Agent Framework as the managed agent runtime and workflow layer.
+
+The Microsoft IQ requirement is represented honestly: the repo includes a Foundry IQ knowledge-layer manifest, safe sample knowledge sources and validation, but live Foundry IQ tenant proof is still approval-gated and tenant-proof pending.
 
 The repo now includes a Copilot-ready bridge endpoint and import contract:
 
@@ -159,6 +163,9 @@ See:
 - `microsoft/foundry-openapi-tool.md`
 - `microsoft/foundry-agent-definition.json`
 - `microsoft/foundry-agent-framework-bridge.md`
+- `microsoft/foundry-iq-knowledge-layer.json`
+- `microsoft/foundry-iq-integration-runbook.md`
+- `microsoft/knowledge/`
 - `microsoft/integration-approval-ladder.json`
 - `microsoft/integration-approval-ladder-runbook.md`
 - `microsoft/manual-tenant-proof-checklist.md`

@@ -36,6 +36,22 @@ The concrete production workflow mapping is documented in:
 - `microsoft/foundry-agent-framework-bridge.md`
 - `microsoft/foundry-workflow-concept.yaml`
 
+## Intelligence Layer
+
+Microsoft Foundry IQ is the planned Microsoft IQ layer for Godspeed. The repo-local state is:
+
+- `type`: `Foundry IQ`
+- `integrationStatus`: `approval-gated`
+- `tenantProofStatus`: `tenant-proof pending`
+
+The Foundry IQ path is documented in:
+
+- `microsoft/foundry-iq-knowledge-layer.json`
+- `microsoft/foundry-iq-integration-runbook.md`
+- `microsoft/knowledge/`
+
+These artifacts define safe grounding sources for mission doctrine, approval boundaries and evidence expectations. They are not a live tenant integration yet.
+
 ## Runtime
 
 Microsoft Foundry Agent Service is the managed runtime path for:
@@ -56,7 +72,7 @@ The current demo runs without Microsoft tenant credentials so it can be reviewed
 - Foundry workflow concept;
 - Agent Framework implementation notes;
 - OpenAPI contract for a Copilot REST API tool;
-- bridge responses with `integrationProfile`, `safetyBoundary`, `localApprovalLadder`, `suggestedCopilotReply` and manual tenant proof steps;
+- bridge responses with `integrationProfile`, `safetyBoundary`, `localApprovalLadder`, `microsoftIqLayer`, `suggestedCopilotReply` and manual tenant proof steps;
 - UI proof points.
 
 ## Next Build Step
@@ -72,3 +88,5 @@ After registration and platform access are confirmed, the practical next build s
 Use `microsoft/manual-tenant-proof-checklist.md` for the exact approval-gated tenant proof sequence and screenshot/evidence captures.
 
 Use `microsoft/integration-approval-ladder.json` and `microsoft/integration-approval-ladder-runbook.md` to model the Microsoft rollout gates locally before any live tenant automation exists.
+
+Use `microsoft/foundry-iq-integration-runbook.md` for the exact Foundry IQ tenant-proof path after Walter approves the dev/test tenant.

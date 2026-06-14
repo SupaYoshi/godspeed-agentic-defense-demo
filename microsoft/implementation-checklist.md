@@ -8,7 +8,7 @@ This checklist turns the local sandbox into a Microsoft-connected implementation
 - Run `npm run check:microsoft`.
 - Start the API with `npm start`.
 - Call `POST /api/microsoft/copilot/mission` with a security scenario.
-- Confirm the response includes `integrationProfile`, `safetyBoundary`, `localApprovalLadder`, `selectedAgents`, `approvalGates`, `actionPlan`, `defensePackage`, `suggestedCopilotReply` and `manualTenantProofSteps`.
+- Confirm the response includes `integrationProfile`, `safetyBoundary`, `localApprovalLadder`, `microsoftIqLayer`, `selectedAgents`, `approvalGates`, `actionPlan`, `defensePackage`, `suggestedCopilotReply` and `manualTenantProofSteps`.
 - Call `POST /api/microsoft/agent-framework/event` and confirm it returns `GodspeedMissionCreated`.
 - Review `microsoft/integration-approval-ladder.json` before any live Microsoft setup.
 
@@ -29,6 +29,8 @@ This checklist turns the local sandbox into a Microsoft-connected implementation
 
 - Use `microsoft/godspeed-mission.openapi.yaml` as the Foundry OpenAPI tool contract.
 - Use `microsoft/foundry-agent-definition.json` as the version-controlled agent definition intent.
+- Use `microsoft/foundry-iq-knowledge-layer.json` as the approval-gated Foundry IQ knowledge-layer manifest.
+- Upload or link only the safe sources under `microsoft/knowledge/` after Walter approves the dev/test tenant.
 - Use `/api/microsoft/agent-framework/event` as the workflow seed.
 - Map `specialists` to agent or function nodes.
 - Map `approvalGates` to human-in-the-loop workflow steps.

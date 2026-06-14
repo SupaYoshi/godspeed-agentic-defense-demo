@@ -151,6 +151,9 @@
         "localApprovalLadder": {
           "$ref": "#/definitions/LocalApprovalLadder"
         },
+        "microsoftIqLayer": {
+          "$ref": "#/definitions/MicrosoftIqLayer"
+        },
         "suggestedCopilotReply": {
           "$ref": "#/definitions/SuggestedCopilotReply"
         },
@@ -407,6 +410,96 @@
           "items": {
             "type": "string"
           }
+        }
+      }
+    },
+    "MicrosoftIqLayer": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "integrationStatus": {
+          "type": "string"
+        },
+        "tenantProofStatus": {
+          "type": "string"
+        },
+        "targetUse": {
+          "type": "string"
+        },
+        "microsoftDocs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MicrosoftDocReference"
+          }
+        },
+        "knowledgeBaseTarget": {
+          "type": "object"
+        },
+        "approvalGateReferences": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "knowledgeSources": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/IqKnowledgeSource"
+          }
+        },
+        "expectedGroundingBehavior": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "manualTenantProofSteps": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "MicrosoftDocReference": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        }
+      }
+    },
+    "IqKnowledgeSource": {
+      "type": "object",
+      "properties": {
+        "sourceId": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "path": {
+          "type": "string"
+        },
+        "format": {
+          "type": "string"
+        },
+        "sensitivity": {
+          "type": "string"
+        },
+        "purpose": {
+          "type": "string"
         }
       }
     },

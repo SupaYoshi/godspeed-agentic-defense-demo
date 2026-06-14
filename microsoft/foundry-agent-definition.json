@@ -38,10 +38,18 @@
       "actionPlan",
       "defensePackage",
       "localApprovalLadder",
+      "microsoftIqLayer",
       "suggestedCopilotReply",
       "manualTenantProofSteps"
     ],
     "manualTenantProofSteps": "Evidence checklist for Walter; not a claim that tenant work has been completed."
+  },
+  "microsoftIqLayer": {
+    "type": "Foundry IQ",
+    "manifest": "microsoft/foundry-iq-knowledge-layer.json",
+    "integrationStatus": "approval-gated",
+    "tenantProofStatus": "tenant-proof pending",
+    "purpose": "Ground the agent on Godspeed mission doctrine, approval boundaries and evidence expectations."
   },
   "safety": {
     "defaultMode": "read-only planning",

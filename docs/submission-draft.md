@@ -33,8 +33,11 @@ In the Microsoft-native target architecture, Copilot is the front door and Godsp
 - Microsoft 365 Copilot or Copilot Studio as the enterprise front door.
 - Microsoft Copilot Studio REST API tools as the bridge into the Godspeed Mission API.
 - Microsoft Foundry Agent Service as the managed runtime path for hosting the orchestrator and tool-backed agents.
+- Microsoft Foundry IQ as the approval-gated knowledge layer for Godspeed mission doctrine, safety boundaries and evidence expectations.
 - Microsoft Agent Framework as the multi-agent workflow path for routing, state, telemetry and human approval gates.
 - GitHub Copilot as the development acceleration story.
+
+Current Microsoft IQ status: Godspeed includes a repo-local Foundry IQ knowledge-layer manifest and safe sample grounding sources. Live Foundry IQ tenant proof is `tenant-proof pending` and requires Walter's approved dev/test tenant before claiming a live integration.
 
 The current repository runs in `local-sandbox` mode for safe review. It contains the production bridge artifacts for the `microsoft-native-target` profile:
 
@@ -44,6 +47,9 @@ The current repository runs in `local-sandbox` mode for safe review. It contains
 - `microsoft/foundry-openapi-tool.md`
 - `microsoft/foundry-agent-definition.json`
 - `microsoft/foundry-agent-framework-bridge.md`
+- `microsoft/foundry-iq-knowledge-layer.json`
+- `microsoft/foundry-iq-integration-runbook.md`
+- `microsoft/knowledge/`
 - `microsoft/foundry-workflow-concept.yaml`
 
 The repository also includes Microsoft-facing bridge endpoints:
@@ -58,8 +64,9 @@ The architecture has five layers:
 1. Microsoft 365 Copilot or Copilot Studio captures the scenario and presents the final defense package.
 2. The Godspeed Mission Orchestrator converts the request into goals, non-goals, facts, assumptions, unknowns, selected agents and approval gates.
 3. Microsoft Foundry Agent Service and Microsoft Agent Framework provide the production runtime path for hosted agents, tool calls, workflow state, telemetry and evaluation.
-4. Specialist defense agents reason over threat intelligence, exposure, vulnerability priority, log coverage, simulation, patch/change planning, containment, communication and evidence.
-5. The evidence and approval layer produces artifacts and blocks high-impact actions until a human owner approves them.
+4. Foundry IQ grounds the agent on approved Godspeed doctrine, safety boundaries and evidence expectations after tenant approval.
+5. Specialist defense agents reason over threat intelligence, exposure, vulnerability priority, log coverage, simulation, patch/change planning, containment, communication and evidence.
+6. The evidence and approval layer produces artifacts and blocks high-impact actions until a human owner approves them.
 
 Architecture asset:
 

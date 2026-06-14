@@ -6,7 +6,7 @@ This page maps Godspeed Agentic Defense to the Microsoft Agents League Hackathon
 
 Godspeed is a working sandbox prototype for the Reasoning Agents track. It runs as a browser UI, REST API and CLI workflow, and it turns a security scenario into a governed defense mission.
 
-The repository includes source code, architecture, a submission draft, technical background, screenshot evidence, Microsoft bridge endpoints, Copilot Studio OpenAPI contracts and Foundry / Agent Framework implementation artifacts.
+The repository includes source code, architecture, a submission draft, technical background, screenshot evidence, Microsoft bridge endpoints, Copilot Studio OpenAPI contracts, a repo-local Foundry IQ knowledge-layer path and Foundry / Agent Framework implementation artifacts.
 
 Relevant Microsoft-facing artifacts:
 
@@ -17,6 +17,11 @@ Relevant Microsoft-facing artifacts:
 - `microsoft/foundry-openapi-tool.md`
 - `microsoft/foundry-agent-definition.json`
 - `microsoft/foundry-agent-framework-bridge.md`
+- `microsoft/foundry-iq-knowledge-layer.json`
+- `microsoft/foundry-iq-integration-runbook.md`
+- `microsoft/knowledge/`
+
+Foundry IQ status is deliberately honest: approval-gated and tenant-proof pending until Walter's dev/test tenant is used for live proof.
 
 ## Reasoning & Multi-step Thinking - 20%
 

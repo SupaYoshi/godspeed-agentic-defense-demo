@@ -84,8 +84,27 @@
       ]
     },
     {
-      "id": "approve-test-prompts-and-screenshots",
+      "id": "approve-foundry-iq-knowledge-layer",
       "sequence": 5,
+      "title": "Approve Foundry IQ knowledge layer",
+      "decisionType": "manual-approval",
+      "defaultState": "not-approved",
+      "purpose": "Approve creating or linking a Foundry IQ knowledge base using only safe Godspeed grounding sources in Walter's dev/test tenant.",
+      "evidenceRequired": [
+        "Target Foundry project",
+        "Knowledge base name: godspeed-defense-mission-knowledge",
+        "Approved source list from microsoft/foundry-iq-knowledge-layer.json",
+        "Screenshot of knowledge base and source configuration"
+      ],
+      "blocksUntilApproved": [
+        "foundry-iq-knowledge-source-upload",
+        "foundry-iq-agent-attachment",
+        "grounded-foundry-agent-test"
+      ]
+    },
+    {
+      "id": "approve-test-prompts-and-screenshots",
+      "sequence": 6,
       "title": "Approve test prompts and screenshots",
       "decisionType": "manual-approval",
       "defaultState": "not-approved",
@@ -103,7 +122,7 @@
     },
     {
       "id": "block-production-customer-security-tool-connections",
-      "sequence": 6,
+      "sequence": 7,
       "title": "Block production, customer and security-tool connections",
       "decisionType": "hard-block",
       "defaultState": "blocked",
