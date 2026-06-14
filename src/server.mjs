@@ -3,6 +3,7 @@ import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { runGodspeedMission, writeMissionArtifacts } from "./godspeed.mjs";
+import { toAgentFrameworkEvent, toCopilotToolResponse } from "./microsoft-bridge.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const rootDir = path.resolve(__dirname, "..");
@@ -54,7 +55,35 @@ const server = http.createServer(async (req, res) => {
       const input = await readJson(req);
       const mission = runGodspeedMission(input);
       const runDir = await writeMissionArtifacts(mission, rootDir);
-      send(res, 200, JSON.stringify({ ...mission, artifactDir: runDir }, null, 2));
+      send(
+        res,
+        200,
+        JSON.stringify(
+          {
+            ...mission,
+            artifactDir: runDir,
+            copilotToolResponse: toCopilotToolResponse(mission, runDir),
+            agentFrameworkEvent: toAgentFrameworkEvent(mission),
+          },
+          null,
+          2,
+        ),
+      );
+      return;
+    }
+
+    if (req.method === "POST" && req.url === "/api/microsoft/copilot/mission") {
+      const input = await readJson(req);
+      const mission = runGodspeedMission(input);
+      const runDir = await writeMissionArtifacts(mission, rootDir);
+      send(res, 200, JSON.stringify(toCopilotToolResponse(mission, runDir), null, 2));
+      return;
+    }
+
+    if (req.method === "POST" && req.url === "/api/microsoft/agent-framework/event") {
+      const input = await readJson(req);
+      const mission = runGodspeedMission(input);
+      send(res, 200, JSON.stringify(toAgentFrameworkEvent(mission), null, 2));
       return;
     }
 

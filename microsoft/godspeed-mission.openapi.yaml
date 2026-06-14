@@ -55,6 +55,46 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/MissionResponse"
+  /api/microsoft/copilot/mission:
+    post:
+      operationId: createGodspeedCopilotMission
+      summary: Create a Copilot-ready governed defense mission
+      description: >
+        Converts the same mission intake into a Copilot-friendly response shape
+        with selectedAgents, approvalGates, actionPlan and defensePackage.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/MissionRequest"
+      responses:
+        "200":
+          description: Copilot-ready mission package created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CopilotMissionResponse"
+  /api/microsoft/agent-framework/event:
+    post:
+      operationId: createGodspeedAgentFrameworkEvent
+      summary: Create a Microsoft Agent Framework workflow seed event
+      description: >
+        Converts mission intake into a deterministic workflow event for a
+        code-first Microsoft Agent Framework implementation.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/MissionRequest"
+      responses:
+        "200":
+          description: Agent Framework workflow seed event created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AgentFrameworkEvent"
 components:
   schemas:
     MissionRequest:
@@ -105,6 +145,41 @@ components:
           type: object
         artifactDir:
           type: string
+        copilotToolResponse:
+          $ref: "#/components/schemas/CopilotMissionResponse"
+        agentFrameworkEvent:
+          $ref: "#/components/schemas/AgentFrameworkEvent"
+    CopilotMissionResponse:
+      type: object
+      properties:
+        missionId:
+          type: string
+        generatedAt:
+          type: string
+        scenarioProfile:
+          type: string
+        selectedTrack:
+          type: string
+        demoProfile:
+          type: string
+        enterprisePath:
+          type: string
+        selectedAgents:
+          type: array
+          items:
+            $ref: "#/components/schemas/SpecialistAgent"
+        approvalGates:
+          type: array
+          items:
+            $ref: "#/components/schemas/CopilotApprovalGate"
+        actionPlan:
+          type: array
+          items:
+            $ref: "#/components/schemas/CopilotActionItem"
+        defensePackage:
+          type: object
+        artifactDir:
+          type: string
     SpecialistAgent:
       type: object
       properties:
@@ -127,6 +202,15 @@ components:
           type: string
         defaultState:
           type: string
+    CopilotApprovalGate:
+      type: object
+      properties:
+        action:
+          type: string
+        reason:
+          type: string
+        state:
+          type: string
     ActionItem:
       type: object
       properties:
@@ -140,3 +224,33 @@ components:
             type: string
         reason:
           type: string
+    CopilotActionItem:
+      type: object
+      properties:
+        horizon:
+          type: string
+        task:
+          type: string
+        ownerAgent:
+          type: string
+        supportAgents:
+          type: array
+          items:
+            type: string
+        reason:
+          type: string
+        approval:
+          type: string
+        evidence:
+          type: string
+    AgentFrameworkEvent:
+      type: object
+      properties:
+        type:
+          type: string
+        missionId:
+          type: string
+        profile:
+          type: string
+        workflow:
+          type: object

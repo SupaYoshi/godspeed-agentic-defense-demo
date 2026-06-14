@@ -35,6 +35,12 @@ The live demo in this repository runs in a local sandbox profile so it can be sh
 
 This repository is explicit about the boundary: the demo is a working sandbox prototype of the Godspeed orchestrator. The production path is Microsoft 365 Copilot or Copilot Studio as the front door, with Microsoft Foundry Agent Service and Microsoft Agent Framework as the managed agent runtime and workflow layer.
 
+The repo now includes a Copilot-ready bridge endpoint and import contract:
+
+- `POST /api/microsoft/copilot/mission` returns a Copilot-friendly mission package.
+- `POST /api/microsoft/agent-framework/event` returns a workflow seed event.
+- `microsoft/copilot-studio-openapi-v2.json` is the OpenAPI v2 import file for Copilot Studio REST API tools.
+
 ## What The Demo Shows
 
 The app turns one security scenario into:
@@ -61,6 +67,7 @@ Requirements:
 ```bash
 npm install
 npm run check
+npm run check:microsoft
 npm start
 ```
 
@@ -115,6 +122,7 @@ This is demo mode:
 - `artifacts/screenshots/` - interface screenshot for the submission.
 - `artifacts/voice/` - final demo voice-over assets.
 - `microsoft/` - Copilot REST API tool contract, Foundry / Agent Framework bridge and workflow concept.
+- `scripts/validate-microsoft-bridge.mjs` - local validation for the Copilot/Agent Framework bridge contract.
 - `systemd/` and `nginx/` - optional deployment examples.
 
 ## Architecture
@@ -126,6 +134,7 @@ See:
 - `docs/technical-background.md`
 - `docs/microsoft-implementation-path.md`
 - `microsoft/godspeed-mission.openapi.yaml`
+- `microsoft/copilot-studio-openapi-v2.json`
 - `microsoft/copilot-studio-rest-api-tool.md`
 - `microsoft/foundry-agent-framework-bridge.md`
 

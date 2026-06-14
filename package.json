@@ -5,6 +5,7 @@
   "description": "Hackathon demo: governed agentic defense mission orchestrator.",
   "scripts": {
     "check": "node --check src/*.mjs",
+    "check:microsoft": "node scripts/validate-microsoft-bridge.mjs",
     "demo": "node src/cli.mjs",
     "health": "node -e \"fetch('http://127.0.0.1:8088/api/health').then(r=>r.text()).then(console.log)\"",
     "start": "node src/server.mjs",

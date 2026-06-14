@@ -12,17 +12,19 @@ The Copilot agent should collect scenario context, then call the Godspeed missio
 
 Use:
 
-- `microsoft/godspeed-mission.openapi.yaml`
-- operation: `createGodspeedMission`
+- `microsoft/copilot-studio-openapi-v2.json`
+- operation: `createGodspeedCopilotMission`
 - method: `POST`
-- path: `/api/mission`
+- path: `/api/microsoft/copilot/mission`
+
+The repository also keeps `microsoft/godspeed-mission.openapi.yaml` as the broader OpenAPI 3.0 API description. The Copilot Studio import artifact is the OpenAPI v2 JSON file because Copilot Studio REST API tools are processed through the Power Platform OpenAPI v2 flow.
 
 ## Copilot Agent Instructions
 
 1. Ask for missing mission context only when needed.
 2. Do not request credentials, secrets or customer data.
 3. Do not claim remediation has happened.
-4. Call `createGodspeedMission` with the user scenario.
+4. Call `createGodspeedCopilotMission` with the user scenario.
 5. Present the result as:
    - mission summary;
    - selected specialist agents;
@@ -44,4 +46,21 @@ Production implementations should require:
 
 ## Current Demo Status
 
-The browser demo uses the same `/api/mission` contract locally. It is not connected to a live Copilot tenant in this repository because the public hackathon repo must not contain tenant IDs, secrets or production permissions.
+The browser demo uses `/api/mission`. Copilot Studio should use `/api/microsoft/copilot/mission`, which returns the same mission reasoning in a tool-friendly response shape:
+
+- `selectedAgents`
+- `approvalGates`
+- `actionPlan`
+- `defensePackage`
+
+It is not connected to a live Copilot tenant in this repository because the public hackathon repo must not contain tenant IDs, secrets or production permissions.
+
+## Import Steps
+
+1. Publish or tunnel the local API over HTTPS.
+2. Update the `host` in `microsoft/copilot-studio-openapi-v2.json`.
+3. In Copilot Studio, add a REST API tool and upload `microsoft/copilot-studio-openapi-v2.json`.
+4. Select `createGodspeedCopilotMission`.
+5. Use no authentication for the local sandbox, or API key/OAuth for a deployed environment.
+6. Add `microsoft/copilot-studio-agent-instructions.md` to the agent instructions.
+7. Test with a zero-day, phishing, ransomware and cloud exposure scenario.

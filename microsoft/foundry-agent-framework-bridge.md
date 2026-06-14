@@ -39,6 +39,21 @@ Microsoft 365 Copilot or Copilot Studio
 | Monitoring | Foundry tracing/evaluation plus Godspeed audit artifacts |
 | Governance | Approval nodes before high-impact actions |
 
+## Local Bridge Endpoints
+
+The repository exposes two Microsoft-oriented endpoints in addition to the browser demo endpoint:
+
+- `POST /api/microsoft/copilot/mission` - returns a Copilot-friendly tool response with selected agents, approval gates, action plan and defense package.
+- `POST /api/microsoft/agent-framework/event` - returns a workflow seed event that maps the mission to Agent Framework concepts.
+
+Run:
+
+```bash
+npm run check:microsoft
+```
+
+This validates that the OpenAPI v2 import file and bridge response shape stay aligned.
+
 ## Tool Boundary
 
 The production Godspeed orchestrator should expose tools in tiers:
@@ -50,6 +65,18 @@ The production Godspeed orchestrator should expose tools in tiers:
 5. `execute_approved_action`: only enabled after explicit approval and only for scoped actions.
 
 The public demo only implements tiers 1-3.
+
+## Agent Framework Workflow Seed
+
+`/api/microsoft/agent-framework/event` returns:
+
+- `GodspeedMissionCreated` event type;
+- mission intake fields;
+- specialist node list;
+- approval gates;
+- output artifact names.
+
+That gives a code-first Agent Framework implementation a deterministic entrypoint before adding real Foundry credentials, tool bindings, checkpointing or approval UI.
 
 ## Why This Still Counts As A Working Demo
 

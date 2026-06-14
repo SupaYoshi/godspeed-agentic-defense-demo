@@ -1,0 +1,269 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Godspeed Mission API",
+    "version": "0.1.0",
+    "description": "Copilot Studio REST API tool contract for creating governed Godspeed defense missions."
+  },
+  "host": "godspeed.example.com",
+  "basePath": "/",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/microsoft/copilot/mission": {
+      "post": {
+        "operationId": "createGodspeedCopilotMission",
+        "summary": "Create a governed defense mission for Copilot",
+        "description": "Use this action when a user asks Copilot to turn a security incident, vulnerability, compromise, cloud exposure, phishing event or ransomware scenario into a governed defense mission with specialist agents, approval gates and evidence.",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/MissionRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Copilot-ready mission package created",
+            "schema": {
+              "$ref": "#/definitions/CopilotMissionResponse"
+            }
+          }
+        }
+      }
+    },
+    "/api/microsoft/agent-framework/event": {
+      "post": {
+        "operationId": "createGodspeedAgentFrameworkEvent",
+        "summary": "Create an Agent Framework workflow event",
+        "description": "Use this action to convert the same mission intake into a structured event that can seed a Microsoft Agent Framework workflow.",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/MissionRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Agent Framework workflow event created",
+            "schema": {
+              "$ref": "#/definitions/AgentFrameworkEvent"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "MissionRequest": {
+      "type": "object",
+      "required": [
+        "description"
+      ],
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "Short title for the security scenario."
+        },
+        "description": {
+          "type": "string",
+          "description": "Natural-language description of the security mission, incident, vulnerability, exposure, compromise or response question."
+        },
+        "urgency": {
+          "type": "string",
+          "description": "Mission urgency. Use Low, Medium, High or Critical."
+        },
+        "boundary": {
+          "type": "string",
+          "description": "Safety boundary, non-goals and approval constraints. Example: read-only first, no production changes without approval."
+        },
+        "approvalOwner": {
+          "type": "string",
+          "description": "Human owner responsible for approving gated actions."
+        }
+      }
+    },
+    "CopilotMissionResponse": {
+      "type": "object",
+      "properties": {
+        "missionId": {
+          "type": "string"
+        },
+        "generatedAt": {
+          "type": "string"
+        },
+        "scenarioProfile": {
+          "type": "string"
+        },
+        "selectedTrack": {
+          "type": "string"
+        },
+        "demoProfile": {
+          "type": "string"
+        },
+        "enterprisePath": {
+          "type": "string"
+        },
+        "selectedAgents": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SpecialistAgent"
+          }
+        },
+        "approvalGates": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ApprovalGate"
+          }
+        },
+        "actionPlan": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ActionItem"
+          }
+        },
+        "defensePackage": {
+          "$ref": "#/definitions/DefensePackage"
+        },
+        "artifactDir": {
+          "type": "string"
+        }
+      }
+    },
+    "SpecialistAgent": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "wave": {
+          "type": "integer"
+        },
+        "status": {
+          "type": "string"
+        },
+        "action": {
+          "type": "string"
+        },
+        "finding": {
+          "type": "string"
+        }
+      }
+    },
+    "ApprovalGate": {
+      "type": "object",
+      "properties": {
+        "action": {
+          "type": "string"
+        },
+        "reason": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        }
+      }
+    },
+    "ActionItem": {
+      "type": "object",
+      "properties": {
+        "horizon": {
+          "type": "string"
+        },
+        "task": {
+          "type": "string"
+        },
+        "ownerAgent": {
+          "type": "string"
+        },
+        "supportAgents": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "reason": {
+          "type": "string"
+        },
+        "approval": {
+          "type": "string"
+        },
+        "evidence": {
+          "type": "string"
+        }
+      }
+    },
+    "DefensePackage": {
+      "type": "object",
+      "properties": {
+        "summary": {
+          "type": "string"
+        },
+        "facts": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "assumptions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "unknowns": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "premortem": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "nextDecisions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "AgentFrameworkEvent": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "missionId": {
+          "type": "string"
+        },
+        "profile": {
+          "type": "string"
+        },
+        "workflow": {
+          "type": "object"
+        }
+      }
+    }
+  }
+}
