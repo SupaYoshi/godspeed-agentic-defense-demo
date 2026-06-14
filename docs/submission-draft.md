@@ -88,7 +88,7 @@ Recommended framing:
 
 ## Demo Video URL
 
-To be added after recording.
+https://www.youtube.com/watch?v=U9ZP6s9Y73s
 
 ## Public Repository URL
 

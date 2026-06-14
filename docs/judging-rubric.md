@@ -75,5 +75,5 @@ Short community pitch:
 
 Links:
 
-- Demo video: `[paste YouTube URL]`
+- Demo video: `https://www.youtube.com/watch?v=U9ZP6s9Y73s`
 - Repository: `https://github.com/SupaYoshi/godspeed-agentic-defense-demo`

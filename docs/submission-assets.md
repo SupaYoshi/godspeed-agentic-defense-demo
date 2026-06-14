@@ -16,7 +16,7 @@ Use these fields for the hackathon form.
 
 ## Demo Video
 
-- Demo video URL: to be added after upload.
+- Demo video URL: https://www.youtube.com/watch?v=U9ZP6s9Y73s
 - Suggested title: Godspeed Agentic Defense - Hackathon Demo
 - Suggested visibility: unlisted.
 
@@ -53,5 +53,5 @@ Godspeed is intentionally sandbox-first. It plans risky security actions, but do
 
 Godspeed Agentic Defense is our Microsoft Agents League Reasoning Agents submission. It turns an urgent cyber incident prompt into a governed multi-agent defense mission: specialist agents, multi-step reasoning, premortem, lab-first validation, human approval gates and an evidence package.
 
-Demo: [paste YouTube URL]
+Demo: https://www.youtube.com/watch?v=U9ZP6s9Y73s
 Repo: https://github.com/SupaYoshi/godspeed-agentic-defense-demo
