@@ -75,8 +75,16 @@ const server = http.createServer(async (req, res) => {
       return;
     }
 
-    if (req.method === "GET" && publicSpecRoutes.has(req.url)) {
+    if ((req.method === "GET" || req.method === "HEAD") && publicSpecRoutes.has(req.url)) {
       const spec = publicSpecRoutes.get(req.url);
+      if (req.method === "HEAD") {
+        res.writeHead(200, {
+          "content-type": spec.type,
+          "cache-control": "no-store",
+        });
+        res.end();
+        return;
+      }
       send(res, 200, await readFile(spec.file), spec.type);
       return;
     }
