@@ -159,6 +159,7 @@ See:
 - `microsoft/foundry-openapi-tool.md`
 - `microsoft/foundry-agent-definition.json`
 - `microsoft/foundry-agent-framework-bridge.md`
+- `microsoft/manual-tenant-proof-checklist.md`
 
 ## Submission Positioning
 

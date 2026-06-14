@@ -52,6 +52,10 @@ The browser demo uses `/api/mission`. Copilot Studio should use `/api/microsoft/
 - `approvalGates`
 - `actionPlan`
 - `defensePackage`
+- `integrationProfile`
+- `safetyBoundary`
+- `suggestedCopilotReply`
+- `manualTenantProofSteps`
 
 It is not connected to a live Copilot tenant in this repository because the public hackathon repo must not contain tenant IDs, secrets or production permissions.
 
@@ -64,3 +68,4 @@ It is not connected to a live Copilot tenant in this repository because the publ
 5. Use no authentication for the local sandbox, or API key/OAuth for a deployed environment.
 6. Add `microsoft/copilot-studio-agent-instructions.md` to the agent instructions.
 7. Test with a zero-day, phishing, ransomware and cloud exposure scenario.
+8. Use `microsoft/manual-tenant-proof-checklist.md` for approval-gated live tenant evidence capture.

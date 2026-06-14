@@ -106,6 +106,15 @@
         "generatedAt": {
           "type": "string"
         },
+        "integrationProfile": {
+          "$ref": "#/definitions/IntegrationProfile"
+        },
+        "safetyBoundary": {
+          "$ref": "#/definitions/SafetyBoundary"
+        },
+        "sourceEndpoints": {
+          "$ref": "#/definitions/SourceEndpoints"
+        },
         "scenarioProfile": {
           "type": "string"
         },
@@ -139,7 +148,64 @@
         "defensePackage": {
           "$ref": "#/definitions/DefensePackage"
         },
+        "suggestedCopilotReply": {
+          "$ref": "#/definitions/SuggestedCopilotReply"
+        },
+        "manualTenantProofSteps": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
         "artifactDir": {
+          "type": "string"
+        }
+      }
+    },
+    "IntegrationProfile": {
+      "type": "object",
+      "properties": {
+        "mode": {
+          "type": "string"
+        },
+        "microsoftTarget": {
+          "type": "string"
+        },
+        "authentication": {
+          "type": "string"
+        },
+        "productionExecution": {
+          "type": "string"
+        }
+      }
+    },
+    "SafetyBoundary": {
+      "type": "object",
+      "properties": {
+        "dataProfile": {
+          "type": "string"
+        },
+        "secrets": {
+          "type": "string"
+        },
+        "productionAccess": {
+          "type": "string"
+        },
+        "riskyActions": {
+          "type": "string"
+        }
+      }
+    },
+    "SourceEndpoints": {
+      "type": "object",
+      "properties": {
+        "copilotTool": {
+          "type": "string"
+        },
+        "agentFrameworkEvent": {
+          "type": "string"
+        },
+        "localDemo": {
           "type": "string"
         }
       }
@@ -245,6 +311,23 @@
           "items": {
             "type": "string"
           }
+        }
+      }
+    },
+    "SuggestedCopilotReply": {
+      "type": "object",
+      "properties": {
+        "opening": {
+          "type": "string"
+        },
+        "requiredSections": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "disclaimer": {
+          "type": "string"
         }
       }
     },

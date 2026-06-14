@@ -8,7 +8,7 @@ This checklist turns the local sandbox into a Microsoft-connected implementation
 - Run `npm run check:microsoft`.
 - Start the API with `npm start`.
 - Call `POST /api/microsoft/copilot/mission` with a security scenario.
-- Confirm the response includes `selectedAgents`, `approvalGates`, `actionPlan` and `defensePackage`.
+- Confirm the response includes `integrationProfile`, `safetyBoundary`, `selectedAgents`, `approvalGates`, `actionPlan`, `defensePackage`, `suggestedCopilotReply` and `manualTenantProofSteps`.
 - Call `POST /api/microsoft/agent-framework/event` and confirm it returns `GodspeedMissionCreated`.
 
 ## Copilot Studio REST API Tool
@@ -21,6 +21,7 @@ This checklist turns the local sandbox into a Microsoft-connected implementation
 - Add the instructions from `microsoft/copilot-studio-agent-instructions.md`.
 - Keep the sandbox unauthenticated only for local demo use.
 - For deployment, use API key or OAuth/Entra-backed auth and scoped tenant access.
+- Capture proof screenshots listed in `microsoft/manual-tenant-proof-checklist.md`.
 
 ## Foundry / Agent Framework
 
@@ -31,6 +32,7 @@ This checklist turns the local sandbox into a Microsoft-connected implementation
 - Map `approvalGates` to human-in-the-loop workflow steps.
 - Keep production actions disabled until approvals are explicit and auditable.
 - Add Foundry tracing/evaluation once real project credentials are available.
+- Use `microsoft/manual-tenant-proof-checklist.md` for the exact tenant-proof sequence and evidence captures.
 
 ## Safety Gates
 

@@ -156,6 +156,12 @@ components:
           type: string
         generatedAt:
           type: string
+        integrationProfile:
+          $ref: "#/components/schemas/IntegrationProfile"
+        safetyBoundary:
+          $ref: "#/components/schemas/SafetyBoundary"
+        sourceEndpoints:
+          $ref: "#/components/schemas/SourceEndpoints"
         scenarioProfile:
           type: string
         selectedTrack:
@@ -177,8 +183,81 @@ components:
           items:
             $ref: "#/components/schemas/CopilotActionItem"
         defensePackage:
-          type: object
+          $ref: "#/components/schemas/DefensePackage"
+        suggestedCopilotReply:
+          $ref: "#/components/schemas/SuggestedCopilotReply"
+        manualTenantProofSteps:
+          type: array
+          items:
+            type: string
         artifactDir:
+          type: string
+    IntegrationProfile:
+      type: object
+      properties:
+        mode:
+          type: string
+        microsoftTarget:
+          type: string
+        authentication:
+          type: string
+        productionExecution:
+          type: string
+    SafetyBoundary:
+      type: object
+      properties:
+        dataProfile:
+          type: string
+        secrets:
+          type: string
+        productionAccess:
+          type: string
+        riskyActions:
+          type: string
+    SourceEndpoints:
+      type: object
+      properties:
+        copilotTool:
+          type: string
+        agentFrameworkEvent:
+          type: string
+        localDemo:
+          type: string
+    DefensePackage:
+      type: object
+      properties:
+        summary:
+          type: string
+        facts:
+          type: array
+          items:
+            type: string
+        assumptions:
+          type: array
+          items:
+            type: string
+        unknowns:
+          type: array
+          items:
+            type: string
+        premortem:
+          type: array
+          items:
+            type: string
+        nextDecisions:
+          type: array
+          items:
+            type: string
+    SuggestedCopilotReply:
+      type: object
+      properties:
+        opening:
+          type: string
+        requiredSections:
+          type: array
+          items:
+            type: string
+        disclaimer:
           type: string
     SpecialistAgent:
       type: object
@@ -193,6 +272,8 @@ components:
           type: string
         wave:
           type: integer
+        status:
+          type: string
     ApprovalGate:
       type: object
       properties:

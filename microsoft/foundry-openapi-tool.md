@@ -17,6 +17,8 @@ This operation returns a compact response suitable for an agent tool call:
 - approval gates;
 - action plan;
 - defense package;
+- integration profile and safety boundary;
+- manual tenant proof steps;
 - artifact location.
 
 ## Local Test
@@ -43,6 +45,7 @@ curl -fsS \
 4. Attach the tool to a prompt agent or a hosted Agent Framework implementation.
 5. Use managed identity, API key or OAuth depending on deployment boundary.
 6. Keep production action tools separate from the mission-planning tool.
+7. Use `microsoft/manual-tenant-proof-checklist.md` for live tenant evidence capture after Walter approval.
 
 ## Agent Instructions
 

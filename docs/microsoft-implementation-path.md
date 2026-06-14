@@ -56,6 +56,7 @@ The current demo runs without Microsoft tenant credentials so it can be reviewed
 - Foundry workflow concept;
 - Agent Framework implementation notes;
 - OpenAPI contract for a Copilot REST API tool;
+- bridge responses with `integrationProfile`, `safetyBoundary`, `suggestedCopilotReply` and manual tenant proof steps;
 - UI proof points.
 
 ## Next Build Step
@@ -67,3 +68,5 @@ After registration and platform access are confirmed, the practical next build s
 3. Add specialist agents as workflow nodes.
 4. Add human approval nodes before production actions.
 5. Connect the existing `/api/mission` contract as either a tool or backend service.
+
+Use `microsoft/manual-tenant-proof-checklist.md` for the exact approval-gated tenant proof sequence and screenshot/evidence captures.

@@ -29,6 +29,19 @@
       "purpose": "Seed a code-first Agent Framework workflow from the same mission intake."
     }
   ],
+  "responseContract": {
+    "mustInclude": [
+      "integrationProfile",
+      "safetyBoundary",
+      "selectedAgents",
+      "approvalGates",
+      "actionPlan",
+      "defensePackage",
+      "suggestedCopilotReply",
+      "manualTenantProofSteps"
+    ],
+    "manualTenantProofSteps": "Evidence checklist for Walter; not a claim that tenant work has been completed."
+  },
   "safety": {
     "defaultMode": "read-only planning",
     "productionExecution": "disabled in public demo",
