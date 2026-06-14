@@ -134,13 +134,6 @@ h2 {
   margin-bottom: 18px;
 }
 
-.mission-actions {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-  gap: 8px;
-}
-
 button {
   border: 0;
   border-radius: 6px;
@@ -150,12 +143,6 @@ button {
   cursor: pointer;
   font-weight: 800;
   min-width: 128px;
-}
-
-.secondary-button {
-  border: 1px solid #9dc6e7;
-  background: #f7fbff;
-  color: var(--blue);
 }
 
 button:focus,

@@ -1,6 +1,5 @@
 const scenarioEl = document.querySelector("#scenario");
 const runButton = document.querySelector("#runMission");
-const localButton = document.querySelector("#askFoundry");
 const agentsEl = document.querySelector("#agents");
 const microsoftFitEl = document.querySelector("#microsoftFit");
 const premortemEl = document.querySelector("#premortem");
@@ -214,38 +213,8 @@ async function renderMission(mission) {
   ].join("\n");
 }
 
-async function runLocalMission() {
-  localButton.disabled = true;
-  localButton.textContent = "Running";
-  setFoundryStatus("Local fallback", "neutral");
-  foundryOutputEl.textContent = "Running the local Godspeed orchestrator without the Foundry agent bridge.";
-  setPhase(0);
-  clearMissionOutput();
-
-  const response = await fetch("/api/mission", {
-    method: "POST",
-    headers: { "content-type": "application/json" },
-    body: JSON.stringify({
-      title: "Critical remote access vulnerability",
-      description: scenarioEl.value,
-      urgency: "High",
-    }),
-  });
-
-  const mission = await response.json();
-  currentMission = mission;
-  for (let index = 1; index < phases.length; index += 1) {
-    await sleep(runTiming.phase);
-    setPhase(index);
-  }
-  await renderMission(mission);
-  localButton.disabled = false;
-  localButton.textContent = "Run Local";
-}
-
 async function runMission() {
   runButton.disabled = true;
-  localButton.disabled = true;
   runButton.textContent = "Calling Foundry";
   setFoundryStatus("Calling Foundry", "working");
   foundryOutputEl.textContent = "Sending the scenario through the server-side Foundry bridge...";
@@ -299,13 +268,11 @@ async function runMission() {
     foundryOutputEl.textContent = error.message;
   } finally {
     runButton.disabled = false;
-    localButton.disabled = false;
     runButton.textContent = "Run Mission";
   }
 }
 
 runButton.addEventListener("click", runMission);
-localButton.addEventListener("click", runLocalMission);
 phases.forEach((phase) => {
   phase.addEventListener("click", () => inspectPhase(Number(phase.dataset.phase)));
 });
