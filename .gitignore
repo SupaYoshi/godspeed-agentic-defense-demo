@@ -1,5 +1,8 @@
 node_modules/
 artifacts/last-run/
+artifacts/foundry-iq-live-proof/foundry-iq-01-published-latest-version.jpg
+artifacts/foundry-openapi-live-proof/
+artifacts/slides/
 artifacts/voice/*
 !artifacts/voice/
 !artifacts/voice/README.md
@@ -13,3 +16,6 @@ secrets/
 dist/
 coverage/
 .DS_Store
+systemd/*.override.conf
+__pycache__/
+*.pyc

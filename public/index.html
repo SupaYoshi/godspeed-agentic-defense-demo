@@ -40,7 +40,10 @@
       <section class="mission-panel" aria-labelledby="scenario-title">
         <div class="section-title">
           <h2 id="scenario-title">Mission Intake</h2>
-          <button id="runMission" type="button">Run Mission</button>
+          <div class="mission-actions">
+            <button id="runMission" type="button">Run Mission</button>
+            <button id="askFoundry" class="secondary-button" type="button">Run Local</button>
+          </div>
         </div>
         <label for="scenario">Security scenario</label>
         <textarea id="scenario" rows="9">A new critical vulnerability has been disclosed in a widely used remote access component. The organisation needs to know whether it is exposed, whether existing logs can detect exploitation, what should be tested in a lab first, and what actions require approval.</textarea>
@@ -94,6 +97,14 @@
         <section class="phase-detail" aria-live="polite">
           <strong id="phaseTitle">Intake</strong>
           <p id="phaseDetail">Run the mission to classify the scenario and build the governed workflow.</p>
+        </section>
+
+        <section class="panel foundry-panel" id="foundryPanel">
+          <div class="panel-heading">
+            <h2>Foundry Agent Bridge</h2>
+            <span id="foundryStatus">Server-side bridge</span>
+          </div>
+          <pre id="foundryOutput">Run Mission sends this scenario through the Godspeed backend to the configured Azure AI Foundry agent.</pre>
         </section>
 
         <section class="panel" id="agentsPanel">

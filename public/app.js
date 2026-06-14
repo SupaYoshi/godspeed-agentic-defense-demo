@@ -1,11 +1,14 @@
 const scenarioEl = document.querySelector("#scenario");
 const runButton = document.querySelector("#runMission");
+const localButton = document.querySelector("#askFoundry");
 const agentsEl = document.querySelector("#agents");
 const microsoftFitEl = document.querySelector("#microsoftFit");
 const premortemEl = document.querySelector("#premortem");
 const approvalsEl = document.querySelector("#approvals");
 const actionsEl = document.querySelector("#actions");
 const summaryEl = document.querySelector("#summary");
+const foundryStatusEl = document.querySelector("#foundryStatus");
+const foundryOutputEl = document.querySelector("#foundryOutput");
 const agentCountEl = document.querySelector("#agentCount");
 const gateCountEl = document.querySelector("#gateCount");
 const actionCountEl = document.querySelector("#actionCount");
@@ -102,6 +105,11 @@ function clearMissionOutput() {
   approvalsEl.innerHTML = "";
   actionsEl.innerHTML = "";
   summaryEl.textContent = "Creating Godspeed defense mission...";
+}
+
+function setFoundryStatus(status, tone = "neutral") {
+  foundryStatusEl.textContent = status;
+  foundryStatusEl.dataset.tone = tone;
 }
 
 async function renderAgents(agents) {
@@ -206,9 +214,11 @@ async function renderMission(mission) {
   ].join("\n");
 }
 
-async function runMission() {
-  runButton.disabled = true;
-  runButton.textContent = "Reasoning";
+async function runLocalMission() {
+  localButton.disabled = true;
+  localButton.textContent = "Running";
+  setFoundryStatus("Local fallback", "neutral");
+  foundryOutputEl.textContent = "Running the local Godspeed orchestrator without the Foundry agent bridge.";
   setPhase(0);
   clearMissionOutput();
 
@@ -229,11 +239,73 @@ async function runMission() {
     setPhase(index);
   }
   await renderMission(mission);
-  runButton.disabled = false;
-  runButton.textContent = "Run Mission";
+  localButton.disabled = false;
+  localButton.textContent = "Run Local";
+}
+
+async function runMission() {
+  runButton.disabled = true;
+  localButton.disabled = true;
+  runButton.textContent = "Calling Foundry";
+  setFoundryStatus("Calling Foundry", "working");
+  foundryOutputEl.textContent = "Sending the scenario through the server-side Foundry bridge...";
+  setPhase(0);
+  clearMissionOutput();
+
+  try {
+    const response = await fetch("/api/foundry/agent", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({
+        title: "Website Foundry prompt",
+        description: scenarioEl.value,
+        urgency: "High",
+      }),
+    });
+    const result = await response.json();
+
+    if (result.localMission) {
+      currentMission = result.localMission;
+      for (let index = 1; index < phases.length; index += 1) {
+        await sleep(runTiming.phase);
+        setPhase(index);
+      }
+      await renderMission(result.localMission);
+    }
+
+    if (!response.ok || !result.ok) {
+      setFoundryStatus(result.configured === false ? "Needs server config" : "Bridge error", "error");
+      foundryOutputEl.textContent = [
+        result.error || "Foundry bridge failed.",
+        "",
+        result.requiredEnv ? `Required env: ${result.requiredEnv.join(", ")}` : "",
+        result.localMission
+          ? `Local Godspeed fallback: ${result.localMission.scenarioProfile}, ${result.localMission.specialists.length} agents, ${result.localMission.approvals.length} approval gates.`
+          : "",
+      ]
+        .filter(Boolean)
+        .join("\n");
+      return;
+    }
+
+    setFoundryStatus("Foundry response", "ok");
+    foundryOutputEl.textContent = [
+      `Agent: ${result.foundry.agent.name} v${result.foundry.agent.version}`,
+      "",
+      result.foundry.outputText || "Foundry returned an empty response.",
+    ].join("\n");
+  } catch (error) {
+    setFoundryStatus("Bridge error", "error");
+    foundryOutputEl.textContent = error.message;
+  } finally {
+    runButton.disabled = false;
+    localButton.disabled = false;
+    runButton.textContent = "Run Mission";
+  }
 }
 
 runButton.addEventListener("click", runMission);
+localButton.addEventListener("click", runLocalMission);
 phases.forEach((phase) => {
   phase.addEventListener("click", () => inspectPhase(Number(phase.dataset.phase)));
 });
