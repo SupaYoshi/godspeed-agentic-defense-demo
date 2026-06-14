@@ -3,6 +3,9 @@ import { runGodspeedMission } from "../src/godspeed.mjs";
 import { toAgentFrameworkEvent, toCopilotToolResponse } from "../src/microsoft-bridge.mjs";
 
 const openApi = JSON.parse(await readFile(new URL("../microsoft/copilot-studio-openapi-v2.json", import.meta.url), "utf8"));
+const approvalLadder = JSON.parse(
+  await readFile(new URL("../microsoft/integration-approval-ladder.json", import.meta.url), "utf8"),
+);
 const foundryOpenApi = await readFile(new URL("../microsoft/godspeed-mission.openapi.yaml", import.meta.url), "utf8");
 
 const requiredPaths = [
@@ -40,6 +43,7 @@ const requiredCopilotFields = [
   "approvalGates",
   "actionPlan",
   "defensePackage",
+  "localApprovalLadder",
   "suggestedCopilotReply",
   "manualTenantProofSteps",
 ];
@@ -78,6 +82,14 @@ if (!Array.isArray(copilotResponse.manualTenantProofSteps) || copilotResponse.ma
   throw new Error("Copilot response must include manual tenant proof steps");
 }
 
+if (copilotResponse.localApprovalLadder.profile !== "local-demo-approval-model") {
+  throw new Error("Copilot response must include the local/demo Microsoft integration approval ladder");
+}
+
+if (copilotResponse.localApprovalLadder.defaultState !== "not-approved") {
+  throw new Error("Integration approval ladder must default to not-approved");
+}
+
 if (event.type !== "GodspeedMissionCreated") {
   throw new Error("Agent Framework event type is incorrect");
 }
@@ -86,11 +98,17 @@ if (event.workflow.guardrails?.productionExecution !== "disabled") {
   throw new Error("Agent Framework event must keep production execution disabled in the public demo");
 }
 
+if (event.workflow.guardrails?.approvalLadder?.hardBlockGate !== "block-production-customer-security-tool-connections") {
+  throw new Error("Agent Framework guardrails must reference the production/customer/security-tool hard block");
+}
+
 const requiredOpenApiDefinitions = [
   "IntegrationProfile",
   "SafetyBoundary",
   "SourceEndpoints",
   "SuggestedCopilotReply",
+  "LocalApprovalLadder",
+  "ApprovalLadderGate",
 ];
 
 for (const definition of requiredOpenApiDefinitions) {
@@ -100,6 +118,62 @@ for (const definition of requiredOpenApiDefinitions) {
   if (!foundryOpenApi.includes(`${definition}:`)) {
     throw new Error(`OpenAPI 3 spec is missing ${definition}`);
   }
+}
+
+const requiredApprovalGateIds = [
+  "approve-public-https-endpoint-choice",
+  "approve-sandbox-auth-mode",
+  "approve-copilot-studio-openapi-import",
+  "approve-foundry-openapi-tool-configuration",
+  "approve-test-prompts-and-screenshots",
+  "block-production-customer-security-tool-connections",
+];
+
+if (approvalLadder.profile !== "local-demo-approval-model") {
+  throw new Error("Approval ladder must use the local-demo-approval-model profile");
+}
+
+if (approvalLadder.defaultState !== "not-approved") {
+  throw new Error("Approval ladder must default to not-approved");
+}
+
+if (!approvalLadder.rationale.toLowerCase().includes("too early")) {
+  throw new Error("Approval ladder must explain that live tenant approval automation is too early");
+}
+
+const ladderGateIds = new Set(approvalLadder.gates?.map((gate) => gate.id));
+
+for (const gateId of requiredApprovalGateIds) {
+  if (!ladderGateIds.has(gateId)) {
+    throw new Error(`Approval ladder is missing gate ${gateId}`);
+  }
+}
+
+const orderedSequences = approvalLadder.gates.map((gate) => gate.sequence);
+const sortedSequences = [...orderedSequences].sort((a, b) => a - b);
+
+if (orderedSequences.join(",") !== sortedSequences.join(",")) {
+  throw new Error("Approval ladder gates must be ordered by sequence");
+}
+
+const hardBlockGate = approvalLadder.gates.find(
+  (gate) => gate.id === "block-production-customer-security-tool-connections",
+);
+
+if (hardBlockGate.decisionType !== "hard-block" || hardBlockGate.defaultState !== "blocked") {
+  throw new Error("Production/customer/security-tool gate must be a blocked hard block");
+}
+
+const blockedCapabilities = hardBlockGate.blockedCapabilities.join(" ").toLowerCase();
+
+for (const blockedTerm of ["customer data", "production scans", "tenant-wide policy changes"]) {
+  if (!blockedCapabilities.includes(blockedTerm)) {
+    throw new Error(`Hard-block gate must mention ${blockedTerm}`);
+  }
+}
+
+if (copilotResponse.localApprovalLadder.gates.length !== approvalLadder.gates.length) {
+  throw new Error("Copilot response ladder must match the structured approval ladder artifact");
 }
 
 const scenarioSamples = [

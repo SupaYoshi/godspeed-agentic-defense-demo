@@ -1,3 +1,9 @@
+import { readFileSync } from "node:fs";
+
+const approvalLadder = JSON.parse(
+  readFileSync(new URL("../microsoft/integration-approval-ladder.json", import.meta.url), "utf8"),
+);
+
 const integrationProfile = {
   mode: "local-sandbox",
   microsoftTarget: "Copilot Studio front door with Foundry Agent Service and Agent Framework runtime path",
@@ -68,6 +74,7 @@ export function toCopilotToolResponse(mission, artifactDir) {
     approvalGates,
     actionPlan,
     defensePackage,
+    localApprovalLadder: approvalLadder,
     suggestedCopilotReply: {
       opening: mission.executiveSummary,
       requiredSections: [
@@ -108,6 +115,11 @@ export function toAgentFrameworkEvent(mission) {
         mode: integrationProfile.mode,
         productionExecution: integrationProfile.productionExecution,
         riskyActions: safetyBoundary.riskyActions,
+        approvalLadder: {
+          profile: approvalLadder.profile,
+          defaultState: approvalLadder.defaultState,
+          hardBlockGate: "block-production-customer-security-tool-connections",
+        },
       },
       outputArtifacts: [
         "mission.json",

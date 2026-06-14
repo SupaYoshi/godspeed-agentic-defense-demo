@@ -184,6 +184,8 @@ components:
             $ref: "#/components/schemas/CopilotActionItem"
         defensePackage:
           $ref: "#/components/schemas/DefensePackage"
+        localApprovalLadder:
+          $ref: "#/components/schemas/LocalApprovalLadder"
         suggestedCopilotReply:
           $ref: "#/components/schemas/SuggestedCopilotReply"
         manualTenantProofSteps:
@@ -259,6 +261,56 @@ components:
             type: string
         disclaimer:
           type: string
+    LocalApprovalLadder:
+      type: object
+      properties:
+        name:
+          type: string
+        version:
+          type: string
+        profile:
+          type: string
+        rationale:
+          type: string
+        defaultState:
+          type: string
+        owner:
+          type: string
+        nonGoals:
+          type: array
+          items:
+            type: string
+        gates:
+          type: array
+          items:
+            $ref: "#/components/schemas/ApprovalLadderGate"
+    ApprovalLadderGate:
+      type: object
+      properties:
+        id:
+          type: string
+        sequence:
+          type: integer
+        title:
+          type: string
+        decisionType:
+          type: string
+        defaultState:
+          type: string
+        purpose:
+          type: string
+        evidenceRequired:
+          type: array
+          items:
+            type: string
+        blocksUntilApproved:
+          type: array
+          items:
+            type: string
+        blockedCapabilities:
+          type: array
+          items:
+            type: string
     SpecialistAgent:
       type: object
       properties:

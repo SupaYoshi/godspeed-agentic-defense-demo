@@ -54,6 +54,7 @@ The browser demo uses `/api/mission`. Copilot Studio should use `/api/microsoft/
 - `defensePackage`
 - `integrationProfile`
 - `safetyBoundary`
+- `localApprovalLadder`
 - `suggestedCopilotReply`
 - `manualTenantProofSteps`
 
@@ -69,3 +70,4 @@ It is not connected to a live Copilot tenant in this repository because the publ
 6. Add `microsoft/copilot-studio-agent-instructions.md` to the agent instructions.
 7. Test with a zero-day, phishing, ransomware and cloud exposure scenario.
 8. Use `microsoft/manual-tenant-proof-checklist.md` for approval-gated live tenant evidence capture.
+9. Use `microsoft/integration-approval-ladder.json` to show which Microsoft rollout gate is still pending or blocked.

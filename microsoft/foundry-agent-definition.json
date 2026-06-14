@@ -37,6 +37,7 @@
       "approvalGates",
       "actionPlan",
       "defensePackage",
+      "localApprovalLadder",
       "suggestedCopilotReply",
       "manualTenantProofSteps"
     ],

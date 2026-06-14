@@ -59,6 +59,8 @@ This validates that the OpenAPI v2 import file and bridge response shape stay al
 - `microsoft/godspeed-mission.openapi.yaml` - OpenAPI 3.0 tool contract for Foundry-style API tooling.
 - `microsoft/foundry-openapi-tool.md` - setup and boundary notes for the Foundry OpenAPI tool path.
 - `microsoft/foundry-agent-definition.json` - version-controlled target agent definition intent.
+- `microsoft/integration-approval-ladder.json` - local/demo gate model for Microsoft rollout approvals.
+- `microsoft/integration-approval-ladder-runbook.md` - operator runbook for using the ladder without live tenant automation.
 
 ## Tool Boundary
 
@@ -71,6 +73,19 @@ The production Godspeed orchestrator should expose tools in tiers:
 5. `execute_approved_action`: only enabled after explicit approval and only for scoped actions.
 
 The public demo only implements tiers 1-3.
+
+## Integration Approval Ladder
+
+Live tenant approval automation is intentionally out of scope for the public demo. The local ladder models the sequence that must be approved before a Microsoft integration proof proceeds:
+
+1. Approve public HTTPS endpoint choice.
+2. Approve sandbox authentication mode.
+3. Approve Copilot Studio OpenAPI import.
+4. Approve Foundry OpenAPI tool configuration.
+5. Approve test prompts and screenshots.
+6. Keep production, customer and security-tool connections blocked until separate approval exists.
+
+`POST /api/microsoft/copilot/mission` returns this model as `localApprovalLadder`, and `npm run check:microsoft` validates the required gates.
 
 ## Agent Framework Workflow Seed
 

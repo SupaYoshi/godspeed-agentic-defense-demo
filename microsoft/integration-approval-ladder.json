@@ -1,0 +1,126 @@
+{
+  "name": "Godspeed Microsoft Integration Approval Ladder",
+  "version": "0.1.0",
+  "profile": "local-demo-approval-model",
+  "rationale": "Live tenant approval automation is too early. This local ladder models the Microsoft integration gates so the demo can show safe, explicit progression without touching tenant resources.",
+  "defaultState": "not-approved",
+  "owner": "Walter or delegated Microsoft tenant owner",
+  "nonGoals": [
+    "No Azure resource creation",
+    "No Microsoft tenant setting changes",
+    "No secrets or API keys in the repository",
+    "No public endpoint deployment from this repo workflow",
+    "No production security tooling or customer data connection"
+  ],
+  "gates": [
+    {
+      "id": "approve-public-https-endpoint-choice",
+      "sequence": 1,
+      "title": "Approve public HTTPS endpoint choice",
+      "decisionType": "manual-approval",
+      "defaultState": "not-approved",
+      "purpose": "Choose the reviewed sandbox URL or deployment shape before any Copilot Studio or Foundry import points at it.",
+      "evidenceRequired": [
+        "Endpoint owner",
+        "Hostname or tunnel/deployment plan",
+        "Expected lifetime",
+        "Confirmation that the endpoint serves sandbox data only"
+      ],
+      "blocksUntilApproved": [
+        "copilot-studio-openapi-host-update",
+        "foundry-openapi-server-update"
+      ]
+    },
+    {
+      "id": "approve-sandbox-auth-mode",
+      "sequence": 2,
+      "title": "Approve sandbox authentication mode",
+      "decisionType": "manual-approval",
+      "defaultState": "not-approved",
+      "purpose": "Pick temporary no-auth for a short sandbox proof or scoped API key/OAuth/Entra-backed auth for a deployed proof.",
+      "evidenceRequired": [
+        "Chosen auth mode",
+        "Expiration or rotation plan for any credential",
+        "Confirmation that no secret is committed to the repository"
+      ],
+      "blocksUntilApproved": [
+        "copilot-studio-tool-test",
+        "foundry-tool-test"
+      ]
+    },
+    {
+      "id": "approve-copilot-studio-openapi-import",
+      "sequence": 3,
+      "title": "Approve Copilot Studio OpenAPI import",
+      "decisionType": "manual-approval",
+      "defaultState": "not-approved",
+      "purpose": "Approve importing the OpenAPI v2 tool into the selected Copilot Studio environment.",
+      "evidenceRequired": [
+        "Target Copilot Studio environment",
+        "OpenAPI v2 file path",
+        "Operation selected: createGodspeedCopilotMission",
+        "Screenshot of successful import"
+      ],
+      "blocksUntilApproved": [
+        "copilot-studio-test-prompts"
+      ]
+    },
+    {
+      "id": "approve-foundry-openapi-tool-configuration",
+      "sequence": 4,
+      "title": "Approve Foundry OpenAPI tool configuration",
+      "decisionType": "manual-approval",
+      "defaultState": "not-approved",
+      "purpose": "Approve configuring the Foundry OpenAPI tool and attaching it to the Godspeed agent definition intent.",
+      "evidenceRequired": [
+        "Target Foundry project",
+        "OpenAPI 3 file path",
+        "Operation selected: createGodspeedCopilotMission",
+        "Screenshot of tool configuration"
+      ],
+      "blocksUntilApproved": [
+        "foundry-agent-test-prompts",
+        "agent-framework-workflow-seed-test"
+      ]
+    },
+    {
+      "id": "approve-test-prompts-and-screenshots",
+      "sequence": 5,
+      "title": "Approve test prompts and screenshots",
+      "decisionType": "manual-approval",
+      "defaultState": "not-approved",
+      "purpose": "Approve the safe sandbox prompt set and evidence captures before using them in the hackathon submission.",
+      "evidenceRequired": [
+        "Zero-day prompt result",
+        "Phishing prompt result",
+        "Ransomware prompt result",
+        "Cloud exposure prompt result",
+        "Screenshots showing selected agents, approval gates and evidence package"
+      ],
+      "blocksUntilApproved": [
+        "hackathon-submission-tenant-proof-claim"
+      ]
+    },
+    {
+      "id": "block-production-customer-security-tool-connections",
+      "sequence": 6,
+      "title": "Block production, customer and security-tool connections",
+      "decisionType": "hard-block",
+      "defaultState": "blocked",
+      "purpose": "Keep production/customer data and real Defender, Sentinel, Intune, endpoint-response, ticketing or remediation tooling outside this demo until a separate approval exists.",
+      "evidenceRequired": [
+        "Separate written approval",
+        "Scoped tool contract",
+        "Rollback and audit plan",
+        "Confirmed data boundary"
+      ],
+      "blockedCapabilities": [
+        "production Defender or Sentinel connection",
+        "production Intune or endpoint-response connection",
+        "customer data ingestion",
+        "tenant-wide policy changes",
+        "production scans, patching, isolation, account resets or external communications"
+      ]
+    }
+  ]
+}

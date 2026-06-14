@@ -4,6 +4,7 @@ Use this checklist only after Walter explicitly approves live Microsoft tenant w
 
 ## Approval Required First
 
+- Review the local/demo ladder in `microsoft/integration-approval-ladder.json`.
 - Approve the HTTPS endpoint that will host the Godspeed API.
 - Approve the target Microsoft tenant, Copilot Studio environment and Foundry project.
 - Approve the authentication mode: no auth for a temporary sandbox only, otherwise API key, OAuth or Entra-backed access.
@@ -22,7 +23,7 @@ npm start
 Capture:
 
 - `/api/health` response.
-- `POST /api/microsoft/copilot/mission` response showing `selectedAgents`, `approvalGates`, `actionPlan`, `defensePackage`, `safetyBoundary` and `manualTenantProofSteps`.
+- `POST /api/microsoft/copilot/mission` response showing `selectedAgents`, `approvalGates`, `actionPlan`, `defensePackage`, `safetyBoundary`, `localApprovalLadder` and `manualTenantProofSteps`.
 - `POST /api/microsoft/agent-framework/event` response showing `GodspeedMissionCreated`.
 
 ## Copilot Studio Proof
